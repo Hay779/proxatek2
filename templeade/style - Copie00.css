@@ -1,0 +1,1448 @@
+/* --- VARIABLES CSS (Basées sur les captures d'écran, typo inspirée Hostinger) --- */
+:root {
+    --custom-primary-dark: #2F1A4B;   /* Violet foncé / Indigo */
+    --custom-primary-dark-hover: #25153a;
+    --custom-accent-magenta: #E535AB; /* Magenta vif */
+    --custom-accent-magenta-hover: #c42a91;
+    
+    --custom-bg-white: #FFFFFF;
+    --custom-bg-lavender-mist: #F9F8FF; 
+    --custom-bg-light-gray: #F6F3FF; /* Note: très similaire à lavender-mist, vérifier l'usage ou consolider */
+
+    --custom-text-dark-primary: #1A0B3D; 
+    --custom-text-medium-gray: #555C63; 
+    --custom-text-light-primary: #FFFFFF;
+    --custom-text-light-secondary: rgba(255, 255, 255, 0.85);
+
+    --custom-border-light: #E0E0E0; 
+    --custom-border-subtle-lavender: #E5D9FF; 
+    
+    --custom-success-color: var(--custom-accent-magenta); /* Réutilise le magenta pour succès */
+    --custom-danger-color: #D9006C; /* Un rouge magenta plus foncé pour danger */
+
+    --custom-font-family: 'Inter', sans-serif; /* Police conservée */
+    --custom-border-radius-cards: 10px; /* Arrondi pour les cartes */
+    --custom-border-radius-buttons: 25px; /* Arrondi "pilule" pour boutons */
+    
+    --custom-box-shadow-soft: 0 5px 20px rgba(47, 26, 75, 0.07); /* Ombre douce violette */
+    --custom-box-shadow-soft-hover: 0 8px 25px rgba(47, 26, 75, 0.1); /* Ombre douce violette au survol */
+    
+    --custom-transition: all 0.25s ease-in-out;
+}
+
+/* --- RESET ET STYLES DE BASE --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+    font-family: var(--custom-font-family);
+    line-height: 1.7; /* Inspiré Hostinger pour plus d'aération */
+    color: var(--custom-text-dark-primary);
+    background-color: var(--custom-bg-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.container { width: 90%; max-width: 1140px; margin-left: auto; margin-right: auto; padding-left: 15px; padding-right: 15px; }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: var(--custom-accent-magenta); transition: var(--custom-transition); }
+a:hover { color: var(--custom-accent-magenta-hover); }
+ul { list-style: none; }
+
+/* Styles typographiques inspirés de Hostinger, appliqués aux couleurs Proxatek */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700; /* Graisse forte par défaut */
+    line-height: 1.3;
+    margin-bottom: 0.75em;
+    color: var(--custom-text-dark-primary);
+}
+h1 { font-size: 2.7rem; font-weight: 800; } /* Taille et graisse Hostinger */
+h2 { font-size: 2.1rem; font-weight: 700; } /* Taille et graisse Hostinger */
+h3 { font-size: 1.5rem; font-weight: 600; } /* Taille et graisse Hostinger */
+h4 { font-size: 1.15rem; font-weight: 600; } /* Taille et graisse Hostinger */
+p { 
+    margin-bottom: 1.2em; /* Espacement Hostinger */
+    color: var(--custom-text-medium-gray);
+}
+
+
+/* --- UTILITIES --- */
+.text-center { text-align: center; }
+.section-padding { padding: 60px 0; }
+.section-bg-light { background-color: var(--custom-bg-lavender-mist); } 
+
+.eyebrow-text-custom {
+    display: block; font-size: 0.8rem; font-weight: 600;
+    color: var(--custom-accent-magenta);
+    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;
+}
+.eyebrow-text-light { 
+    display: block; font-size: 0.8rem; font-weight: 600;
+    color: var(--custom-text-light-secondary); /* Texte clair sur fond sombre/coloré */
+    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;
+}
+.highlight-text { color: var(--custom-accent-magenta); }
+.section-title-custom { text-align: center; margin-bottom: 15px; }
+.section-subtitle-custom {
+    text-align: center; font-size: 1rem; color: var(--custom-text-medium-gray);
+    max-width: 680px; margin-left: auto; margin-right: auto; margin-bottom: 35px;
+}
+.section-title-left-custom { text-align: left; margin-bottom: 15px; }
+
+/* --- BOUTONS --- */
+.btn {
+    display: inline-block; padding: 12px 28px; font-size: 0.9rem;
+    font-weight: 600; border-radius: var(--custom-border-radius-buttons);
+    border: 2px solid transparent; transition: var(--custom-transition);
+    cursor: pointer; text-align: center; line-height: 1.5;
+}
+.btn i { margin-left: 8px; }
+
+.btn-primary-custom { 
+    background-color: var(--custom-primary-dark);
+    color: var(--custom-text-light-primary);
+    border-color: var(--custom-primary-dark);
+}
+.btn-primary-custom:hover {
+    background-color: var(--custom-primary-dark-hover);
+    border-color: var(--custom-primary-dark-hover);
+    transform: translateY(-1px);
+}
+
+.btn-accent-custom { 
+    background-color: var(--custom-accent-magenta);
+    color: var(--custom-text-light-primary);
+    border-color: var(--custom-accent-magenta);
+}
+.btn-accent-custom:hover {
+    background-color: var(--custom-accent-magenta-hover);
+    border-color: var(--custom-accent-magenta-hover);
+    transform: translateY(-1px);
+}
+
+.btn-secondary-custom { 
+    background-color: transparent;
+    color: var(--custom-primary-dark);
+    border-color: var(--custom-primary-dark);
+}
+.btn-secondary-custom:hover {
+    background-color: var(--custom-primary-dark);
+    color: var(--custom-text-light-primary);
+}
+
+ .btn-outline { 
+    background-color: transparent;
+    color: var(--custom-primary-dark);
+    border-color: var(--custom-primary-dark);
+}
+.btn-outline:hover {
+    background-color: var(--custom-primary-dark);
+    color: var(--custom-text-light-primary);
+}
+
+.btn-white-outline-on-dark { 
+    background-color: transparent;
+    color: var(--custom-text-light-primary);
+    border-color: var(--custom-text-light-primary);
+}
+.btn-white-outline-on-dark:hover {
+    background-color: var(--custom-text-light-primary);
+    color: var(--custom-primary-dark); 
+}
+.btn-small { padding: 8px 20px; font-size: 0.85rem; }
+.btn-large { padding: 14px 32px; font-size: 1rem; }
+
+
+/* --- HEADER --- */
+.site-header-custom {
+    background-color: var(--custom-bg-white);
+    padding: 12px 0;
+    border-bottom: 1px solid #4A2F7C; /* légèrement plus clair que primary-dark */
+    position: sticky; top: 0; z-index: 1000;
+}
+.header-custom-container { display: flex; justify-content: space-between; align-items: center; }
+.logo-proxatek-custom img { max-height: 38px; } 
+.logo-text-fallback { display: none; font-weight: 700; font-size: 1.6rem; color: var(--custom-text-light-primary); }
+
+.header-actions-custom { display: flex; align-items: center; gap: 18px; }
+.phone-link-custom {
+    font-weight: 500; color: var(--custom-primary-dark); font-size: 0.9rem;
+}
+.phone-link-custom i { color: var(--custom-primary-dark); margin-right: 5px; }
+.phone-link-custom:hover { color: var(--custom-text-light-primary); }
+.header-actions-custom .btn-primary-custom { /* Spécifique pour le CTA header desktop */
+    background-color: var(--custom-accent-magenta);
+    border-color: var(--custom-accent-magenta);
+}
+ .header-actions-custom .btn-primary-custom:hover {
+    background-color: var(--custom-accent-magenta-hover);
+    border-color: var(--custom-accent-magenta-hover);
+}
+
+
+.header-actions-mobile-custom { display: none; }
+.mobile-menu-toggle-custom {
+    background: none; border: none; font-size: 1.6rem;
+    color: var(--custom-primary-dark); cursor: pointer; padding: 5px;
+}
+.mobile-menu-toggle-custom .icon-close { display: none; }
+
+.mobile-nav-custom {
+    display: none; background-color: var(--custom-bg-white);
+    position: absolute; top: 100%; left: 0; right: 0;
+    border-top: 1px solid var(--custom-border-light);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    padding: 10px 0; max-height: calc(100vh - 65px); overflow-y: auto;
+}
+.mobile-nav-custom.active { display: block; }
+.mobile-nav-custom a {
+    display: block; padding: 11px 25px; color: var(--custom-text-dark-primary);
+    font-weight: 500; font-size: 0.9rem; border-bottom: 1px solid #f1f1f1;
+}
+.mobile-nav-custom a:last-child { border-bottom: none; }
+.mobile-nav-custom a:hover { background-color: var(--custom-bg-lavender-mist); color: var(--custom-accent-magenta); }
+.mobile-nav-custom .mobile-nav-main-link { font-weight: 600; color: var(--custom-accent-magenta); }
+.mobile-nav-custom hr { border: none; border-top: 1px solid var(--custom-border-light); margin: 7px 25px; }
+.mobile-nav-custom .btn { display: block; margin: 12px 25px; width: calc(100% - 50px); }
+/* Style pour le bouton "Support Urgent" dans le menu mobile */
+.mobile-nav-custom .btn-secondary-custom {
+    background-color: var(--custom-primary-dark); color: var(--custom-text-light-primary);
+    border-color: var(--custom-primary-dark);
+}
+ .mobile-nav-custom .btn-secondary-custom:hover {
+    background-color: var(--custom-primary-dark-hover); border-color: var(--custom-primary-dark-hover);
+}
+
+
+
+/* Services Navigation Bar */
+.services-navigation-bar {
+    background-color: var(--custom-primary-dark);
+    padding: 10px 0; /* Padding vertical pour la barre elle-même */
+    border-bottom: 1px solid #4A2F7C;
+    width: 100%; /* Assure que la barre prend toute la largeur de la fenêtre */
+}
+
+.services-navigation-bar .services-nav-container {
+    /* Ce conteneur hérite des propriétés de .container (max-width, margin auto, padding externe 15px).
+       Il gère le scroll si nécessaire. */
+    /* overflow-x est géré dans les media queries. */
+}
+
+.services-navigation-bar .services-nav-container > ul {
+    display: flex;
+    justify-content: center; /* Par défaut, centré quand le texte est visible et qu'on ne scrolle pas */
+    align-items: center;
+    flex-wrap: wrap; /* Permet le retour à la ligne si les éléments sont trop nombreux */
+    gap: 8px; /* Espacement entre les éléments de la liste */
+    padding: 0; /* Le padding externe est géré par .services-nav-container (via .container) */
+    margin: 0; /* Reset du margin par défaut de ul */
+    list-style: none; /* Supprime les puces de la liste */
+    min-height: 40px; /* Hauteur minimale pour une bonne zone cliquable */
+}
+
+.services-navigation-bar .services-nav-container ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px; /* Padding interne du lien */
+    color: var(--custom-text-light-secondary);
+    font-weight: 500;
+    border-radius: var(--custom-border-radius-buttons);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background-color var(--custom-transition), color var(--custom-transition), padding var(--custom-transition);
+    white-space: nowrap; /* Empêche le texte du lien de passer à la ligne */
+}
+
+.services-navigation-bar .services-nav-container ul li a:hover,
+.services-navigation-bar .services-nav-container ul li a.active {
+    background-color: rgba(255,255,255, 0.1);
+    color: var(--custom-text-light-primary);
+}
+
+.services-navigation-bar .services-nav-container ul li a i {
+    margin-right: 6px; /* Marge quand le texte est présent */
+    color: var(--custom-text-light-secondary);
+    font-size: 1em;
+    transition: color var(--custom-transition), font-size var(--custom-transition), margin-right var(--custom-transition);
+}
+
+.services-navigation-bar .services-nav-container ul li a:hover i,
+.services-navigation-bar .services-nav-container ul li a.active i {
+    color: var(--custom-text-light-primary);
+}
+
+.services-navigation-bar .services-nav-container ul li a .service-nav-text {
+    transition: opacity 0.2s ease-out, max-width 0.3s ease-out, margin-left 0.3s ease-out, visibility 0s 0.3s;
+    opacity: 1;
+    max-width: 150px; /* Largeur max pour la transition */
+    overflow: hidden;
+    display: inline-block; /* Pour que max-width fonctionne */
+    visibility: visible;
+}
+
+/* Media Query pour gérer le défilement si le contenu (avec texte) devient trop large.
+   Ajustez ce breakpoint (1100px) en fonction de votre nombre d'items et de la longueur du texte. */
+@media (max-width: 1100px) {
+    .services-navigation-bar .services-nav-container {
+        overflow-x: auto; /* Active le scroll horizontal sur .services-nav-container */
+        -webkit-overflow-scrolling: touch;
+    }
+    .services-navigation-bar .services-nav-container > ul {
+        justify-content: flex-start; /* Aligne les éléments à gauche pour le défilement */
+        flex-wrap: nowrap; /* Empêche le retour à la ligne pour un défilement horizontal correct */
+        /* Le gap de 8px est conservé pour l'espacement lors du scroll */
+    }
+    .services-navigation-bar .services-nav-container ul li { /* Les LI ne doivent pas rétrécir lors du scroll */
+         flex-shrink: 0;
+    }
+}
+
+/* Passage aux icônes seules, étalées pour occuper la largeur disponible. */
+@media (max-width: 876px) {
+    .services-navigation-bar .services-nav-container {
+        overflow-x: visible; /* Plus besoin de défilement horizontal pour les icônes */
+    }
+    .services-navigation-bar .services-nav-container > ul {
+        justify-content: space-between; /* Étale les icônes: première à gauche, dernière à droite, espace réparti entre. */
+        /* Alternative: justify-content: space-around; pour un espace égal autour de chaque icône. */
+        flex-wrap: wrap; /* Garder pour le cas où les icônes devraient passer à la ligne (peu probable avec 6) */
+        gap: 5px; /* Petit espacement minimal si flex-wrap agit.
+                     Si une seule ligne, space-between/around gère l'espacement principal.
+                     Pour que l'espacement soit EXCLUSIVEMENT géré par space-between/around sur une ligne, mettez gap: 0; */
+        padding: 0; /* Le .services-nav-container (via .container) gère le padding externe */
+    }
+    .services-navigation-bar .services-nav-container ul li {
+         flex-shrink: 1; /* Permet aux items de rétrécir si nécessaire (comportement par défaut) */
+    }
+
+    .services-navigation-bar .services-nav-container ul li a .service-nav-text {
+        opacity: 0;
+        max-width: 0;
+        margin-left: 0;
+        visibility: hidden;
+    }
+
+    .services-navigation-bar .services-nav-container ul li a i {
+        margin-right: 0;
+        font-size: 1.3em;
+    }
+
+    .services-navigation-bar .services-nav-container ul li a {
+        padding: 10px;
+        min-width: 44px;
+        min-height: 44px;
+    }
+}
+
+/* Ajustements pour très petits écrans où les icônes (étalées) se resserrent. */
+@media (max-width: 575px) {
+    .services-navigation-bar .services-nav-container > ul {
+        /* Conserve justify-content: space-between ou space-around de la règle précédente. */
+        /* L'espacement entre les icônes va naturellement diminuer. */
+        gap: 2px; /* Réduit davantage le gap minimal si flex-wrap agit. */
+    }
+    .services-navigation-bar .services-nav-container ul li a {
+        padding: 8px;
+        min-width: 40px;
+        min-height: 40px;
+    }
+    .services-navigation-bar .services-nav-container ul li a i {
+        font-size: 1.2em;
+    }
+
+    /* Assurez-vous que ce style est bien à sa place (généralement à la fin des media queries) */
+    .floating-help-btn-proxatek {
+        width: 45px; height: 45px; font-size: 1.2rem; bottom: 18px; right: 18px;
+    }
+}
+/* --- HERO SECTION --- */
+.hero-section-custom-actions { 
+    background-color: var(--custom-bg-white); /* Fond blanc pour le hero */
+    color: var(--custom-text-dark-primary);
+    padding: 80px 0; text-align: center;
+}
+.hero-actions-container-v3 .hero-intro-text-v3 h1 { color: var(--custom-text-dark-primary); margin-bottom: 20px;}
+.hero-actions-container-v3 .hero-intro-text-v3 p {
+    font-size: 1.1rem; max-width: 680px; margin: 0 auto 100px auto; color: var(--custom-text-medium-gray);
+}
+.hero-primary-actions-grid-v3 {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px; text-align: left;
+}
+.hero-action-card-v3 { 
+    background-color: var(--custom-bg-lavender-mist); 
+    padding: 22px; border-radius: var(--custom-border-radius-cards);
+    transition: var(--custom-transition); color: var(--custom-text-dark-primary);
+    display: flex; align-items: center; gap: 15px;
+    border: 1px solid transparent; 
+}
+.hero-action-card-v3:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--custom-box-shadow-soft);
+    border-color: var(--custom-border-subtle-lavender);
+    text-decoration: none;
+    background-color: var(--custom-bg-white);
+}
+.hero-action-card-icon-v3 i {
+    font-size: 1.6rem; color: var(--custom-accent-magenta);
+    width: 30px;
+}
+.hero-action-card-content-v3 h3 { font-size: 1.2rem; margin-bottom: 6px; color: var(--custom-text-dark-primary); }
+.hero-action-card-content-v3 p { font-size: 0.88rem; color: var(--custom-text-medium-gray); margin-bottom: 0; line-height: 1.5;}
+
+
+/* --- DIAGNOSTIC IT SECTION --- */
+#diagnostic-it-inline { 
+    background-color: var(--custom-bg-lavender-mist); 
+}
+#diagnostic-it-inline .devis-intro-header { 
+    text-align: center; 
+    margin-bottom: 35px; 
+}
+#diagnostic-it-inline .subtitle-devis { 
+    font-size: 1rem; 
+    color: var(--custom-text-medium-gray); 
+}
+
+.progress-bar-container {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 35px; max-width: 500px; margin-left: auto; margin-right: auto;
+}
+.progress-stage { text-align: center; position: relative; flex: 0 0 auto; }
+.progress-dot {
+    width: 16px; height: 16px; background-color: #D1C4E9;
+    border-radius: 50%; margin: 0 auto 7px auto; border: 2px solid var(--custom-bg-lavender-mist);
+}
+.progress-label { font-size: 0.8rem; color: var(--custom-text-medium-gray); font-weight: 500; }
+.progress-stage.active .progress-dot { background-color: var(--custom-accent-magenta); }
+.progress-stage.active .progress-label { color: var(--custom-accent-magenta); font-weight: 600; }
+.progress-line {
+    flex-grow: 1; height: 2px; background-color: #D1C4E9; 
+    margin: 0 4px; position: relative; top: -11px;
+}
+
+.devis-question { 
+    text-align: center; 
+    font-size: 1.2rem; 
+    margin-bottom: 30px; 
+    font-weight: 600; 
+}
+
+.devis-options-grid {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+    gap: 20px;
+}
+
+.devis-option-card {
+    background-color: var(--custom-bg-white);
+    border-radius: var(--custom-border-radius-cards); 
+    box-shadow: var(--custom-box-shadow-soft);
+    transition: var(--custom-transition); 
+    overflow: hidden; 
+    color: var(--custom-text-dark-primary);
+    border: 1px solid var(--custom-border-subtle-lavender);
+    text-decoration: none; /* S'assurer que le lien n'est pas souligné */
+}
+.devis-option-card:hover {
+    transform: translateY(-4px); 
+    box-shadow: var(--custom-box-shadow-soft-hover);
+    border-color: var(--custom-accent-magenta);
+}
+
+.devis-option-label {
+    padding: 18px; 
+    font-weight: 600; 
+    font-size: 1rem;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%; /* Important pour le positionnement de la flèche */
+}
+.devis-option-label .arrow-icon { 
+    color: var(--custom-accent-magenta); 
+    transition: transform 0.2s; 
+    margin-left: 8px; /* Ajoute un peu d'espace si le texte est long */
+}
+.devis-option-card:hover .arrow-icon { 
+    transform: translateX(3px); 
+}
+
+/* STYLES SPÉCIFIQUES POUR LES CARTES AVEC ICÔNES */
+.devis-options-grid-icons {
+    /* Aucun style spécifique ici pour l'instant, hérite de .devis-options-grid */
+}
+
+.devis-option-card.icon-card {
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    text-align: center; 
+    padding-top: 25px; /* Espace au-dessus de l'icône */
+    padding-bottom: 20px; /* Espace sous le label */
+    justify-content: space-between; /* Pousse le label vers le bas */
+}
+
+.devis-option-icon-wrapper {
+    width: 100px;  /* Ajustez la taille désirée pour le conteneur de l'icône */
+    height: 100px; /* Ajustez la taille désirée */
+    margin-bottom: 20px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.devis-option-icon-wrapper img {
+    max-width: 100%;   /* L'image s'adaptera à la largeur du wrapper */
+    max-height: 100%;  /* L'image s'adaptera à la hauteur du wrapper */
+    object-fit: contain; /* Conserve les proportions, s'assure que tout est visible */
+    display: block;      /* Évite les espaces indésirables sous l'image */
+}
+
+.devis-option-card.icon-card .devis-option-label {
+    padding: 0 15px; /* Padding horizontal pour le label */
+    /* justify-content: center; // Décommentez si vous voulez que le texte ET la flèche soient centrés ensemble */
+}
+    
+@media (max-width: 767px) {
+    .devis-option-icon-wrapper {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 15px;
+    }
+    .devis-option-card.icon-card .devis-option-label span:first-child {
+        font-size: 0.9rem;
+    }
+}
+/* FIN STYLES POUR LES CARTES AVEC ICÔNES */
+/* --- PRESTATIONS / EXPERTISE POLES SECTION --- */
+#prestations-proxatek { background-color: var(--custom-bg-white); }
+.prestations-grid-custom {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px; margin-bottom: 35px;
+}
+.prestation-card-custom {
+    background-color: var(--custom-bg-white); padding: 28px;
+    border-radius: var(--custom-border-radius-cards); box-shadow: var(--custom-box-shadow-soft);
+    transition: var(--custom-transition); display: flex; flex-direction: column;
+    color: var(--custom-text-dark-primary); border: 1px solid var(--custom-border-subtle-lavender);
+}
+.prestation-card-custom:hover {
+    transform: translateY(-4px); box-shadow: var(--custom-box-shadow-soft-hover);
+    text-decoration: none; border-color: var(--custom-primary-dark);
+}
+.prestation-card-icon-custom i {
+    font-size: 2.1rem; color: var(--custom-primary-dark); margin-bottom: 18px;
+}
+.prestation-card-custom h3 { font-size: 1.3rem; margin-bottom: 10px; }
+.prestation-card-custom p { font-size: 0.9rem; color: var(--custom-text-medium-gray); margin-bottom: 15px; flex-grow: 1; line-height: 1.6;}
+.prestation-card-custom ul { margin-bottom: 20px; padding-left: 0; }
+.prestation-card-custom ul li {
+    font-size: 0.85rem; color: var(--custom-text-medium-gray); margin-bottom: 8px;
+    display: flex; align-items: flex-start; line-height: 1.5;
+}
+.prestation-card-custom ul li i.fa-check {
+    color: var(--custom-accent-magenta);
+    margin-right: 9px; margin-top: 4px; font-size: 0.75em;
+}
+.learn-more-custom {
+    font-weight: 600; color: var(--custom-primary-dark);
+    align-self: flex-start; font-size: 0.85rem;
+}
+.learn-more-custom i { transition: transform 0.2s ease-out; margin-left: 4px; }
+.prestation-card-custom:hover .learn-more-custom i { transform: translateX(4px); }
+.all-services-link-wrapper { margin-top: 30px; }
+/* .all-services-cta class est sur le bouton, .btn-primary-custom est déjà défini */
+
+
+/* --- AUDIT SECTION --- */
+#audit-informatique { background-color: var(--custom-bg-lavender-mist); }
+.audit-steps-container {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px; align-items: start;
+}
+.audit-step {
+    text-align: center; padding: 22px 18px; background-color: var(--custom-bg-white);
+    border-radius: var(--custom-border-radius-cards); box-shadow: var(--custom-box-shadow-soft);
+    position: relative; border: 1px solid var(--custom-border-subtle-lavender);
+}
+.audit-step-number {
+    position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
+    background-color: var(--custom-accent-magenta);
+    color: var(--custom-text-light-primary);
+    border-radius: 50%; width: 32px; height: 32px; display: flex;
+    align-items: center; justify-content: center; font-weight: 700;
+    font-size: 0.8rem; border: 2px solid var(--custom-bg-lavender-mist);
+}
+.audit-step-icon i {
+    font-size: 2.1rem; color: var(--custom-primary-dark);
+    margin-top: 18px; margin-bottom: 12px;
+}
+.audit-step h3 { font-size: 1.1rem; margin-bottom: 8px;}
+.audit-step p { font-size: 0.85rem; margin-bottom: 0; line-height: 1.5;}
+.audit-step-arrow { display: none; }
+@media (min-width: 1200px) { /* Afficher les flèches sur les grands écrans si 4 étapes en ligne */
+    .audit-steps-container[style*="grid-template-columns: repeat(4"],
+    .audit-steps-container:not([style*="grid-template-columns: repeat(1"]) /* S'il n'est pas en mode 1 colonne (mobile) */
+    {
+        /* Essayer de détecter s'il y a 4 colonnes. Si c'est le cas, on passe en flex pour les flèches */
+        /* Ceci est une heuristique. Une classe dédiée sur le conteneur serait plus robuste */
+        /* Ou on peut supposer que s'il n'est pas 1fr, il est multi-colonnes desktop */
+         display: flex; align-items: stretch;
+    }
+    .audit-steps-container[style*="grid-template-columns: repeat(4"] .audit-step,
+    .audit-steps-container:not([style*="grid-template-columns: repeat(1"]) .audit-step { flex: 1; }
+
+    .audit-steps-container[style*="grid-template-columns: repeat(4"] .audit-step-arrow,
+    .audit-steps-container:not([style*="grid-template-columns: repeat(1"]) .audit-step:not(:last-child) + .audit-step-arrow {
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.6rem; color: var(--custom-text-medium-gray); padding: 0 12px;
+    }
+}
+/* Le bouton "Demander un Audit" utilise .btn-accent-custom, déjà défini */
+
+
+/* --- SOLUTIONS PAR SECTEUR --- */
+#solutions-par-secteur { background-color: var(--custom-bg-white); }
+.sector-solutions-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 25px;
+}
+.sector-solution-card {
+    background-color: var(--custom-bg-white); border-radius: var(--custom-border-radius-cards);
+    box-shadow: var(--custom-box-shadow-soft); overflow: hidden; display: flex; flex-direction: column;
+    border: 1px solid var(--custom-border-subtle-lavender);
+    transition: var(--custom-transition);
+}
+.sector-solution-card:hover {
+    border-color: var(--custom-primary-dark);
+    box-shadow: var(--custom-box-shadow-soft-hover); transform: translateY(-3px);
+}
+.sector-card-image img { width: 100%; height: 180px; object-fit: cover; }
+.sector-card-content { padding: 22px; flex-grow: 1; display: flex; flex-direction: column; }
+.sector-tag {
+    display: inline-block; background-color: var(--custom-accent-magenta);
+    color: var(--custom-text-light-primary); padding: 4px 10px;
+    border-radius: var(--custom-border-radius-buttons); font-size: 0.7rem;
+    font-weight: 600; margin-bottom: 10px; align-self: flex-start; text-transform: uppercase;
+}
+.sector-card-content h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.sector-card-content p { font-size: 0.88rem; color: var(--custom-text-medium-gray); margin-bottom: 18px; flex-grow: 1; line-height: 1.6; }
+.sector-card-content .btn { align-self: flex-start; } /* Utilise btn-secondary-custom, déjà défini */
+
+/* --- MÉTIERS CIBLES --- */
+#metiers-cibles { background-color: var(--custom-bg-lavender-mist); }
+.metiers-badges-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.metier-badge {
+    background-color: var(--custom-bg-white); color: var(--custom-text-medium-gray);
+    padding: 8px 16px; border-radius: var(--custom-border-radius-buttons);
+    font-size: 0.85rem; font-weight: 500; border: 1px solid var(--custom-border-subtle-lavender);
+    transition: var(--custom-transition);
+}
+.metier-badge:hover {
+    background-color: var(--custom-primary-dark); color: var(--custom-text-light-primary);
+    border-color: var(--custom-primary-dark);
+}
+.metier-badge i { margin-right: 7px; color: var(--custom-primary-dark); transition: var(--custom-transition); }
+.metier-badge:hover i { color: var(--custom-text-light-primary); }
+
+/* --- POURQUOI PROXATEK --- */
+#pourquoi-proxatek { background-color: var(--custom-bg-white); }
+#pourquoi-proxatek .feature-proxatek-content {
+    display: grid; grid-template-columns: 1fr; gap: 35px; align-items: center;
+}
+@media (min-width: 992px) {
+    #pourquoi-proxatek .feature-proxatek-content { grid-template-columns: 1fr 0.9fr; gap: 45px; }
+    #pourquoi-proxatek .feature-image-content { order: 1; }
+}
+.feature-text-content p { font-size: 0.95rem; color: var(--custom-text-medium-gray); margin-bottom: 22px; line-height: 1.7; }
+.feature-list-custom { list-style: none; padding-left: 0; margin-bottom: 28px; }
+.feature-list-custom li {
+    display: flex; align-items: flex-start; margin-bottom: 12px;
+    font-size: 0.9rem; color: var(--custom-text-dark-primary); line-height: 1.6;
+}
+.feature-icon-custom i.fa-check {
+    color: var(--custom-accent-magenta); margin-right: 10px;
+    font-size: 1rem; margin-top: 3px;
+}
+.feature-image-content img { border-radius: var(--custom-border-radius-cards); box-shadow: var(--custom-box-shadow-soft); }
+/* Le bouton utilise .btn-primary-custom, déjà défini */
+
+/* --- FOCUS SECTION (Supervision Proactive) --- */
+.focus-section.section-bg-accent-gradient { 
+    background: var(--custom-accent-magenta); /* Fond magenta principal */
+    color: var(--custom-text-light-primary);
+}
+.focus-content-wrapper {
+    display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center;
+}
+@media (min-width: 992px) {
+    .focus-content-wrapper { grid-template-columns: 0.8fr 1fr; } 
+     .focus-image-wrapper { order: -1; } /* Image à gauche sur desktop */
+}
+.focus-text-wrapper h2 { color: var(--custom-text-light-primary); font-weight: 700; font-size: 1.8rem; } 
+.focus-text-wrapper p { color: var(--custom-text-light-secondary); font-size: 0.95rem; line-height: 1.7; }
+.focus-note { font-size: 0.75rem; opacity: 0.8; margin-top: 12px; }
+.focus-image-wrapper img { border-radius: var(--custom-border-radius-cards); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+/* Le bouton utilise .btn-white-outline-on-dark, déjà défini */
+
+
+/* --- TESTIMONIALS --- */
+#testimonials-proxatek {
+    background-color: #F6F3FF; /* Violet très clair de fond de section (lavender-bg) */
+    padding: 60px 0; /* Ajustez le padding de la section si besoin */
+}
+
+#testimonials-proxatek .section-title-custom {
+    color: #1A0B3D; /* Violet foncé pour le titre de section */
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 2.1rem; /* Taille du titre de la section */
+    font-weight: 700;
+}
+
+#testimonials-proxatek .section-subtitle-custom {
+    color: #5A5178; /* Gris-violet pour le sous-titre */
+    text-align: center;
+    font-size: 1rem;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px; /* Plus d'espace avant les cartes */
+}
+
+.testimonial-grid-custom {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* minmax un peu plus grand */
+    gap: 30px; /* Espace entre les cartes */
+}
+
+.case-study-card-custom {
+    background-color: #FFFFFF; /* Fond blanc de la carte */
+    padding: 25px 30px 30px 30px; /* Padding interne de la carte, un peu plus en bas */
+    border-radius: 16px; /* Arrondi plus prononcé, similaire à l'image */
+    box-shadow: 0 5px 25px rgba(26, 11, 61, 0.08); /* Ombre subtile violet foncé */
+    border: 1px solid #F6F3FF; /* Bordure très claire, presque invisible ou #E5D9FF si plus visible */
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.case-study-card-custom:hover {
+    box-shadow: 0 10px 35px rgba(26, 11, 61, 0.12);
+    transform: translateY(-5px);
+    border-color: #E5D9FF; /* Bordure lavande au survol */
+}
+
+.case-study-header-custom {
+    display: flex;
+    align-items: center; /* Aligner verticalement logo et texte */
+    gap: 15px; /* Espace entre logo et infos */
+    margin-bottom: 20px;
+}
+
+.company-logo-placeholder { /* Pour la carte Alpha Conseil */
+    width: 60px;
+    height: 60px;
+    background-color: #FFFFFF; /* Fond blanc pour le placeholder */
+    border-radius: 8px;
+    border: 1px solid #E5D9FF; /* Bordure lavande claire */
+    flex-shrink: 0; /* Empêche le rétrécissement */
+}
+.company-logo-testimonial-custom { /* Pour les vrais logos */
+    width: 60px;   /* Taille du logo */
+    height: 60px;  /* Taille du logo */
+    border-radius: 8px; /* Arrondi du logo */
+    object-fit: contain; /* Assure que le logo s'adapte bien */
+    background-color: #FFFFFF; /* Fond blanc si le logo est transparent et sur fond coloré */
+    padding: 5px; /* Petit padding si le logo touche les bords de son conteneur */
+    border: 1px solid #E5D9FF;
+    flex-shrink: 0;
+}
+
+
+.case-study-info-custom {
+    flex-grow: 1; /* Permet au texte de prendre l'espace disponible */
+}
+
+.case-study-info-custom h3 { /* Titre du témoignage (Nom de l'entreprise) */
+    font-size: 1.25rem; /* Plus grand */
+    margin-bottom: 5px;
+    font-weight: 700;
+    color: #1A0B3D; /* Violet foncé */
+    line-height: 1.3;
+}
+
+.industry-tag-custom { /* Ex: "CABINET DE CONSEIL" */
+    font-size: 0.7rem;
+    color: #5A5178; /* Gris-violet */
+    background-color: transparent; /* Pas de fond visible sur l'image */
+    /* Si un léger fond est souhaité, utiliser #F9F8FF ou #F6F3FF */
+    padding: 4px 10px;
+    border-radius: 15px; /* Très arrondi */
+    border: 1px solid #E5D9FF; /* Bordure lavande */
+    display: inline-block;
+    font-weight: 600; /* Plus en gras */
+    text-transform: uppercase;
+    letter-spacing: 0.8px; /* Espacement des lettres */
+}
+
+.testimonial-quote-custom { /* La citation */
+    color: #5A5178; /* Gris-violet */
+    margin-top: 10px; /* Espace par rapport au header */
+    margin-bottom: 25px; /* Espace avant les impacts clés */
+    border-left: 4px solid #D9006C; /* Magenta pour la ligne d'accent */
+    padding-left: 20px; /* Plus d'indentation */
+    font-size: 0.95rem;
+    line-height: 1.75; /* Plus d'interligne */
+    font-style: normal; /* Pas d'italique sur l'image */
+    /* flex-grow: 1; // Peut-être pas nécessaire si la hauteur est déterminée par le contenu */
+}
+
+.results-section-custom {
+    margin-top: auto; /* Pousse cette section vers le bas si la carte est flex et a de l'espace */
+    padding-top: 25px; /* Espace au-dessus des "Impacts Clés" */
+    border-top: 1px solid #E5D9FF; /* Ligne de séparation lavande */
+}
+
+.results-section-custom h4 { /* Titre "Impacts Clés :" */
+    font-size: 1rem; /* Plus grand */
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #1A0B3D; /* Violet foncé */
+}
+
+.results-boxes-grid-custom { /* Nouveau conteneur pour les boîtes de résultats */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 2 boîtes par ligne si possible */
+    gap: 15px;
+}
+
+.result-box-item-custom { /* Style pour chaque boîte de résultat */
+    background-color: #FFFFFF; /* Fond blanc pour la boîte */
+    border: 1px solid #E5D9FF; /* Bordure lavande */
+    border-radius: 10px; /* Arrondi des boîtes */
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px; /* Hauteur minimale pour les boîtes */
+}
+.result-text-label-custom { /* Pour le texte "Réponse" au-dessus de "Support < 1h" */
+    font-size: 0.75rem;
+    color: #5A5178; /* Gris-violet */
+    margin-bottom: 4px;
+    display: block;
+}
+
+.result-number-custom {
+    font-size: 1.5rem; /* Chiffres/texte principal plus grands */
+    font-weight: 700;
+    color: #D9006C; /* Magenta pour les chiffres d'impact */
+    line-height: 1.2;
+    margin-bottom: 5px; /* Espace sous le chiffre/texte principal */
+}
+.result-number-custom.highlight { /* Pour "Support < 1h" */
+    color: #D9006C; /* Magenta */
+}
+
+
+.result-text-custom { /* Texte sous le chiffre, ex: "Temps d'arrêt" */
+    font-size: 0.8rem;
+    color: #5A5178; /* Gris-violet */
+    line-height: 1.4;
+}
+
+
+/* Ajustements responsifs */
+@media (max-width: 767px) {
+    .testimonial-grid-custom {
+        gap: 20px;
+    }
+    .case-study-card-custom {
+        padding: 20px;
+    }
+    .case-study-info-custom h3 {
+        font-size: 1.1rem;
+    }
+    .testimonial-quote-custom {
+        font-size: 0.9rem;
+        padding-left: 15px;
+    }
+    .results-boxes-grid-custom {
+        grid-template-columns: 1fr; /* Une seule boîte par ligne sur mobile */
+    }
+    .result-number-custom {
+        font-size: 1.3rem;
+    }
+}
+
+
+/* --- PARTNER CTA (Collaborons Ensemble) --- */
+#devenir-partenaire.section-partner-cta {
+    /* Utilisation directe des couleurs de votre nouvelle palette */
+    background-color: #1A0B3D; /* Votre --custom-purple-dark pour un fond sombre */
+    /* Ou si vous préférez le --custom-purple-primary: #2F1C6A; */
+    padding: 80px 0; /* Votre --section-padding */
+    color: #ffffff;    /* Votre --custom-text-light pour le texte par défaut */
+    text-align: center;
+    position: relative;
+}
+
+/* .partner-cta-background-image { display: none; } */ /* Laissez commenté ou supprimez si non utilisé */
+
+.partner-cta-title {
+    color: #ffffff; /* Votre --custom-text-light */
+    font-size: 2rem; /* Conservez les tailles existantes ou ajustez */
+    font-weight: 700;
+    margin-bottom: 20px; /* Un peu plus d'espace */
+}
+
+.partner-cta-subtitle {
+    font-size: 1.05rem; /* Conservez ou ajustez */
+    max-width: 650px; /* Un peu plus large si besoin */
+    margin: 0 auto 35px auto; /* Plus d'espace avant le bouton */
+    color: rgba(255, 255, 255, 0.85); /* Texte clair secondaire, standard */
+    line-height: 1.7; /* Bon interligne */
+}
+
+/* Assurez-vous que .btn-white-outline-on-dark est correctement stylé
+   (il l'était déjà dans votre CSS original, mais vérifions avec les nouvelles couleurs si besoin) */
+.btn-white-outline-on-dark {
+    background-color: transparent;
+    color: #ffffff; /* --custom-text-light */
+    border: 2px solid #ffffff; /* --custom-text-light, bordure un peu plus épaisse pour la visibilité */
+    /* Les autres styles de .btn (padding, font-weight, border-radius, transition) sont hérités */
+}
+
+.btn-white-outline-on-dark:hover {
+    background-color: #ffffff; /* --custom-text-light */
+    color: #1A0B3D; /* --custom-purple-dark (ou la couleur foncée de votre choix pour le texte au survol) */
+    border-color: #ffffff; /* La bordure reste blanche ou disparaît car le fond est blanc */
+}
+/* --- FINAL CTA (Prêt à donner...) --- */
+#contact-proxatek-cta.section-cta-final-custom {
+    background-color: var(--custom-primary-dark); /* Fond violet foncé également */
+    padding: 70px 0;
+}
+.cta-title-custom { color: var(--custom-text-light-primary); font-size: 1.8rem; font-weight: 700; margin-bottom: 12px; }
+.cta-subtitle-custom { font-size: 1rem; color: var(--custom-text-light-secondary); margin-bottom: 28px; line-height: 1.6; }
+.cta-buttons-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+/* Le 1er bouton utilise .btn-accent-custom (magenta), déjà défini */
+/* Le 2nd bouton utilise .btn-primary-custom (violet foncé), mais il a un style spécial pour ce contexte : */
+#contact-proxatek-cta .btn-primary-custom { 
+    background-color: transparent;
+    color: var(--custom-text-light-primary);
+    border-color: var(--custom-text-light-primary); /* Devient un outline blanc */
+}
+#contact-proxatek-cta .btn-primary-custom:hover {
+    background-color: var(--custom-text-light-primary);
+    color: var(--custom-primary-dark); /* Texte violet sur fond blanc au survol */
+}
+
+
+/* --- FOOTER --- */
+.site-footer-proxatek {
+    background-color: var(--custom-text-dark-primary);
+    color: var(--custom-text-light-secondary);
+    padding: 50px 0 0 0; /* Padding en haut, pas en bas car .footer-bottom-proxatek a son propre padding */
+    font-size: 0.88rem;
+}
+
+.footer-grid-proxatek {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); /* Permet un réarrangement progressif */
+    /* Ajustez 230px si vous voulez que les colonnes s'enroulent plus tôt ou plus tard */
+    gap: 30px; /* Espace entre les colonnes du footer */
+    margin-bottom: 40px; /* Espace avant .footer-bottom-proxatek */
+}
+
+.footer-col h4 {
+    color: var(--custom-text-light-primary);
+    font-size: 1.05rem;
+    margin-bottom: 18px;
+    font-weight: 600;
+    position: relative;
+}
+
+.footer-col h4::after { /* Petit trait magenta sous les titres h4 */
+    content: '';
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--custom-accent-magenta);
+    margin-top: 6px;
+}
+
+.footer-logo-img {
+    max-width: 150px;
+    margin-bottom: 18px;
+}
+
+.footer-col p { /* Paragraphes dans les colonnes du footer */
+    color: var(--custom-text-light-secondary);
+    margin-bottom: 8px; /* Réduit par rapport au p global pour plus de densité dans le footer */
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+.footer-col ul { /* Styles de base pour toutes les listes ul dans .footer-col */
+    list-style: none;
+    padding-left: 0; /* Enlève le padding par défaut des ul */
+    margin-top: 0; /* Si le h4 a déjà un margin-bottom */
+}
+
+.footer-col ul li a { /* Styles pour tous les liens <a> dans les listes du footer */
+    color: var(--custom-text-light-secondary);
+    display: inline-block; /* Pour que le padding s'applique correctement et qu'ils ne prennent pas toute la largeur */
+    padding: 5px 0; /* Espace cliquable vertical */
+    font-size: 0.85rem;
+    transition: var(--custom-transition);
+}
+
+.footer-col ul li a:hover,
+.footer-col ul li a.active {
+    color: var(--custom-text-light-primary);
+    text-decoration: none; /* Optionnel: s'assurer qu'il n'y a pas de soulignement au survol si le 'a' global en a un */
+}
+
+/* Styles spécifiques pour les listes de liens avec icônes (ex: .footer-links-list pour "Explorer") */
+ul.footer-links-list li a { /* Cible les <a> dans une ul.footer-links-list */
+    display: inline-flex; /* Pour aligner icône et texte */
+    align-items: center;
+    gap: 8px; /* Espace entre l'icône et le texte */
+    padding: 6px 0; /* Un peu plus de padding vertical */
+}
+
+ul.footer-links-list li a i {
+    color: var(--custom-accent-magenta); /* Couleur des icônes */
+    font-size: 0.9em; /* Taille de l'icône relative au texte du lien */
+    width: 18px; /* Pour un alignement visuel si les icônes ont des largeurs différentes */
+    text-align: center;
+    transition: color var(--custom-transition); /* Transition pour la couleur de l'icône */
+}
+
+ul.footer-links-list li a:hover i,
+ul.footer-links-list li a.active i {
+    color: var(--custom-text-light-primary); /* Changement de couleur de l'icône au survol/actif */
+}
+
+
+.footer-col-contact address {
+    font-style: normal; /* Enlève l'italique par défaut de <address> */
+}
+.footer-col-contact address p {
+    display: flex; /* Pour aligner icône et texte de l'adresse */
+    align-items: flex-start; /* Aligne en haut si le texte passe sur plusieurs lignes */
+    margin-bottom: 10px; /* Un peu plus d'espace pour les contacts */
+    line-height: 1.6;
+}
+
+.footer-col-contact address i {
+    margin-right: 10px;
+    color: var(--custom-accent-magenta);
+    margin-top: 4px; /* Ajustement vertical de l'icône par rapport au texte */
+    width: 15px; /* Largeur fixe pour l'alignement */
+    text-align: center; /* Centre l'icône dans sa largeur fixe */
+}
+
+.footer-col-contact address a { /* Liens dans l'adresse (tel, mail) */
+    color: var(--custom-text-light-secondary);
+}
+.footer-col-contact address a:hover {
+    color: var(--custom-text-light-primary);
+}
+
+.social-media-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.social-media-links a {
+    color: var(--custom-text-light-secondary);
+    font-size: 1rem;
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transition: var(--custom-transition);
+}
+
+.social-media-links a:hover {
+    color: var(--custom-text-light-primary);
+    background-color: var(--custom-accent-magenta);
+    border-color: var(--custom-accent-magenta);
+}
+
+.footer-bottom-proxatek {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #4A2F7C; /* Ligne de séparation légèrement plus claire */
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.7);
+}
+
+.footer-bottom-proxatek a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: underline; /* Optionnel: souligner les liens dans le copyright */
+}
+.footer-bottom-proxatek a:hover {
+    color: var(--custom-text-light-primary);
+    text-decoration: none; /* Optionnel: enlever le soulignement au survol */
+}
+
+
+/* ---- MEDIA QUERIES SPÉCIFIQUES AU FOOTER CI-DESSOUS ---- */
+/* (Les autres media queries pour h1, header, etc. sont dans la section générale des media queries) */
+
+@media (max-width: 991px) {
+    .footer-grid-proxatek {
+        grid-template-columns: 1fr; /* Toutes les colonnes du footer s'empilent */
+        text-align: center; /* Centre le contenu de chaque .footer-col */
+    }
+
+    .footer-col h4::after { /* Centre le petit soulignement magenta */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .footer-col .social-media-links { /* Centre les icônes des réseaux sociaux */
+        justify-content: center;
+    }
+
+    .footer-col-contact address p { /* Centre les lignes de l'adresse de contact */
+        justify-content: center;
+        /* Si les icônes se désalignent, envisager text-align: left sur le span du texte et ajuster */
+    }
+    /* Si l'icône et le texte de l'adresse sont sur des lignes séparées à cause du centrage,
+       et que vous voulez les garder ensemble et alignés à gauche dans le paragraphe centré : */
+    /*
+    .footer-col-contact address p span { // en supposant que le texte est dans un span
+        text-align: left;
+    }
+    */
+
+
+    /* Styles pour les listes de liens dans le footer sur mobile */
+    .footer-col ul {
+        padding-left: 0;
+        margin-top: 10px; /* Espace entre le titre h4 et la liste */
+    }
+
+    /* Listes avec icônes (comme .footer-links-list pour "Explorer") */
+    .footer-col ul.footer-links-list {
+        display: inline-block; /* Permet à la liste de se centrer dans la .footer-col */
+        text-align: left;    /* Garde les liens (icône + texte) alignés à gauche */
+    }
+
+    ul.footer-links-list li a {
+        padding: 7px 0; /* Un peu plus d'espace vertical pour chaque lien */
+        font-size: 0.9rem; /* Police légèrement plus grande pour la lisibilité mobile */
+    }
+
+    ul.footer-links-list li a i {
+        font-size: 1em; /* Icônes un peu plus grandes, relatives à la nouvelle taille de police du lien */
+    }
+
+    /* Pour les autres listes de liens simples (sans icônes) */
+    .footer-col ul:not(.footer-links-list) {
+        display: inline-block; /* Pour qu'elles se centrent aussi */
+        text-align: left;    /* Et gardent leur texte aligné à gauche */
+    }
+    .footer-col ul:not(.footer-links-list) li a {
+        font-size: 0.9rem; /* Cohérence de la taille de police */
+        padding: 7px 0;    /* Cohérence du padding */
+    }
+}
+
+@media (max-width: 767px) {
+    /* Sur les écrans encore plus petits, vous pourriez vouloir ajuster davantage,
+       mais les styles de 991px sont souvent suffisants pour le footer.
+       Exemple : réduire les marges ou les tailles de police si nécessaire.
+    */
+    .site-footer-proxatek {
+        padding-top: 40px; /* Réduire un peu le padding du haut du footer */
+    }
+    .footer-grid-proxatek {
+        gap: 20px; /* Réduire l'espace entre les colonnes empilées */
+        margin-bottom: 30px;
+    }
+    .footer-col h4 {
+        font-size: 1rem; /* Titres de colonnes un peu plus petits */
+    }
+    .footer-col p,
+    .footer-col ul li a {
+        font-size: 0.82rem; /* Texte général un peu plus petit */
+    }
+    ul.footer-links-list li a,
+    .footer-col ul:not(.footer-links-list) li a {
+        font-size: 0.85rem; /* Liens un peu plus petits */
+    }
+}
+
+/* Pas besoin de @media (max-width: 575px) spécifiques pour le footer pour l'instant,
+   sauf si vous identifiez un problème particulier à cette taille.
+   Les styles de 767px ou 991px devraient bien s'appliquer.
+*/
+/* Styles pour les pages de service - Matériel Informatique */
+
+/* Breadcrumb (Fil d'Ariane) - dans le hero */
+.service-hero-section .eyebrow-text-custom { /* S'assure qu'il hérite des bons styles */
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--custom-magenta-accent); /* Ou votre couleur d'accentuation */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px; /* Plus d'espace si c'est un fil d'ariane */
+}
+
+/* Listes avec icônes (pour Conséquences et Avantages) */
+ul.icon-list.custom-list-style {
+    list-style: none;
+    padding-left: 0;
+    margin-top: var(--gap-md);
+}
+ul.icon-list.custom-list-style li {
+    display: flex;
+    align-items: flex-start; /* Aligne l'icône avec le début du texte s'il est long */
+    margin-bottom: var(--gap-md);
+    color: var(--custom-text-secondary); /* Couleur du texte de la liste */
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+ul.icon-list.custom-list-style .icon-list-icon {
+    color: var(--custom-magenta-accent); /* Couleur de l'icône */
+    margin-right: 10px;
+    font-size: 1.1em; /* Taille de l'icône relative au texte */
+    margin-top: 3px; /* Petit ajustement vertical */
+    width: 20px; /* Pour l'alignement */
+    flex-shrink: 0; /* Empêche l'icône de rétrécir */
+}
+ul.icon-list.check-list .icon-list-icon { /* Spécifique pour les listes "check" */
+    color: var(--custom-purple-primary); /* Ou une autre couleur pour les avantages */
+}
+ul.icon-list.custom-list-style li strong {
+    color: var(--custom-text-primary); /* Met en évidence le début de l'avantage */
+    margin-right: 5px;
+}
+
+
+/* Section Notre Offre Matériel */
+.service-offer-section .offer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--gap-lg);
+    margin-top: 30px;
+}
+.service-offer-section .offer-item {
+    background-color: var(--custom-card-action-bg); /* #FFFFFF */
+    padding: var(--gap-lg);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--custom-border-color);
+    text-align: left; /* Ou center si vous préférez */
+}
+.service-offer-section .offer-icon i {
+    font-size: 2.2rem;
+    color: var(--custom-purple-primary); /* Couleur principale pour les icônes d'offre */
+    margin-bottom: var(--gap-md);
+    display: inline-block; /* Pour que la marge s'applique */
+}
+.service-offer-section .offer-item h4 {
+    color: var(--custom-text-primary);
+    font-size: 1.2rem;
+    margin-bottom: var(--gap-sm);
+}
+.service-offer-section .offer-item p {
+    color: var(--custom-text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Section FAQ */
+.faq-section .faq-list {
+    margin-top: 30px;
+    max-width: 800px; /* Limite la largeur de la FAQ pour la lisibilité */
+    margin-left: auto;
+    margin-right: auto;
+}
+.faq-section .faq-item {
+    margin-bottom: var(--gap-lg);
+    padding-bottom: var(--gap-lg);
+    border-bottom: 1px solid var(--custom-border-color);
+}
+.faq-section .faq-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+.faq-section .faq-item h4 {
+    color: var(--custom-text-primary);
+    font-size: 1.15rem;
+    margin-bottom: var(--gap-sm);
+    font-weight: 600;
+}
+.faq-section .faq-item p {
+    color: var(--custom-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* Le reste des styles pour .service-hero-section, .service-description-section,
+   .service-advantages-section (qui utilise .service-content-grid et .icon-list),
+   .other-services-section (qui utilise .services-preview-grid)
+   peuvent être basés sur le template général de page de service que j'ai fourni précédemment,
+   en s'assurant d'utiliser vos nouvelles variables de couleur et d'espacement.
+*/
+
+/* Assurez-vous que les variables de couleur utilisées ici sont bien définies dans votre :root
+   --custom-magenta-accent: #D9006C; (ou la couleur que vous voulez pour les accents)
+   --custom-purple-primary: #2F1C6A; (ou la couleur que vous voulez pour les icônes principales)
+   --custom-text-primary: #1E0E4B;
+   --custom-text-secondary: #5A5178;
+   --custom-card-action-bg: #ffffff;
+   --card-border-radius: 12px;
+   --custom-border-color: #E5D9FF;
+   --shadow-light: 0 4px 15px rgba(26, 11, 61, 0.07);
+   --gap-sm: 0.5rem;
+   --gap-md: 1rem;
+   --gap-lg: 1.5rem;
+   --gap-xl: 2rem;
+*/
+/* --- MEDIA QUERIES RESPONSIVE TYPOGRAPHY & LAYOUT --- */
+
+@media (max-width: 991px) { /* Tablettes et grands mobiles */
+    h1 { font-size: 2.3rem; }
+    .hero-actions-container-v3 .hero-intro-text-v3 h1 { font-size: 2.3rem; } /* Spécifique au hero index */
+    
+    h2 { font-size: 1.85rem; }
+    #diagnostic-it-inline .devis-intro-header h2 { font-size: 1.85rem; } /* titre "Votre Devis" */
+    .focus-text-wrapper h2 { font-size: 1.7rem; } /* Titre section focus un peu plus petit */
+    .partner-cta-title { font-size: 1.8rem; }
+    .cta-title-custom { font-size: 1.7rem; }
+
+
+    h3 { font-size: 1.3rem; }
+    .hero-action-card-content-v3 h3 { font-size: 1.15rem; }
+    .prestation-card-custom h3 { font-size: 1.25rem; }
+    .audit-step h3 { font-size: 1.05rem; }
+    .sector-card-content h3 { font-size: 1.15rem; }
+    .case-study-info-custom h3 { font-size: 1.2rem; }
+
+
+    h4 { font-size: 1.1rem; }
+    .results-section-custom h4 { font-size: 1rem; } /* "Impacts Clés" */
+
+    p { font-size: 0.95rem; } 
+
+    .section-subtitle-custom,
+    .hero-actions-container-v3 .hero-intro-text-v3 p, /* Sous-titre hero index */
+    .cta-subtitle-custom,
+    .partner-cta-subtitle,
+    .focus-text-wrapper p {
+        font-size: 0.95rem; 
+    }
+
+    #diagnostic-it-inline .subtitle-devis { font-size: 0.95rem; }
+    .devis-question { font-size: 1.1rem; }
+
+    .hero-actions-container-v3 .hero-intro-text-v3 p { margin-bottom: 60px; }
+    .hero-action-card-content-v3 p { font-size: 0.85rem;}
+
+    /* Ajustements spécifiques au header pour tablettes */
+    .header-actions-custom { display: none; } 
+    .header-actions-mobile-custom { display: flex; align-items: center; gap: 10px; }
+    .main-nav-custom { display: none; } 
+    .logo-proxatek-custom img { max-height: 34px; }
+}
+
+@media (max-width: 767px) { /* Mobiles */
+    .section-padding { padding: 45px 0; }
+    
+    h1 { font-size: 2rem; line-height: 1.25; }
+    .hero-actions-container-v3 .hero-intro-text-v3 h1 { font-size: 2rem; }
+
+    h2 { font-size: 1.65rem; line-height: 1.3; }
+    #diagnostic-it-inline .devis-intro-header h2 { font-size: 1.65rem; }
+    .focus-text-wrapper h2 { font-size: 1.5rem; }
+    .partner-cta-title { font-size: 1.6rem; }
+    .cta-title-custom { font-size: 1.5rem; }
+
+    h3 { font-size: 1.2rem; line-height: 1.35; } 
+    .hero-action-card-content-v3 h3 { font-size: 1.1rem; }
+    .prestation-card-custom h3 { font-size: 1.15rem; }
+    .audit-step h3 { font-size: 1rem; }
+    .sector-card-content h3 { font-size: 1.1rem; }
+    .case-study-info-custom h3 { font-size: 1.1rem; }
+
+
+    h4 { font-size: 1rem; line-height: 1.4; }
+    .results-section-custom h4 { font-size: 0.9rem; }
+
+
+    p { font-size: 0.9rem; }
+
+    .section-subtitle-custom,
+    .hero-actions-container-v3 .hero-intro-text-v3 p,
+    .cta-subtitle-custom,
+    .partner-cta-subtitle,
+    .focus-text-wrapper p {
+        font-size: 0.9rem; 
+        margin-bottom: 25px;
+    }
+    
+    .hero-actions-container-v3 .hero-intro-text-v3 p { margin-bottom: 40px; }
+    .hero-primary-actions-grid-v3 { grid-template-columns: 1fr; gap: 15px; }
+    .hero-action-card-v3 { padding: 18px; }
+    .hero-action-card-content-v3 p { font-size: 0.82rem; }
+
+
+    .devis-question { font-size: 1rem; }
+
+    .prestation-card-custom { padding: 20px; }
+    .prestation-card-custom p { font-size: 0.85rem; }
+    .prestation-card-custom ul li { font-size: 0.8rem; }
+
+    .audit-steps-container { grid-template-columns: 1fr; } 
+    .audit-step-arrow { display: none !important; } 
+    .audit-step { padding: 20px 15px; }
+
+    .sector-solutions-grid { grid-template-columns: 1fr; }
+    .sector-card-content { padding: 18px; }
+
+    .focus-content-wrapper { grid-template-columns: 1fr; }
+    
+    .btn { padding: 10px 22px; font-size: 0.85rem; }
+    .btn-large { padding: 12px 28px; font-size: 0.9rem; }
+
+    .floating-help-btn-proxatek {
+        width: 50px; height: 50px; font-size: 1.3rem; bottom: 20px; right: 20px;
+    }
+}
+
+@media (max-width: 480px) { /* Très petits mobiles */
+    h1 { font-size: 1.8rem; }
+    .hero-actions-container-v3 .hero-intro-text-v3 h1 { font-size: 1.8rem; }
+
+    h2 { font-size: 1.5rem; }
+    .section-title-custom { font-size: 1.5rem; } /* S'assure que .section-title-custom (un h2) est bien ajusté */
+    .focus-text-wrapper h2 { font-size: 1.4rem; }
+    .partner-cta-title { font-size: 1.4rem; }
+    .cta-title-custom { font-size: 1.3rem; }
+    
+    h3 { font-size: 1.1rem; }
+    .hero-action-card-content-v3 h3 { font-size: 1rem; }
+
+
+    .section-subtitle-custom { font-size: 0.85rem; }
+    .hero-actions-container-v3 .hero-intro-text-v3 p { font-size: 0.9rem; }
+
+    .btn { padding: 9px 18px; font-size: 0.8rem; }
+    .btn-large { padding: 11px 24px; font-size: 0.85rem; }
+}

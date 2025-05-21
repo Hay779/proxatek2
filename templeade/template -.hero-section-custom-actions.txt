@@ -1,0 +1,43 @@
+<main role="main"> <!-- S'assurer que le hero est dans <main> ou est une <section> de haut niveau -->
+
+    <section class="hero-section-custom-actions">
+        <div class="container hero-actions-container-v3"> <!-- .container pour limiter la largeur et centrer -->
+            <div class="hero-intro-text-v3">
+                <h1 data-i18n="hero.title">Votre Titre Accrocheur Principal Ici</h1>
+                <p data-i18n="hero.subtitle">Un sous-titre descriptif qui explique votre proposition de valeur principale ou incite à l'action.</p>
+            </div>
+            <div class="hero-primary-actions-grid-v3">
+                <a href="/lien-action-1.html" class="hero-action-card-v3">
+                    <div class="hero-action-card-icon-v3">
+                        <i class="fas fa-file-signature" aria-hidden="true"></i> <!-- Remplacez par l'icône appropriée -->
+                    </div>
+                    <div class="hero-action-card-content-v3">
+                        <h3 data-i18n="hero.actions.action1.title">Titre de l'Action 1</h3>
+                        <p data-i18n="hero.actions.action1.description">Courte description de ce que fait cette action.</p>
+                    </div>
+                </a>
+                <a href="/lien-action-2.html" class="hero-action-card-v3">
+                    <div class="hero-action-card-icon-v3">
+                        <i class="fas fa-life-ring" aria-hidden="true"></i> <!-- Remplacez par l'icône appropriée -->
+                    </div>
+                    <div class="hero-action-card-content-v3">
+                        <h3 data-i18n="hero.actions.action2.title">Titre de l'Action 2</h3>
+                        <p data-i18n="hero.actions.action2.description">Courte description de ce que fait cette action.</p>
+                    </div>
+                </a>
+                <a href="/lien-action-3.html" class="hero-action-card-v3">
+                    <div class="hero-action-card-icon-v3">
+                        <i class="fas fa-comments" aria-hidden="true"></i> <!-- Remplacez par l'icône appropriée -->
+                    </div>
+                    <div class="hero-action-card-content-v3">
+                        <h3 data-i18n="hero.actions.action3.title">Titre de l'Action 3</h3>
+                        <p data-i18n="hero.actions.action3.description">Courte description de ce que fait cette action.</p>
+                    </div>
+                </a>
+                <!-- Vous pouvez ajouter plus de .hero-action-card-v3 si nécessaire -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ... reste du contenu de la page ... -->
+</main>
