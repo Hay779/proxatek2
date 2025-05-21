@@ -11,7 +11,7 @@ const questionnaireConfig = {
       { value: "cloud", label: "Cloud & sauvegarde", icon: "☁️" },
       { value: "reseau", label: "Réseau / Téléphonie", icon: "🌐" },
       { value: "materiel", label: "Matériel Pro", icon: "🖥️" },
-      { value: "audit", label: "Audit & Conseil", icon: "🔍" } // Nouvelle option
+      { value: "audit", label: "Audit & Conseil", icon: "🔍" }
     ],
     progress: 0,
     nextStep: function(choice) {
@@ -29,7 +29,7 @@ const questionnaireConfig = {
       { value: "13-17", label: "13 à 17" },
       { value: "18+", label: "Plus de 18" }
     ],
-    progress: 10,
+    progress: 10, // Progresse de 10% par question dans ce parcours (jusqu'à 60%)
     responseKey: "postes",
     nextStep: "maintenance-2"
   },
@@ -86,7 +86,7 @@ const questionnaireConfig = {
     ],
     progress: 60,
     responseKey: "prestataire",
-    nextStep: "contact-1"
+    nextStep: "contact-1" // Transition vers les questions de contact
   },
 
   // Questions Sécurité informatique
@@ -98,7 +98,7 @@ const questionnaireConfig = {
       { value: "21-50", label: "21 à 50" },
       { value: "50+", label: "Plus de 50" }
     ],
-    progress: 10,
+    progress: 10, // Progresse de 6% par question (10 questions -> 60%)
     responseKey: "postes_securite",
     nextStep: "securite-2"
   },
@@ -109,7 +109,7 @@ const questionnaireConfig = {
       { value: "non", label: "Non" },
       { value: "inconnu", label: "Je ne sais pas" }
     ],
-    progress: 15,
+    progress: 16,
     responseKey: "antivirus",
     nextStep: "securite-3"
   },
@@ -121,7 +121,7 @@ const questionnaireConfig = {
       { value: "aucune", label: "Aucune" },
       { value: "inconnu", label: "Je ne sais pas" }
     ],
-    progress: 20,
+    progress: 22,
     responseKey: "sauvegarde",
     nextStep: "securite-4"
   },
@@ -131,7 +131,7 @@ const questionnaireConfig = {
       { value: "oui", label: "Oui" },
       { value: "non", label: "Non" }
     ],
-    progress: 25,
+    progress: 28,
     responseKey: "cyberattaque",
     nextStep: "securite-5"
   },
@@ -142,19 +142,19 @@ const questionnaireConfig = {
       { value: "confidentiel", label: "Confidentiel" },
       { value: "tres-sensible", label: "Très sensible" }
     ],
-    progress: 30,
+    progress: 34,
     responseKey: "sensibilite",
     nextStep: "securite-6"
   },
   "securite-6": {
-    question: "Audit de sécurité ?",
+    question: "Audit de sécurité déjà réalisé ?", // Question clarifiée
     choices: [
       { value: "oui", label: "Oui" },
       { value: "non", label: "Non" },
       { value: "inconnu", label: "Je ne sais pas" }
     ],
-    progress: 35,
-    responseKey: "audit_secu_interne", // Renommé pour éviter conflit avec parcours audit global
+    progress: 40,
+    responseKey: "audit_secu_interne", // Clé spécifique
     nextStep: "securite-7"
   },
   "securite-7": {
@@ -164,7 +164,7 @@ const questionnaireConfig = {
       { value: "prestataire", label: "Prestataire" },
       { value: "non", label: "Non" }
     ],
-    progress: 40,
+    progress: 46,
     responseKey: "gestion_it",
     nextStep: "securite-8"
   },
@@ -175,7 +175,7 @@ const questionnaireConfig = {
       { value: "non", label: "Non" },
       { value: "inconnu", label: "Je ne sais pas" }
     ],
-    progress: 45,
+    progress: 52,
     responseKey: "pra",
     nextStep: "securite-9"
   },
@@ -186,17 +186,17 @@ const questionnaireConfig = {
       { value: "non", label: "Non" },
       { value: "inconnu", label: "Je ne sais pas" }
     ],
-    progress: 50,
-    responseKey: "chiffrement",
+    progress: 58,
+    responseKey: "chiffrement_donnees_securite", // Clé plus spécifique
     nextStep: "securite-10"
   },
   "securite-10": {
-    question: "Sensibilisation collaborateurs ?",
+    question: "Sensibilisation collaborateurs aux risques cyber ?", // Question clarifiée
     choices: [
       { value: "oui", label: "Oui" },
       { value: "non", label: "Non" }
     ],
-    progress: 60,
+    progress: 64, // Ajusté pour dépasser légèrement 60 pour la dernière question de service
     responseKey: "sensibilisation",
     nextStep: "contact-1"
   },
@@ -208,7 +208,7 @@ const questionnaireConfig = {
       { value: "oui", label: "Oui" },
       { value: "non", label: "Non" }
     ],
-    progress: 10,
+    progress: 10, // Progresse de ~6% par question
     responseKey: "cloud_existant",
     nextStep: "cloud-2"
   },
@@ -220,280 +220,284 @@ const questionnaireConfig = {
       { value: "21-50", label: "21 à 50" },
       { value: "50+", label: "Plus de 50" }
     ],
-    progress: 15,
+    progress: 16,
     responseKey: "utilisateurs_cloud",
     nextStep: "cloud-3"
   },
   "cloud-3": {
-    question: "Volume de données souhaité ?",
+    question: "Volume de données souhaité pour le cloud ?", // Clarifié
     choices: [
       { value: "petit", label: "< 50 Go" },
       { value: "moyen", label: "50–200 Go" },
       { value: "grand", label: "> 200 Go" }
     ],
-    progress: 20,
-    responseKey: "volume_donnees",
+    progress: 22,
+    responseKey: "volume_donnees_cloud", // Clé plus spécifique
     nextStep: "cloud-4"
   },
   "cloud-4": {
-    question: "Partage de fichiers ?",
+    question: "Partage de fichiers nécessaire via le cloud ?", // Clarifié
     choices: [
       { value: "oui", label: "Oui" },
       { value: "non", label: "Non" }
     ],
-    progress: 25,
-    responseKey: "partage_fichiers",
+    progress: 28,
+    responseKey: "partage_fichiers_cloud", // Clé plus spécifique
     nextStep: "cloud-5"
   },
   "cloud-5": {
-    question: "Suite collaborative utilisée ?",
+    question: "Suite collaborative utilisée (Microsoft 365, Google Workspace) ?", // Clarifié
     choices: [
-      { value: "office365", label: "Office 365" },
+      { value: "office365", label: "Microsoft 365" },
       { value: "google", label: "Google Workspace" },
-      { value: "non", label: "Non" },
-      { value: "inconnu", label: "Je ne sais pas" }
+      { value: "autre_suite", label: "Autre suite" },
+      { value: "aucune_suite", label: "Aucune" },
+      { value: "inconnu_suite", label: "Je ne sais pas" }
     ],
-    progress: 30,
+    progress: 34,
     responseKey: "suite_collaborative",
     nextStep: "cloud-6"
   },
   "cloud-6": {
-    question: "Automatisation des sauvegardes ?",
+    question: "Automatisation des sauvegardes dans le cloud souhaitée ?", // Clarifié
     choices: [
       { value: "oui", label: "Oui" },
       { value: "non", label: "Non" },
-      { value: "inconnu", label: "Je ne sais pas" }
+      { value: "inconnu_auto_sauvegarde", label: "Je ne sais pas" }
     ],
-    progress: 35,
-    responseKey: "auto_sauvegarde",
+    progress: 40,
+    responseKey: "auto_sauvegarde_cloud", // Clé plus spécifique
     nextStep: "cloud-7"
   },
   "cloud-7": {
-    question: "Restaurer en cas de perte ?",
+    question: "Possibilité de restaurer des données en cas de perte depuis le cloud ?", // Clarifié
     choices: [
-      { value: "oui", label: "Oui" },
-      { value: "non", label: "Non" }
+      { value: "oui", label: "Oui, c'est un besoin" },
+      { value: "non", label: "Non, pas prioritaire" }
     ],
-    progress: 40,
-    responseKey: "restauration",
+    progress: 46,
+    responseKey: "restauration_cloud", // Clé plus spécifique
     nextStep: "cloud-8"
   },
   "cloud-8": {
-    question: "Hébergement FR/UE ?",
+    question: "Préférence pour un hébergement des données cloud en FR/UE ?", // Clarifié
     choices: [
-      { value: "oui", label: "Oui" },
-      { value: "non", label: "Non" },
-      { value: "peu-importe", label: "Peu importe" }
+      { value: "oui_hebergement_ue", label: "Oui, impératif" },
+      { value: "preferable_hebergement_ue", label: "Préférable mais pas bloquant" },
+      { value: "non_peu_importe_hebergement", label: "Peu importe" }
     ],
-    progress: 45,
-    responseKey: "hebergement_eu",
+    progress: 52,
+    responseKey: "hebergement_eu_cloud", // Clé plus spécifique
     nextStep: "cloud-9"
   },
   "cloud-9": {
-    question: "Données sensibles ?",
+    question: "Les données à stocker dans le cloud sont-elles sensibles (santé, finance, etc.) ?", // Clarifié
     choices: [
-      { value: "oui", label: "Oui" },
-      { value: "non", label: "Non" },
-      { value: "inconnu", label: "Je ne sais pas" }
+      { value: "oui_donnees_sensibles", label: "Oui" },
+      { value: "non_donnees_standards", label: "Non, données standards" },
+      { value: "inconnu_donnees_sensibles", label: "Je ne sais pas" }
     ],
-    progress: 50,
-    responseKey: "donnees_sensibles",
+    progress: 58,
+    responseKey: "donnees_sensibles_cloud", // Clé plus spécifique
     nextStep: "cloud-10"
   },
   "cloud-10": {
-    question: "Chiffrement dans le cloud ?",
+    question: "Le chiffrement des données dans le cloud est-il une exigence ?", // Clarifié
     choices: [
-      { value: "oui", label: "Oui" },
-      { value: "non", label: "Non" },
-      { value: "inconnu", label: "Je ne sais pas" }
+      { value: "oui_chiffrement_cloud", label: "Oui, indispensable" },
+      { value: "non_chiffrement_cloud", label: "Non, pas spécifiquement" },
+      { value: "inconnu_chiffrement_cloud", label: "Je ne sais pas" }
     ],
-    progress: 60,
-    responseKey: "chiffrement_cloud",
+    progress: 64, // Ajusté
+    responseKey: "chiffrement_cloud_exigence", // Clé plus spécifique
     nextStep: "contact-1"
   },
 
   // Questions Réseau / Téléphonie
   "reseau-1": {
-    question: "Postes ou lignes à connecter ?",
+    question: "Combien de postes ou lignes téléphoniques à connecter au réseau ?", // Clarifié
     choices: [
       { value: "1-5", label: "1 à 5" },
       { value: "6-20", label: "6 à 20" },
       { value: "21-50", label: "21 à 50" },
       { value: "50+", label: "Plus de 50" }
     ],
-    progress: 10,
-    responseKey: "postes_reseau",
+    progress: 10, // Progresse de ~6% par question
+    responseKey: "postes_lignes_reseau", // Clé plus spécifique
     nextStep: "reseau-2"
   },
   "reseau-2": {
-    question: "Bâtiment déjà câblé ?",
+    question: "Le bâtiment est-il déjà câblé (RJ45, fibre) ?", // Clarifié
     choices: [
-      { value: "oui", label: "Oui" },
-      { value: "non", label: "Non" },
-      { value: "partiellement", label: "Partiellement" }
+      { value: "oui_cablage_complet", label: "Oui, entièrement câblé" },
+      { value: "oui_cablage_partiel", label: "Oui, partiellement câblé" },
+      { value: "non_pas_cable", label: "Non, pas câblé" },
+      { value: "inconnu_cablage", label: "Je ne sais pas" }
     ],
-    progress: 15,
-    responseKey: "cablage",
+    progress: 16,
+    responseKey: "cablage_existant", // Clé plus spécifique
     nextStep: "reseau-3"
   },
   "reseau-3": {
-    question: "Accès Internet ?",
+    question: "Quel type d'accès Internet avez-vous ou souhaitez-vous ?", // Clarifié
     choices: [
-      { value: "fibre", label: "Fibre" },
-      { value: "adsl", label: "ADSL" },
-      { value: "non", label: "Non" },
-      { value: "en-cours", label: "En cours" }
+      { value: "fibre_pro", label: "Fibre optique professionnelle (FTTH/FTTO)" },
+      { value: "adsl_vdsl", label: "ADSL / VDSL" },
+      { value: "4g_5g_box", label: "Box 4G/5G" },
+      { value: "pas_encore_acces", label: "Pas encore d'accès / À définir" }
     ],
-    progress: 20,
-    responseKey: "acces_internet",
+    progress: 22,
+    responseKey: "type_acces_internet", // Clé plus spécifique
     nextStep: "reseau-4"
   },
   "reseau-4": {
-    question: "Nombre de sites à connecter ?",
+    question: "Combien de sites (bureaux, agences) doivent être connectés entre eux ?", // Clarifié
     choices: [
-      { value: "1", label: "1 site" },
-      { value: "2-3", label: "2 à 3 sites" },
-      { value: "3+", label: "Plus de 3 sites" }
+      { value: "1_site_principal", label: "1 site principal" },
+      { value: "2_3_sites", label: "2 à 3 sites" },
+      { value: "plus_3_sites", label: "Plus de 3 sites" },
+      { value: "pas_besoin_connexion_sites", label: "Pas de connexion inter-sites nécessaire" }
     ],
-    progress: 25,
-    responseKey: "sites_reseau",
+    progress: 28,
+    responseKey: "nombre_sites_connecter", // Clé plus spécifique
     nextStep: "reseau-5"
   },
   "reseau-5": {
-    question: "Installer une baie de brassage ?",
+    question: "Avez-vous besoin d'installer ou de réorganiser une baie de brassage / local technique ?", // Clarifié
     choices: [
-      { value: "oui", label: "Oui" },
-      { value: "non", label: "Non" },
-      { value: "inconnu", label: "Je ne sais pas" }
+      { value: "oui_baie_necessaire", label: "Oui" },
+      { value: "non_baie_pas_necessaire", label: "Non" },
+      { value: "inconnu_baie", label: "Je ne sais pas / À évaluer" }
     ],
-    progress: 30,
-    responseKey: "baie_brassage",
+    progress: 34,
+    responseKey: "besoin_baie_brassage", // Clé plus spécifique
     nextStep: "reseau-6"
   },
   "reseau-6": {
-    question: "Audit/plan de réseau ?",
+    question: "Un audit de votre réseau existant ou un plan de câblage est-il souhaité ?", // Clarifié
     choices: [
-      { value: "oui", label: "Oui" },
-      { value: "non", label: "Non" }
+      { value: "oui_audit_plan_reseau", label: "Oui" },
+      { value: "non_audit_plan_reseau", label: "Non, pas pour l'instant" }
     ],
-    progress: 35,
-    responseKey: "audit_reseau_interne", // Renommé
+    progress: 40,
+    responseKey: "audit_plan_reseau_interne", // Clé spécifique
     nextStep: "reseau-7"
   },
   "reseau-7": {
-    question: "Téléphonie VOIP ?",
+    question: "Êtes-vous intéressé par la téléphonie sur IP (VoIP) pour remplacer ou compléter votre système actuel ?", // Clarifié
     choices: [
-      { value: "oui", label: "Oui" },
-      { value: "non", label: "Non" },
-      { value: "inconnu", label: "Je ne sais pas" }
+      { value: "oui_interet_voip", label: "Oui, très intéressé" },
+      { value: "peut_etre_voip", label: "Peut-être, à discuter" },
+      { value: "non_pas_interet_voip", label: "Non, pas pour l'instant" },
+      { value: "deja_equipe_voip", label: "Déjà équipé en VoIP" }
     ],
-    progress: 40,
-    responseKey: "voip",
+    progress: 46,
+    responseKey: "interet_voip", // Clé plus spécifique
     nextStep: "reseau-8"
   },
   "reseau-8": {
-    question: "Bornes Wi-Fi professionnelles ?",
+    question: "Avez-vous besoin de bornes Wi-Fi professionnelles pour couvrir vos locaux ?", // Clarifié
     choices: [
-      { value: "oui", label: "Oui" },
-      { value: "non", label: "Non" },
-      { value: "inconnu", label: "Je ne sais pas" }
+      { value: "oui_besoin_wifi_pro", label: "Oui" },
+      { value: "non_pas_besoin_wifi_pro", label: "Non" },
+      { value: "wifi_existant_a_ameliorer", label: "Wi-Fi existant à améliorer/étendre" }
     ],
-    progress: 45,
-    responseKey: "wifi_pro",
+    progress: 52,
+    responseKey: "besoin_wifi_pro", // Clé plus spécifique
     nextStep: "reseau-9"
   },
   "reseau-9": {
-    question: "Isolation réseau invité ?",
+    question: "Souhaitez-vous un réseau Wi-Fi invité séparé et sécurisé pour vos visiteurs ?", // Clarifié
     choices: [
-      { value: "oui", label: "Oui" },
-      { value: "non", label: "Non" },
-      { value: "inconnu", label: "Je ne sais pas" }
+      { value: "oui_wifi_invite", label: "Oui" },
+      { value: "non_pas_wifi_invite", label: "Non" }
     ],
-    progress: 50,
-    responseKey: "reseau_invite",
+    progress: 58,
+    responseKey: "reseau_wifi_invite", // Clé plus spécifique
     nextStep: "reseau-10"
   },
   "reseau-10": {
-    question: "Monitoring du réseau ?",
+    question: "Le monitoring et la supervision de votre réseau sont-ils importants pour vous ?", // Clarifié
     choices: [
-      { value: "oui", label: "Oui" },
-      { value: "non", label: "Non" },
-      { value: "inconnu", label: "Je ne sais pas" }
+      { value: "oui_monitoring_important", label: "Oui, essentiel" },
+      { value: "secondaire_monitoring", label: "Secondaire, mais intéressant" },
+      { value: "non_pas_monitoring", label: "Non, pas prioritaire" }
     ],
-    progress: 60,
-    responseKey: "monitoring",
+    progress: 64, // Ajusté
+    responseKey: "importance_monitoring_reseau", // Clé plus spécifique
     nextStep: "contact-1"
   },
 
   // Questions Matériel Pro
   "materiel-1": {
-    question: "Équiper ou renouveler ?",
-    choices: [
-      { value: "oui", label: "Oui" },
-      { value: "non", label: "Non" }
+    question: "S'agit-il d'équiper de nouveaux locaux/employés ou de renouveler du matériel existant ?", // Clarifié
+    choices:
+      [
+      { value: "nouvel_equipement", label: "Nouvel équipement" },
+      { value: "renouvellement", label: "Renouvellement" },
+      { value: "mixte_equip_renouv", label: "Un peu des deux" }
     ],
-    progress: 10,
-    responseKey: "equipement",
+    progress: 10, // Progresse de 10% par question
+    responseKey: "contexte_equipement", // Clé plus spécifique
     nextStep: "materiel-2"
   },
   "materiel-2": {
-    question: "Achat ou location ?",
+    question: "Envisagez-vous un achat direct ou une solution de location/leasing pour ce matériel ?", // Clarifié
     choices: [
-      { value: "achat", label: "Achat" },
-      { value: "location", label: "Location" },
-      { value: "etude", label: "À étudier ensemble" }
+      { value: "achat_direct", label: "Achat direct" },
+      { value: "location_leasing", label: "Location / Leasing" },
+      { value: "etude_comparative", label: "À étudier ensemble (avantages/inconvénients)" }
     ],
     progress: 20,
-    responseKey: "mode_acquisition",
+    responseKey: "mode_acquisition_materiel", // Clé plus spécifique
     nextStep: "materiel-3"
   },
   "materiel-3": {
-    question: "Types de matériel recherchés ?",
-    choices: [
-      { value: "desktop", label: "Ordinateurs de bureau" },
-      { value: "laptop", label: "Portables" },
-      { value: "imprimantes", label: "Imprimantes" },
-      { value: "serveurs", label: "Serveurs" },
-      { value: "nas", label: "NAS" },
-      { value: "autre", label: "Autre" }
+    question: "Quels types de matériel informatique recherchez-vous principalement ?", // Clarifié (permet choix multiples conceptuellement)
+    choices: [ // Peut-être transformer en checkboxes plus tard ou poser plusieurs questions
+      { value: "ordinateurs_bureau", label: "Ordinateurs de bureau (fixes)" },
+      { value: "ordinateurs_portables", label: "Ordinateurs portables" },
+      { value: "serveurs_nas", label: "Serveurs / NAS (Stockage)" },
+      { value: "imprimantes_multifonctions", label: "Imprimantes / Multifonctions" },
+      { value: "equipements_reseau_specifiques", label: "Équipements réseau (switchs, routeurs avancés)" },
+      { value: "peripheriques_accessoires", label: "Périphériques et accessoires (écrans, claviers, etc.)" },
+      { value: "autre_materiel", label: "Autre (à préciser)" }
     ],
     progress: 30,
-    responseKey: "type_materiel",
+    responseKey: "type_materiel_recherche", // Clé plus spécifique
     nextStep: "materiel-4"
   },
   "materiel-4": {
-    question: "Quantité approximative ?",
-    choices: [
-      { value: "1-3", label: "1–3" },
-      { value: "4-10", label: "4–10" },
-      { value: "11-20", label: "11–20" },
-      { value: "20+", label: "> 20" }
-    ],
+    question: "Quelle est la quantité approximative de matériel nécessaire par catégorie principale ?", // Clarifié
+    type: "text",
+    placeholder: "Ex: 5 portables, 1 serveur, 2 imprimantes...",
     progress: 40,
-    responseKey: "quantite",
-    nextStep: "materiel-5"
+    responseKey: "quantite_par_type_materiel", // Clé plus spécifique
+    nextStep: "materiel-5",
+    errorMessage: "Veuillez donner une estimation ou indiquer 'À définir'"
   },
   "materiel-5": {
-    question: "Installation/configuration par nos soins ?",
+    question: "Souhaitez-vous que Proxatek se charge de l'installation et de la configuration du matériel ?", // Clarifié
     choices: [
-      { value: "oui", label: "Oui" },
-      { value: "non", label: "Non" }
+      { value: "oui_installation_complete", label: "Oui, installation et configuration complètes" },
+      { value: "oui_installation_partielle", label: "Oui, pour certains équipements seulement" },
+      { value: "non_installation_interne", label: "Non, nous gérons l'installation en interne" }
     ],
     progress: 50,
-    responseKey: "installation",
+    responseKey: "service_installation_materiel", // Clé plus spécifique
     nextStep: "materiel-6"
   },
   "materiel-6": {
-    question: "Marque/exigences techniques ?",
+    question: "Avez-vous des préférences de marques ou des exigences techniques spécifiques pour ce matériel ?", // Clarifié
     type: "text",
-    placeholder: "Ex: Dell, HP, Apple...",
+    placeholder: "Ex: Dell Latitude, serveurs HP ProLiant, écrans 27 pouces...",
     progress: 60,
-    responseKey: "exigences",
+    responseKey: "preferences_exigences_materiel", // Clé plus spécifique
     nextStep: "contact-1",
-    errorMessage: "Veuillez préciser ou indiquer 'Aucune préférence'"
+    errorMessage: "Veuillez préciser ou indiquer 'Aucune préférence spécifique'"
   },
 
-  // Questions Audit & Conseil (NOUVELLE SECTION)
+  // Questions Audit & Conseil
   "audit-1": {
     question: "Quel type d'audit ou de conseil vous intéresse principalement ?",
     choices: [
@@ -505,7 +509,7 @@ const questionnaireConfig = {
       { value: "accompagnement_projet", label: "Accompagnement sur un projet spécifique" },
       { value: "autre_audit_conseil", label: "Autre (à préciser)" }
     ],
-    progress: 10, // Ajustez la progression pour qu'elle soit cohérente avec les autres parcours
+    progress: 15, // Progression typique pour un parcours de 4 questions avant contact
     responseKey: "type_audit_conseil",
     nextStep: "audit-2"
   },
@@ -517,7 +521,7 @@ const questionnaireConfig = {
       { value: "pme_50_250", label: "Moyenne Entreprise (50-250 employés)" },
       { value: "eti_plus_250", label: "Plus de 250 employés" }
     ],
-    progress: 20,
+    progress: 30,
     responseKey: "taille_entreprise_audit",
     nextStep: "audit-3"
   },
@@ -525,9 +529,9 @@ const questionnaireConfig = {
     question: "Avez-vous des objectifs clairs ou des problématiques identifiées que cet audit/conseil devrait adresser ?",
     type: "text",
     placeholder: "Ex: Optimiser les coûts, améliorer la sécurité, préparer une migration cloud...",
-    progress: 30,
+    progress: 45,
     responseKey: "objectifs_preoccupations_audit",
-    nextStep: "audit-4", // Ajout d'une question sur le budget/délai possible
+    nextStep: "audit-4",
     errorMessage: "Veuillez décrire vos objectifs ou indiquer 'À définir ensemble'"
   },
   "audit-4": {
@@ -537,55 +541,56 @@ const questionnaireConfig = {
       { value: "budget_defini_non", label: "Non, à évaluer selon les recommandations" },
       { value: "ne_sais_pas", label: "Je ne sais pas encore" }
     ],
-    progress: 40,
+    progress: 60,
     responseKey: "budget_delai_audit",
-    nextStep: "contact-1" // Mène ensuite aux questions de contact
+    nextStep: "contact-1"
   },
 
-  // Questions Contact (EXISTANTES - doivent être présentes à la fin)
+  // Questions Contact (Communes à tous les parcours)
   "contact-1": {
     question: "Où est située votre entreprise ?",
     type: "text",
-    placeholder: "Ville, pays...",
-    progress: 70, // La progression doit être plus élevée ici
+    placeholder: "Ville, code postal...", // Plus précis
+    progress: 70, // Commence après les questions de service (max 60-65%)
     responseKey: "location",
     nextStep: "contact-2",
-    errorMessage: "Veuillez indiquer votre localisation"
+    errorMessage: "Veuillez indiquer la localisation de votre entreprise"
   },
   "contact-2": {
-    question: "Secteur d'activité ?",
+    question: "Quel est votre secteur d'activité principal ?", // Clarifié
     type: "text",
-    placeholder: "ex : Finance, Santé...",
-    progress: 75,
+    placeholder: "Ex: Commerce de détail, Conseil, Industrie, Santé...",
+    progress: 78, // Progression plus fine
     responseKey: "secteur",
     nextStep: "contact-3",
     errorMessage: "Veuillez indiquer votre secteur d'activité"
   },
   "contact-3": {
-    question: "Votre e-mail ?",
+    question: "Votre adresse e-mail professionnelle ?", // Clarifié
     type: "email",
-    placeholder: "ex : vous@domaine.com",
-    progress: 80,
+    placeholder: "vous@votreentreprise.com",
+    progress: 86,
     responseKey: "email",
     nextStep: "contact-4",
-    errorMessage: "Veuillez entrer une adresse email valide"
+    errorMessage: "Veuillez entrer une adresse e-mail valide"
   },
   "contact-4": {
-    question: "Votre nom ?",
+    question: "Votre nom et prénom ?", // Combiné
     type: "text",
-    placeholder: "ex : Jean Dupont",
-    progress: 90,
-    responseKey: "nom",
+    placeholder: "Ex: Jean Dupont",
+    progress: 93,
+    responseKey: "nom_prenom", // Clé modifiée
     nextStep: "contact-5",
-    errorMessage: "Veuillez indiquer votre nom"
+    errorMessage: "Veuillez indiquer votre nom et prénom"
   },
   "contact-5": {
-    question: "Votre téléphone ?",
+    question: "Votre numéro de téléphone professionnel ?", // Clarifié
     type: "tel",
-    placeholder: "ex : +33 6 12 34 56 78",
-    progress: 95,
+    placeholder: "Ex: 01 23 45 67 89",
+    progress: 98, // Ajusté pour laisser de la marge avant 100%
     responseKey: "telephone",
-    nextStep: "fin",
-    errorMessage: "Veuillez indiquer votre numéro de téléphone"
+    nextStep: "fin", // Mène à la page de remerciement
+    errorMessage: "Veuillez indiquer un numéro de téléphone valide"
   }
+  // "fin" n'est pas une étape de question, mais un marqueur pour le JS.
 };

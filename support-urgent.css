@@ -2,13 +2,13 @@
 
 /* --- HERO SECTION SPÉCIFIQUE --- */
 .hero-support-urgent {
-    background-color: var(--custom-danger-color);
+    background-color: var(--custom-danger-color); /* Rouge/Magenta foncé pour l'urgence */
     color: var(--custom-text-light-primary);
     padding: 60px 0;
     text-align: center;
 }
 .hero-support-urgent .breadcrumb-service {
-    text-align: left;
+    text-align: left; /* Garder le breadcrumb à gauche */
     margin-bottom: 20px;
     opacity: 0.9;
 }
@@ -18,6 +18,7 @@
 .hero-support-urgent .breadcrumb-service .current-service {
     color: var(--custom-text-light-primary);
 }
+
 .hero-support-urgent h1 {
     color: var(--custom-text-light-primary);
     font-size: 2.8rem;
@@ -26,6 +27,10 @@
 .hero-support-urgent h1 i {
     margin-right: 15px;
     font-size: 0.9em;
+}
+.hero-support-urgent .highlight-text { /* Si vous voulez une couleur d'accent différente ici */
+    /* color: #FFFFFF; */ /* Par exemple, blanc sur fond rouge */
+    /* text-shadow: 1px 1px 2px rgba(0,0,0,0.2); */
 }
 .hero-support-urgent .hero-subtitle-support {
     font-size: 1.15rem;
@@ -40,7 +45,7 @@
     gap: 20px;
     flex-wrap: wrap;
 }
-.support-contact-actions .btn-danger-custom {
+.support-contact-actions .btn-danger-custom { /* Style spécifique pour le bouton d'appel urgent */
     background-color: var(--custom-bg-white);
     color: var(--custom-danger-color);
     border-color: var(--custom-bg-white);
@@ -51,7 +56,7 @@
     border-color: #f0f0f0;
     transform: translateY(-2px);
 }
-.support-contact-actions .btn-outline {
+.support-contact-actions .btn-outline { /* Surcharge pour visibilité sur fond coloré */
     color: var(--custom-text-light-primary);
     border-color: var(--custom-text-light-primary);
 }
@@ -60,26 +65,20 @@
     color: var(--custom-danger-color);
 }
 
-/* --- NOUVEAU PROCESSUS D'INTERVENTION (process-schema-v3 de l'HTML) --- */
-/* Note: J'utilise .process-schema-v3 pour les sélecteurs CSS comme dans le HTML fourni */
+
+/* --- PROCESSUS D'INTERVENTION --- */
 .intervention-process {
-    /* Styles de section généraux s'appliquent */
+    /* background-color: var(--custom-bg-lavender-mist); si besoin */
 }
-.process-schema-v3 { /* Renommé pour correspondre au HTML */
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    gap: 10px; 
+.process-schema {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    align-items: flex-start; /* Aligner les cartes en haut */
+    position: relative; /* Pour le positionnement des flèches absolues si besoin */
     margin-top: 40px;
 }
-.process-row-v3 { /* Renommé pour correspondre au HTML */
-    display: flex;
-    flex-wrap: wrap; 
-    gap: 20px; 
-    width: 100%;
-    justify-content: center; 
-}
-.process-step-v3 { /* Renommé pour correspondre au HTML */
+.process-step {
     background-color: var(--custom-bg-white);
     padding: 25px 20px;
     border-radius: var(--custom-border-radius-cards);
@@ -89,19 +88,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 260px; /* Hauteur minimale pour alignement visuel */
 }
-.process-step-v3.large-step {
-    flex-basis: 100%;
-    max-width: 700px; 
-    min-height: 180px; /* Ajuster pour le contenu des étapes larges */
-}
-.process-step-v3.compact-step {
-    flex-basis: calc(33.333% - 40px); /* Ajusté pour 3 par ligne avec séparateurs */
-    min-width: 220px; 
-    min-height: 260px; /* Hauteur pour alignement des 3 étapes */
-}
-
-.process-schema-v3 .step-icon i {
+.step-icon i {
     font-size: 2.5rem;
     color: var(--custom-primary-dark);
     margin-bottom: 15px;
@@ -111,7 +100,7 @@
     line-height: 60px;
     border-radius: 50%;
 }
-.process-schema-v3 .step-number {
+.step-number {
     background-color: var(--custom-accent-magenta);
     color: var(--custom-text-light-primary);
     border-radius: 50%;
@@ -124,62 +113,47 @@
     border: 2px solid var(--custom-bg-white);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-.process-schema-v3 .step-content h3 {
+.step-content h3 {
     font-size: 1.2rem;
     margin-bottom: 10px;
     color: var(--custom-text-dark-primary);
 }
-.process-schema-v3 .step-content p {
+.step-content p {
     font-size: 0.88rem;
     color: var(--custom-text-medium-gray);
     line-height: 1.6;
     margin-bottom: 10px;
-    flex-grow: 1;
+    flex-grow: 1; /* Pour que le texte pousse la durée en bas */
 }
-.process-schema-v3 .intervention-duree {
+.intervention-duree {
     display: block;
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--custom-accent-magenta);
-    margin-top: auto;
+    margin-top: auto; /* Pousse la durée en bas */
     padding-top: 10px;
 }
 
-.process-connector-v3 { /* Renommé pour correspondre au HTML */
-    font-size: 1.8rem; 
-    color: var(--custom-text-medium-gray);
-    opacity: 0.7;
-    margin: 10px 0; 
-    line-height: 1; 
-}
-
-.process-step-separator-v3 { /* Renommé pour correspondre au HTML */
-    display: flex;
-    flex-direction: column;
+/* Flèches entre les étapes (pour desktop) */
+.process-arrow {
+    display: none; /* Caché par défaut, visible sur desktop */
     align-items: center;
     justify-content: center;
-    text-align: center;
+    font-size: 1.8rem;
     color: var(--custom-text-medium-gray);
-    font-size: 0.8rem;
-    font-weight: 500;
-    align-self: stretch; 
-    padding: 0 5px; /* Espace réduit */
-    flex-grow: 0; /* Ne pas laisser grandir excessivement */
-    flex-shrink: 0;
-    min-width: unset; /* Enlever min-width pour qu'il soit plus flexible */
+    opacity: 0.5;
 }
-
-.separator-text-v3 { /* Renommé pour correspondre au HTML */
-    margin-bottom: 8px;
-    white-space: nowrap; 
+.optional-arrow {
+    text-align: center; /* Pour centrer la flèche et le texte */
 }
-.separator-arrow-desktop-v3 { /* Renommé pour correspondre au HTML */
-    font-size: 1.6rem;
-    display: block; 
+.optional-arrow i {
+    display: block; /* Flèche sur sa propre ligne */
+    margin-bottom: 5px;
 }
-.separator-arrow-mobile-v3 { /* Renommé pour correspondre au HTML */
-    font-size: 1.6rem;
-    display: none; 
+.arrow-label {
+    font-size: 0.75rem;
+    color: var(--custom-text-medium-gray);
+    display: block;
 }
 
 .notice-delais {
@@ -188,13 +162,105 @@
     margin-top: 30px;
 }
 
-/* --- TYPES DE PANNES (Layout icône à gauche) --- */
+@media (min-width: 992px) { /* Desktop: affichage des flèches en ligne */
+    .process-schema {
+        display: flex; /* Passer en flex pour aligner les flèches entre les étapes */
+        align-items: stretch; /* Pour que les étapes aient la même hauteur */
+        gap: 15px;
+    }
+    .process-step {
+        flex: 1; /* Chaque étape prend une part égale */
+        min-height: 300px; /* Ajuster si besoin pour le contenu */
+    }
+    .process-arrow {
+        display: flex; /* Afficher les flèches sur desktop */
+        flex-direction: column; /* Pour la flèche optionnelle vers le bas */
+        align-self: center; /* Centrer la flèche verticalement */
+        padding: 0 10px;
+        min-width: 40px; /* Donner une largeur aux flèches */
+    }
+    .optional-arrow { /* Spécifique pour la flèche qui descend */
+        flex: 0 0 100%; /* Prend toute la largeur pour se positionner correctement */
+        order: 3; /* Ajuster l'ordre pour qu'elle apparaisse après l'étape 3 */
+        margin: 15px 0;
+        display: flex; /* Pour que le text-align center fonctionne */
+        justify-content: center;
+    }
+    /* Réajustement des ordres pour le flex layout */
+    .process-step:nth-child(1) { order: 1; }
+    .process-schema > .process-arrow:nth-of-type(1) { order: 2; } /* Flèche après étape 1 */
+    .process-step:nth-child(2) { order: 3; }
+    .process-schema > .process-arrow:nth-of-type(2) { order: 4; } /* Flèche après étape 2 */
+    .process-step:nth-child(3) { order: 5; }
+    /* .optional-arrow est déjà order: 3 dans la structure HTML, mais on le force pour flex ici. 
+       En fait, il faut le placer après l'étape 3 donc order 6.
+       Et l'étape 4 sera order 7, etc.
+       C'est plus simple de garder grid pour le schéma et de ne pas afficher les flèches horizontales.
+    */
+    /* Simplification : On garde le grid, on n'affiche que les flèches nécessaires */
+    .process-schema {
+        grid-template-columns: repeat(5, 1fr); /* Ajuster le nombre de colonnes */
+        align-items: stretch; /* Les étapes auront la même hauteur */
+    }
+     .process-step { min-height: auto; } /* Enlever la hauteur min si align-items:stretch fonctionne bien */
+    
+    .process-arrow { /* On affiche toutes les flèches par défaut sur desktop en mode grille */
+        display: flex;
+        flex-direction: row; /* Flèches horizontales par défaut */
+    }
+    .process-arrow.optional-arrow { /* La flèche verticale */
+        grid-column: 3 / 4; /* Se positionne sous l'étape 3 (si 5 colonnes) */
+        grid-row: 2 / 3;    /* Sur une nouvelle ligne */
+        flex-direction: column;
+        margin: 10px 0;
+    }
+    /* Pour que l'étape 4 et 5 soient sur une nouvelle ligne après la flèche optionnelle */
+     .process-step:nth-of-type(4) {
+        grid-column: 1 / 3; /* S'étend sur 2 colonnes par exemple */
+        grid-row: 3 / 4;
+    }
+    .process-schema > .process-arrow:nth-of-type(4) { /* Flèche entre étape 4 et 5 */
+        grid-column: 3 / 4;
+        grid-row: 3 / 4;
+    }
+    .process-step:nth-of-type(5) {
+        grid-column: 4 / 6; /* S'étend sur 2 colonnes */
+        grid-row: 3 / 4;
+    }
+    /* Ce layout en grille devient complexe avec la flèche optionnelle. */
+    /* Solution plus simple pour le schéma : */
+    .process-schema {
+        display: flex;
+        flex-wrap: wrap; /* Permet le retour à la ligne */
+        justify-content: space-between;
+        gap: 15px;
+    }
+    .process-step {
+        flex-basis: calc(33.333% - 20px); /* Pour 3 étapes par ligne environ */
+        min-width: 220px; /* Min width pour une étape */
+        flex-grow: 1;
+    }
+    .process-arrow { /* On cache les flèches horizontales pour ce layout flex-wrap */
+        display: none;
+    }
+    .process-arrow.optional-arrow { /* On affiche SEULEMENT la flèche verticale */
+        display: flex;
+        flex-direction: column;
+        width: 100%; /* Prend toute la largeur pour se centrer */
+        margin: 15px 0;
+        align-items: center;
+    }
+
+}
+
+
+/* --- TYPES DE PANNES --- */
 .types-pannes {
-    /* section-bg-light déjà appliqué */
+    /* background-color: var(--custom-bg-light); -- déjà sur la section */
 }
 .pannes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 25px;
     margin-top: 30px;
 }
@@ -202,33 +268,21 @@
     background-color: var(--custom-bg-white);
     padding: 25px;
     border-radius: var(--custom-border-radius-cards);
+    text-align: center;
     box-shadow: var(--custom-box-shadow-soft);
     border: 1px solid var(--custom-border-subtle-lavender);
-    display: grid; 
-    grid-template-columns: auto 1fr; 
-    gap: 20px;
-    align-items: center; 
 }
-.panne-item-icon-wrapper {
-    font-size: 1.8rem; 
+.panne-item i {
+    font-size: 2.2rem;
     color: var(--custom-accent-magenta);
-    background-color: var(--custom-bg-lavender-mist);
-    width: 50px; 
-    height: 50px;
-    line-height: 50px;
-    border-radius: 50%;
-    text-align: center;
-    flex-shrink: 0; 
+    margin-bottom: 15px;
 }
-.panne-item-content {
-    text-align: left; 
-}
-.panne-item-content h4 {
-    font-size: 1.1rem; 
-    margin-bottom: 8px;
+.panne-item h4 {
+    font-size: 1.15rem;
+    margin-bottom: 10px;
     color: var(--custom-text-dark-primary);
 }
-.panne-item-content p {
+.panne-item p {
     font-size: 0.88rem;
     color: var(--custom-text-medium-gray);
     line-height: 1.6;
@@ -274,52 +328,22 @@
 
 
 /* --- MEDIA QUERIES SPÉCIFIQUES SUPPORT URGENT --- */
-@media (max-width: 991px) { /* Tablettes */
+@media (max-width: 991px) {
     .hero-support-urgent h1 {
         font-size: 2.4rem;
     }
-    .process-step-v3.large-step {
-        max-width: 550px;
+    .process-step {
+        min-height: 240px;
     }
-    .process-row-v3.three-steps-row {
-        /* Les étapes compactes passent l'une sous l'autre par défaut à cause de flex-wrap */
+    /* Simplification du schéma en grille pour tablettes */
+    .process-schema {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Plus de place par carte */
     }
-    .process-step-v3.compact-step {
-        flex-basis: 100%; /* Une étape par ligne sur tablette pour la rangée de 3 */
-        max-width: 450px; /* Limiter leur largeur quand elles sont seules sur la ligne */
-        min-height: auto; /* Hauteur auto */
-        margin-bottom: 20px; /* Ajouter un espace quand elles s'empilent */
-    }
-     .process-row-v3.three-steps-row .process-step-v3.compact-step:last-child {
-        margin-bottom: 0;
-    }
-
-    .process-step-separator-v3 {
-        width: 100%; /* Prend toute la largeur pour centrer la flèche */
-        margin: 5px 0; /* Espacement vertical */
-        flex-direction: row;
-        justify-content: center;
-    }
-    .process-step-separator-v3 .separator-text-v3 { display: none; } /* Cacher "OU SI NECESSAIRE" */
-    .separator-arrow-desktop-v3 { display: none; }
-    .separator-arrow-mobile-v3 { display: block; } /* Flèche vers le bas */
-
-    /* S'assurer que le séparateur entre étape 3 et 4 (qui est maintenant vertical) est correct */
-    .process-row-v3.three-steps-row .process-step-separator-v3:not(.alternative-flow) {
-         /* Si on veut cacher le "OU" sur tablette entre 3 et 4 quand ils sont l'un sous l'autre */
-    }
-    /* La flèche alternative (maintenant entre le bloc (3-4) et 5) */
-    .process-step-separator-v3.alternative-flow {
-         /* Style par défaut ok */
-    }
-
-
-    .pannes-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
+    .process-arrow { display: none; } /* Cacher toutes les flèches sur tablette */
+    .optional-arrow { display: none; }
 }
 
-@media (max-width: 767px) { /* Mobiles */
+@media (max-width: 767px) {
     .hero-support-urgent {
         padding: 50px 0;
     }
@@ -335,42 +359,24 @@
     }
     .support-contact-actions .btn {
         width: 100%;
-        max-width: 320px; 
+        max-width: 320px; /* Pour éviter qu'ils soient trop larges */
         margin-left: auto;
         margin-right: auto;
     }
 
-    .process-step-v3.large-step,
-    .process-step-v3.compact-step { 
-        flex-basis: 100%;
-        max-width: none; 
-        min-height: auto; 
-        margin-bottom: 20px; /* Espacement entre toutes les étapes empilées */
+    .process-schema {
+        grid-template-columns: 1fr; /* Une étape par ligne sur mobile */
+        gap: 20px;
     }
-    .process-step-v3:last-child {
-        margin-bottom: 0;
+    .process-step {
+        min-height: auto; /* Hauteur automatique sur mobile */
+        padding: 20px;
     }
-     .process-row-v3.three-steps-row {
-        gap: 0; /* Enlever le gap horizontal pour les étapes compactes empilées */
+    .process-arrow, .optional-arrow { /* Cacher les flèches sur mobile */
+        display: none;
     }
-
-    .process-step-separator-v3 {
-        margin: 5px 0 15px 0; /* Ajuster l'espacement du séparateur vertical */
-    }
-    .process-step-separator-v3 .separator-text-v3 { display: none; }
-    .separator-arrow-desktop-v3 { display: none; }
-    .separator-arrow-mobile-v3 { display: block; }
-
-    .panne-item { 
+    .pannes-grid {
         grid-template-columns: 1fr;
-        text-align: center;
-        gap: 15px;
-    }
-    .panne-item-icon-wrapper {
-        margin: 0 auto 10px auto;
-    }
-    .panne-item-content {
-        text-align: center;
     }
     .conditions-grid {
         grid-template-columns: 1fr;
