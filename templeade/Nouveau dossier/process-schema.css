@@ -1,0 +1,313 @@
+/* support-urgent.css */
+
+/* ... (styles du hero et autres sections restent les mêmes) ... */
+
+/* --- PROCESSUS D'INTERVENTION (Styles pour .process-schema d'origine) --- */
+.intervention-process {
+    /* Styles de section généraux s'appliquent */
+}
+
+.process-schema {
+    display: flex; /* Utiliser Flexbox pour le conteneur principal */
+    flex-wrap: wrap; /* Permettre aux éléments de passer à la ligne */
+    justify-content: center; /* Centrer les éléments quand ils passent à la ligne */
+    gap: 20px; /* Espace entre les étapes et les flèches */
+    align-items: stretch; /* Étirer les éléments pour avoir la même hauteur de ligne */
+    margin-top: 40px;
+}
+
+.process-step {
+    background-color: var(--custom-bg-white);
+    padding: 25px 20px;
+    border-radius: var(--custom-border-radius-cards);
+    box-shadow: var(--custom-box-shadow-soft);
+    text-align: center;
+    border: 1px solid var(--custom-border-subtle-lavender);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 220px; /* flex-grow, flex-shrink, flex-basis (min-width pour une étape) */
+    max-width: 280px; /* Limiter la largeur maximale d'une étape */
+    min-height: 280px; /* Assurer une hauteur minimale pour l'alignement visuel */
+}
+
+.step-icon i {
+    font-size: 2.5rem;
+    color: var(--custom-primary-dark);
+    margin-bottom: 15px;
+    background-color: var(--custom-bg-lavender-mist);
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+}
+
+.step-number {
+    background-color: var(--custom-accent-magenta);
+    color: var(--custom-text-light-primary);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    border: 2px solid var(--custom-bg-white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.step-content h3 {
+    font-size: 1.15rem; /* Taille ajustée pour lisibilité */
+    margin-bottom: 10px;
+    color: var(--custom-text-dark-primary);
+    line-height: 1.3;
+}
+
+.step-content p {
+    font-size: 0.85rem; /* Taille ajustée */
+    color: var(--custom-text-medium-gray);
+    line-height: 1.5;
+    margin-bottom: 10px;
+    flex-grow: 1; /* Pour que le texte pousse la durée en bas */
+}
+
+.intervention-duree {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--custom-accent-magenta);
+    margin-top: auto; /* Pousse la durée en bas */
+    padding-top: 10px;
+}
+
+.process-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: var(--custom-text-medium-gray);
+    opacity: 0.6;
+    flex: 0 0 auto; /* Ne grandit pas, ne rétrécit pas, prend sa taille naturelle */
+    padding: 0 10px; /* Un peu d'espace autour des flèches */
+}
+
+.process-arrow.optional-arrow {
+    flex-direction: column; /* Pour la flèche vers le bas avec texte */
+    text-align: center;
+    width: 100%; /* Prend toute la largeur pour se placer correctement entre les lignes */
+    margin: 10px 0; /* Espace vertical pour cette flèche spéciale */
+    order: 99; /* Pour s'assurer qu'elle se place après un certain nombre d'éléments si besoin */
+}
+.process-arrow.optional-arrow i {
+    margin-bottom: 5px;
+}
+.arrow-label {
+    font-size: 0.75rem;
+    color: var(--custom-text-medium-gray);
+    display: block;
+}
+
+.notice-delais {
+    font-size: 0.85rem;
+    color: var(--custom-text-medium-gray);
+    margin-top: 30px;
+}
+
+/* Responsive pour le schéma d'intervention */
+@media (max-width: 1199px) { /* Pour 3 étapes + 2 flèches par ligne */
+    .process-step {
+        flex-basis: calc(33.333% - 40px); /* Ajuster pour 3 étapes et 2 flèches */
+        max-width: none; /* Permettre plus de flexibilité */
+    }
+     .process-arrow:not(.optional-arrow) { /* Cacher les flèches horizontales si ça devient trop serré */
+        /* display: none; */ /* Décommentez si vous voulez cacher les flèches horizontales plus tôt */
+    }
+}
+
+@media (max-width: 991px) { /* Tablettes : 2 étapes par ligne max, ou 1 */
+    .process-schema {
+        gap: 25px; /* Augmenter le gap pour plus d'espace */
+    }
+    .process-step {
+        flex-basis: calc(50% - 13px); /* 2 étapes par ligne (13px = gap/2) */
+        min-width: 250px; /* Assurer une largeur minimale correcte */
+        min-height: 260px;
+    }
+    .process-arrow:not(.optional-arrow) { /* Cacher les flèches horizontales */
+        display: none;
+    }
+    .process-arrow.optional-arrow { /* S'assurer que la flèche optionnelle est bien visible */
+        display: flex;
+        width: 100%;
+        margin: 15px 0;
+    }
+}
+
+@media (max-width: 600px) { /* Mobiles : 1 étape par ligne */
+    .process-step {
+        flex-basis: 100%; /* 1 étape par ligne */
+        max-width: 400px; /* Limiter la largeur sur mobile */
+        min-height: auto; /* Hauteur automatique */
+        margin-left: auto; /* Centrer les étapes */
+        margin-right: auto; /* Centrer les étapes */
+    }
+    .process-arrow { /* Toutes les flèches deviennent verticales */
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 15px 0;
+        padding: 0;
+    }
+    .process-arrow i {
+        transform: rotate(90deg); /* Faire pointer les flèches vers le bas */
+    }
+    .process-arrow.optional-arrow i {
+        transform: none; /* Garder la flèche optionnelle vers le bas */
+    }
+    .arrow-label {
+        /* Le label peut être masqué ou affiché selon la préférence sur mobile */
+         display: none; /* Cacher le label sur mobile pour plus de concision */
+    }
+}
+
+
+/* --- TYPES DE PANNES (Layout icône à gauche, inchangé par rapport à la dernière version) --- */
+/* ... (vos styles pour .pannes-grid et .panne-item restent les mêmes) ... */
+.types-pannes {
+    /* section-bg-light déjà appliqué */
+}
+.pannes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+.panne-item {
+    background-color: var(--custom-bg-white);
+    padding: 25px;
+    border-radius: var(--custom-border-radius-cards);
+    box-shadow: var(--custom-box-shadow-soft);
+    border: 1px solid var(--custom-border-subtle-lavender);
+    display: grid; 
+    grid-template-columns: auto 1fr; 
+    gap: 20px;
+    align-items: center; 
+}
+.panne-item-icon-wrapper {
+    font-size: 1.8rem; 
+    color: var(--custom-accent-magenta);
+    background-color: var(--custom-bg-lavender-mist);
+    width: 50px; 
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    flex-shrink: 0; 
+}
+.panne-item-content {
+    text-align: left; 
+}
+.panne-item-content h4 {
+    font-size: 1.1rem; 
+    margin-bottom: 8px;
+    color: var(--custom-text-dark-primary);
+}
+.panne-item-content p {
+    font-size: 0.88rem;
+    color: var(--custom-text-medium-gray);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+
+/* --- CONDITIONS SUPPORT (inchangé) --- */
+/* ... (vos styles pour .conditions-grid et .condition-item restent les mêmes) ... */
+.conditions-support {
+    /* Section standard */
+}
+.conditions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+.condition-item {
+    background-color: var(--custom-bg-lavender-mist);
+    padding: 30px;
+    border-radius: var(--custom-border-radius-cards);
+    border: 1px solid var(--custom-border-subtle-lavender);
+}
+.condition-item h3 {
+    font-size: 1.4rem;
+    color: var(--custom-primary-dark);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+.condition-item h3 i {
+    margin-right: 10px;
+    color: var(--custom-accent-magenta);
+}
+.condition-item p {
+    font-size: 0.95rem;
+    color: var(--custom-text-medium-gray);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+.condition-item .btn {
+    width: auto;
+}
+
+/* --- MEDIA QUERIES GÉNÉRALES (celles de la fin de support-urgent.css) --- */
+/* La partie responsive du schéma a été intégrée ci-dessus. */
+/* Le reste des media queries pour .hero-support-urgent, .pannes-grid, .conditions-grid peuvent rester comme elles étaient. */
+
+@media (max-width: 991px) { 
+    .hero-support-urgent h1 {
+        font-size: 2.4rem;
+    }
+    /* ... (autres ajustements tablettes) ... */
+}
+
+@media (max-width: 767px) {
+    .hero-support-urgent {
+        padding: 50px 0;
+    }
+    .hero-support-urgent h1 {
+        font-size: 2rem;
+    }
+    .hero-support-urgent .hero-subtitle-support {
+        font-size: 1.05rem;
+    }
+    .support-contact-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .support-contact-actions .btn {
+        width: 100%;
+        max-width: 320px; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .panne-item { /* Pour mobile, les pannes peuvent s'empiler icone au dessus */
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 15px;
+    }
+    .panne-item-icon-wrapper {
+        margin: 0 auto 10px auto;
+    }
+    .panne-item-content {
+        text-align: center;
+    }
+    .conditions-grid {
+        grid-template-columns: 1fr;
+    }
+    .condition-item {
+        padding: 25px;
+    }
+    .condition-item h3 {
+        font-size: 1.3rem;
+    }
+}
