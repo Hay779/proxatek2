@@ -1,0 +1,384 @@
+/* support-urgent.css */
+
+/* --- HERO SECTION SPÉCIFIQUE --- */
+.hero-support-urgent {
+    background-color: var(--custom-danger-color);
+    color: var(--custom-text-light-primary);
+    padding: 60px 0;
+    text-align: center;
+}
+.hero-support-urgent .breadcrumb-service {
+    text-align: left;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+.hero-support-urgent .breadcrumb-service a {
+    color: rgba(255,255,255,0.8);
+}
+.hero-support-urgent .breadcrumb-service .current-service {
+    color: var(--custom-text-light-primary);
+}
+.hero-support-urgent h1 {
+    color: var(--custom-text-light-primary);
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+}
+.hero-support-urgent h1 i {
+    margin-right: 15px;
+    font-size: 0.9em;
+}
+.hero-support-urgent .hero-subtitle-support {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.9);
+    max-width: 750px;
+    margin: 0 auto 30px auto;
+    line-height: 1.7;
+}
+.support-contact-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.support-contact-actions .btn-danger-custom {
+    background-color: var(--custom-bg-white);
+    color: var(--custom-danger-color);
+    border-color: var(--custom-bg-white);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.support-contact-actions .btn-danger-custom:hover {
+    background-color: #f0f0f0;
+    border-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+.support-contact-actions .btn-outline {
+    color: var(--custom-text-light-primary);
+    border-color: var(--custom-text-light-primary);
+}
+.support-contact-actions .btn-outline:hover {
+    background-color: var(--custom-text-light-primary);
+    color: var(--custom-danger-color);
+}
+
+/* --- NOUVEAU PROCESSUS D'INTERVENTION (process-schema-v3 de l'HTML) --- */
+/* Note: J'utilise .process-schema-v3 pour les sélecteurs CSS comme dans le HTML fourni */
+.intervention-process {
+    /* Styles de section généraux s'appliquent */
+}
+.process-schema-v3 { /* Renommé pour correspondre au HTML */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 10px; 
+    margin-top: 40px;
+}
+.process-row-v3 { /* Renommé pour correspondre au HTML */
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; 
+    width: 100%;
+    justify-content: center; 
+}
+.process-step-v3 { /* Renommé pour correspondre au HTML */
+    background-color: var(--custom-bg-white);
+    padding: 25px 20px;
+    border-radius: var(--custom-border-radius-cards);
+    box-shadow: var(--custom-box-shadow-soft);
+    text-align: center;
+    border: 1px solid var(--custom-border-subtle-lavender);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.process-step-v3.large-step {
+    flex-basis: 100%;
+    max-width: 700px; 
+    min-height: 180px; /* Ajuster pour le contenu des étapes larges */
+}
+.process-step-v3.compact-step {
+    flex-basis: calc(33.333% - 40px); /* Ajusté pour 3 par ligne avec séparateurs */
+    min-width: 220px; 
+    min-height: 260px; /* Hauteur pour alignement des 3 étapes */
+}
+
+.process-schema-v3 .step-icon i {
+    font-size: 2.5rem;
+    color: var(--custom-primary-dark);
+    margin-bottom: 15px;
+    background-color: var(--custom-bg-lavender-mist);
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+}
+.process-schema-v3 .step-number {
+    background-color: var(--custom-accent-magenta);
+    color: var(--custom-text-light-primary);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    border: 2px solid var(--custom-bg-white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.process-schema-v3 .step-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--custom-text-dark-primary);
+}
+.process-schema-v3 .step-content p {
+    font-size: 0.88rem;
+    color: var(--custom-text-medium-gray);
+    line-height: 1.6;
+    margin-bottom: 10px;
+    flex-grow: 1;
+}
+.process-schema-v3 .intervention-duree {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--custom-accent-magenta);
+    margin-top: auto;
+    padding-top: 10px;
+}
+
+.process-connector-v3 { /* Renommé pour correspondre au HTML */
+    font-size: 1.8rem; 
+    color: var(--custom-text-medium-gray);
+    opacity: 0.7;
+    margin: 10px 0; 
+    line-height: 1; 
+}
+
+.process-step-separator-v3 { /* Renommé pour correspondre au HTML */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--custom-text-medium-gray);
+    font-size: 0.8rem;
+    font-weight: 500;
+    align-self: stretch; 
+    padding: 0 5px; /* Espace réduit */
+    flex-grow: 0; /* Ne pas laisser grandir excessivement */
+    flex-shrink: 0;
+    min-width: unset; /* Enlever min-width pour qu'il soit plus flexible */
+}
+
+.separator-text-v3 { /* Renommé pour correspondre au HTML */
+    margin-bottom: 8px;
+    white-space: nowrap; 
+}
+.separator-arrow-desktop-v3 { /* Renommé pour correspondre au HTML */
+    font-size: 1.6rem;
+    display: block; 
+}
+.separator-arrow-mobile-v3 { /* Renommé pour correspondre au HTML */
+    font-size: 1.6rem;
+    display: none; 
+}
+
+.notice-delais {
+    font-size: 0.85rem;
+    color: var(--custom-text-medium-gray);
+    margin-top: 30px;
+}
+
+/* --- TYPES DE PANNES (Layout icône à gauche) --- */
+.types-pannes {
+    /* section-bg-light déjà appliqué */
+}
+.pannes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+.panne-item {
+    background-color: var(--custom-bg-white);
+    padding: 25px;
+    border-radius: var(--custom-border-radius-cards);
+    box-shadow: var(--custom-box-shadow-soft);
+    border: 1px solid var(--custom-border-subtle-lavender);
+    display: grid; 
+    grid-template-columns: auto 1fr; 
+    gap: 20px;
+    align-items: center; 
+}
+.panne-item-icon-wrapper {
+    font-size: 1.8rem; 
+    color: var(--custom-accent-magenta);
+    background-color: var(--custom-bg-lavender-mist);
+    width: 50px; 
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    flex-shrink: 0; 
+}
+.panne-item-content {
+    text-align: left; 
+}
+.panne-item-content h4 {
+    font-size: 1.1rem; 
+    margin-bottom: 8px;
+    color: var(--custom-text-dark-primary);
+}
+.panne-item-content p {
+    font-size: 0.88rem;
+    color: var(--custom-text-medium-gray);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* --- CONDITIONS SUPPORT --- */
+.conditions-support {
+    /* Section standard */
+}
+.conditions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+.condition-item {
+    background-color: var(--custom-bg-lavender-mist);
+    padding: 30px;
+    border-radius: var(--custom-border-radius-cards);
+    border: 1px solid var(--custom-border-subtle-lavender);
+}
+.condition-item h3 {
+    font-size: 1.4rem;
+    color: var(--custom-primary-dark);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+.condition-item h3 i {
+    margin-right: 10px;
+    color: var(--custom-accent-magenta);
+}
+.condition-item p {
+    font-size: 0.95rem;
+    color: var(--custom-text-medium-gray);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+.condition-item .btn {
+    width: auto;
+}
+
+
+/* --- MEDIA QUERIES SPÉCIFIQUES SUPPORT URGENT --- */
+@media (max-width: 991px) { /* Tablettes */
+    .hero-support-urgent h1 {
+        font-size: 2.4rem;
+    }
+    .process-step-v3.large-step {
+        max-width: 550px;
+    }
+    .process-row-v3.three-steps-row {
+        /* Les étapes compactes passent l'une sous l'autre par défaut à cause de flex-wrap */
+    }
+    .process-step-v3.compact-step {
+        flex-basis: 100%; /* Une étape par ligne sur tablette pour la rangée de 3 */
+        max-width: 450px; /* Limiter leur largeur quand elles sont seules sur la ligne */
+        min-height: auto; /* Hauteur auto */
+        margin-bottom: 20px; /* Ajouter un espace quand elles s'empilent */
+    }
+     .process-row-v3.three-steps-row .process-step-v3.compact-step:last-child {
+        margin-bottom: 0;
+    }
+
+    .process-step-separator-v3 {
+        width: 100%; /* Prend toute la largeur pour centrer la flèche */
+        margin: 5px 0; /* Espacement vertical */
+        flex-direction: row;
+        justify-content: center;
+    }
+    .process-step-separator-v3 .separator-text-v3 { display: none; } /* Cacher "OU SI NECESSAIRE" */
+    .separator-arrow-desktop-v3 { display: none; }
+    .separator-arrow-mobile-v3 { display: block; } /* Flèche vers le bas */
+
+    /* S'assurer que le séparateur entre étape 3 et 4 (qui est maintenant vertical) est correct */
+    .process-row-v3.three-steps-row .process-step-separator-v3:not(.alternative-flow) {
+         /* Si on veut cacher le "OU" sur tablette entre 3 et 4 quand ils sont l'un sous l'autre */
+    }
+    /* La flèche alternative (maintenant entre le bloc (3-4) et 5) */
+    .process-step-separator-v3.alternative-flow {
+         /* Style par défaut ok */
+    }
+
+
+    .pannes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 767px) { /* Mobiles */
+    .hero-support-urgent {
+        padding: 50px 0;
+    }
+    .hero-support-urgent h1 {
+        font-size: 2rem;
+    }
+    .hero-support-urgent .hero-subtitle-support {
+        font-size: 1.05rem;
+    }
+    .support-contact-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .support-contact-actions .btn {
+        width: 100%;
+        max-width: 320px; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .process-step-v3.large-step,
+    .process-step-v3.compact-step { 
+        flex-basis: 100%;
+        max-width: none; 
+        min-height: auto; 
+        margin-bottom: 20px; /* Espacement entre toutes les étapes empilées */
+    }
+    .process-step-v3:last-child {
+        margin-bottom: 0;
+    }
+     .process-row-v3.three-steps-row {
+        gap: 0; /* Enlever le gap horizontal pour les étapes compactes empilées */
+    }
+
+    .process-step-separator-v3 {
+        margin: 5px 0 15px 0; /* Ajuster l'espacement du séparateur vertical */
+    }
+    .process-step-separator-v3 .separator-text-v3 { display: none; }
+    .separator-arrow-desktop-v3 { display: none; }
+    .separator-arrow-mobile-v3 { display: block; }
+
+    .panne-item { 
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 15px;
+    }
+    .panne-item-icon-wrapper {
+        margin: 0 auto 10px auto;
+    }
+    .panne-item-content {
+        text-align: center;
+    }
+    .conditions-grid {
+        grid-template-columns: 1fr;
+    }
+    .condition-item {
+        padding: 25px;
+    }
+    .condition-item h3 {
+        font-size: 1.3rem;
+    }
+}

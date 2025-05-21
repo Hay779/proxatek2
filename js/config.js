@@ -10,14 +10,15 @@ const questionnaireConfig = {
       { value: "securite", label: "Sécurité informatique", icon: "🔐" },
       { value: "cloud", label: "Cloud & sauvegarde", icon: "☁️" },
       { value: "reseau", label: "Réseau / Téléphonie", icon: "🌐" },
-      { value: "materiel", label: "Matériel Pro", icon: "🖥️" }
+      { value: "materiel", label: "Matériel Pro", icon: "🖥️" },
+      { value: "audit", label: "Audit & Conseil", icon: "🔍" } // Nouvelle option
     ],
     progress: 0,
     nextStep: function(choice) {
       return choice + "-1"; // Aller à la première question du service choisi
     }
   },
-  
+
   // Questions Maintenance & assistance
   "maintenance-1": {
     question: "Combien de postes doivent être maintenus ?",
@@ -87,7 +88,7 @@ const questionnaireConfig = {
     responseKey: "prestataire",
     nextStep: "contact-1"
   },
-  
+
   // Questions Sécurité informatique
   "securite-1": {
     question: "Combien de postes à sécuriser ?",
@@ -153,7 +154,7 @@ const questionnaireConfig = {
       { value: "inconnu", label: "Je ne sais pas" }
     ],
     progress: 35,
-    responseKey: "audit",
+    responseKey: "audit_secu_interne", // Renommé pour éviter conflit avec parcours audit global
     nextStep: "securite-7"
   },
   "securite-7": {
@@ -199,7 +200,7 @@ const questionnaireConfig = {
     responseKey: "sensibilisation",
     nextStep: "contact-1"
   },
-  
+
   // Questions Cloud & sauvegarde
   "cloud-1": {
     question: "Solution cloud existante ?",
@@ -310,7 +311,7 @@ const questionnaireConfig = {
     responseKey: "chiffrement_cloud",
     nextStep: "contact-1"
   },
-  
+
   // Questions Réseau / Téléphonie
   "reseau-1": {
     question: "Postes ou lignes à connecter ?",
@@ -376,7 +377,7 @@ const questionnaireConfig = {
       { value: "non", label: "Non" }
     ],
     progress: 35,
-    responseKey: "audit_reseau",
+    responseKey: "audit_reseau_interne", // Renommé
     nextStep: "reseau-7"
   },
   "reseau-7": {
@@ -423,7 +424,7 @@ const questionnaireConfig = {
     responseKey: "monitoring",
     nextStep: "contact-1"
   },
-  
+
   // Questions Matériel Pro
   "materiel-1": {
     question: "Équiper ou renouveler ?",
@@ -491,13 +492,62 @@ const questionnaireConfig = {
     nextStep: "contact-1",
     errorMessage: "Veuillez préciser ou indiquer 'Aucune préférence'"
   },
-  
-  // Questions Contact
+
+  // Questions Audit & Conseil (NOUVELLE SECTION)
+  "audit-1": {
+    question: "Quel type d'audit ou de conseil vous intéresse principalement ?",
+    choices: [
+      { value: "audit_si_general", label: "Audit général du Système d'Information" },
+      { value: "audit_securite", label: "Audit de sécurité spécifique" },
+      { value: "audit_performance", label: "Audit de performance (réseau, applications)" },
+      { value: "audit_conformite_rgpd", label: "Audit de conformité (RGPD, normes métiers)" },
+      { value: "conseil_strategique_it", label: "Conseil stratégique IT / Schéma directeur" },
+      { value: "accompagnement_projet", label: "Accompagnement sur un projet spécifique" },
+      { value: "autre_audit_conseil", label: "Autre (à préciser)" }
+    ],
+    progress: 10, // Ajustez la progression pour qu'elle soit cohérente avec les autres parcours
+    responseKey: "type_audit_conseil",
+    nextStep: "audit-2"
+  },
+  "audit-2": {
+    question: "Quelle est la taille approximative de votre entreprise (nombre d'employés) ?",
+    choices: [
+      { value: "tpe_1_9", label: "Très Petite Entreprise (1-9 employés)" },
+      { value: "pme_10_49", label: "Petite Entreprise (10-49 employés)" },
+      { value: "pme_50_250", label: "Moyenne Entreprise (50-250 employés)" },
+      { value: "eti_plus_250", label: "Plus de 250 employés" }
+    ],
+    progress: 20,
+    responseKey: "taille_entreprise_audit",
+    nextStep: "audit-3"
+  },
+  "audit-3": {
+    question: "Avez-vous des objectifs clairs ou des problématiques identifiées que cet audit/conseil devrait adresser ?",
+    type: "text",
+    placeholder: "Ex: Optimiser les coûts, améliorer la sécurité, préparer une migration cloud...",
+    progress: 30,
+    responseKey: "objectifs_preoccupations_audit",
+    nextStep: "audit-4", // Ajout d'une question sur le budget/délai possible
+    errorMessage: "Veuillez décrire vos objectifs ou indiquer 'À définir ensemble'"
+  },
+  "audit-4": {
+    question: "Avez-vous une idée de votre budget ou un délai pour cette prestation d'audit/conseil ?",
+    choices: [
+      { value: "budget_defini_oui", label: "Oui, budget/délai approximatif défini" },
+      { value: "budget_defini_non", label: "Non, à évaluer selon les recommandations" },
+      { value: "ne_sais_pas", label: "Je ne sais pas encore" }
+    ],
+    progress: 40,
+    responseKey: "budget_delai_audit",
+    nextStep: "contact-1" // Mène ensuite aux questions de contact
+  },
+
+  // Questions Contact (EXISTANTES - doivent être présentes à la fin)
   "contact-1": {
     question: "Où est située votre entreprise ?",
     type: "text",
     placeholder: "Ville, pays...",
-    progress: 70,
+    progress: 70, // La progression doit être plus élevée ici
     responseKey: "location",
     nextStep: "contact-2",
     errorMessage: "Veuillez indiquer votre localisation"
