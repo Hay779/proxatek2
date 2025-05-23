@@ -83,7 +83,7 @@
             <a href="contact.html" data-i18n="mobileNav.contact">Contact</a>
             <hr>
             <a href="questionnaire.html" class="btn btn-accent-custom mobile-nav-btn" data-i18n="mobileNav.quoteSimulator">Simulateur Devis Complet</a>
-            <a href="contact.html?urgence=true" class="btn btn-secondary-custom mobile-nav-btn" data-i18n="mobileNav.urgentSupport">Support Urgent</a>
+            <a href="support-urgent.html" class="btn btn-secondary-custom mobile-nav-btn" data-i18n="mobileNav.urgentSupport">Support Urgent</a>
         </nav>
     </header>
 
@@ -102,34 +102,51 @@
 <!-- ===== END: MAIN NAVIGATION BLOCK ===== -->
 
     <main>
-        <section class="hero-section-custom-actions">
-            <div class="container hero-actions-container-v3">
-                <div class="hero-intro-text-v3">
+        <section class="hero-main-v2">
+            <div class="hero-main-v2-background">
+                <div class="hero-main-v2-overlay"></div>
+                <div class="container hero-main-v2-content">
                     <h1 data-i18n="hero.title">Votre Informatique, Notre Expertise.</h1>
                     <p data-i18n="hero.subtitle">Des solutions IT complètes pour TPE/PME, du devis personnalisé au support urgent. Nous sommes là pour vous accompagner.</p>
                 </div>
-                <div class="hero-primary-actions-grid-v3">
-                    <a href="questionnaire.html" class="hero-action-card-v3">
-                        <div class="hero-action-card-icon-v3"><i class="fas fa-file-signature" aria-hidden="true"></i></div>
-                        <div class="hero-action-card-content-v3">
-                            <h3 data-i18n="hero.actions.quoteSimulator.title">Simulateur de Devis</h3>
-                            <p data-i18n="hero.actions.quoteSimulator.description">Évaluez vos besoins et obtenez une estimation sur mesure.</p>
-                        </div>
-                    </a>
-                    <a href="contact.html?urgence=true" class="hero-action-card-v3">
-                        <div class="hero-action-card-icon-v3"><i class="fas fa-life-ring" aria-hidden="true"></i></div>
-                        <div class="hero-action-card-content-v3">
-                            <h3 data-i18n="hero.actions.urgentSupport.title">Support Urgent</h3>
-                            <p data-i18n="hero.actions.urgentSupport.description">Une panne ? Notre équipe d'astreinte est là pour vous aider.</p>
-                        </div>
-                    </a>
-                    <a href="contact.html" class="hero-action-card-v3">
-                        <div class="hero-action-card-icon-v3"><i class="fas fa-comments" aria-hidden="true"></i></div>
-                        <div class="hero-action-card-content-v3">
-                            <h3 data-i18n="hero.actions.getInTouch.title">Prendre Contact</h3>
-                            <p data-i18n="hero.actions.getInTouch.description">Discutons de votre projet et de vos ambitions avec nos experts.</p>
-                        </div>
-                    </a>
+            </div>
+            <div class="hero-main-v2-actions-wrapper">
+                <div class="container">
+                    <div class="hero-primary-actions-grid-v3">
+                        <a href="questionnaire.html" class="hero-action-card-v3 hero-action-card-v2-style btn-icon-text-bar">
+                            <span class="btn-icon-wrapper">
+                                <img src="img/icon-simulateur-devis.svg" alt="Icône Simulateur de Devis" class="hero-card-custom-icon"
+                                     onerror="this.style.display='none'; this.parentElement.innerHTML = '<i class=\'fas fa-file-signature\' aria-hidden=\'true\'></i>';">
+                            </span>
+                            <span class="btn-separator-element"></span>
+                            <span class="btn-text-wrapper">
+                                <h3 data-i18n="hero.actions.quoteSimulator.title">Simulateur de Devis</h3>
+                                <p data-i18n="hero.actions.quoteSimulator.description">Évaluez vos besoins et obtenez une estimation sur mesure.</p>
+                            </span>
+                        </a>
+                       <a href="support-urgent.html" class="hero-action-card-v3 hero-action-card-v2-style btn-icon-text-bar">
+                            <span class="btn-icon-wrapper">
+                                <img src="img/icon-support-urgent.svg" alt="Icône Support Urgent" class="hero-card-custom-icon"
+                                     onerror="this.style.display='none'; this.parentElement.innerHTML = '<i class=\'fas fa-life-ring\' aria-hidden=\'true\'></i>';">
+                            </span>
+                            <span class="btn-separator-element"></span>
+                            <span class="btn-text-wrapper">
+                                <h3 data-i18n="hero.actions.urgentSupport.title">Support Urgent</h3>
+                                <p data-i18n="hero.actions.urgentSupport.description">Une panne ? Notre équipe d'astreinte est là pour vous aider.</p>
+                            </span>
+                        </a>
+                        <a href="contact.html" class="hero-action-card-v3 hero-action-card-v2-style btn-icon-text-bar">
+                            <span class="btn-icon-wrapper">
+                                 <img src="img/icon-prendre-contact.svg" alt="Icône Prendre Contact" class="hero-card-custom-icon"
+                                      onerror="this.style.display='none'; this.parentElement.innerHTML = '<i class=\'fas fa-comments\' aria-hidden=\'true\'></i>';">
+                            </span>
+                            <span class="btn-separator-element"></span>
+                            <span class="btn-text-wrapper">
+                                <h3 data-i18n="hero.actions.getInTouch.title">Prendre Contact</h3>
+                                <p data-i18n="hero.actions.getInTouch.description">Discutons de votre projet et de vos ambitions avec nos experts.</p>
+                            </span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -285,7 +302,7 @@
                     </div>
                 </div>
                 <div class="text-center" style="margin-top: 40px;">
-                    <a href="services/audit.html" class="btn btn-accent-custom btn-large" data-i18n="auditSection.requestAuditButton">Demander un Audit IT Complet <i class="fas fa-tasks" aria-hidden="true"></i></a>
+                    <a href="questionnaire.html?type=audit" class="btn btn-accent-custom btn-large" data-i18n="auditSection.requestAuditButton">Demander un Audit IT Complet <i class="fas fa-tasks" aria-hidden="true"></i></a>
                 </div>
             </div>
         </section>
@@ -330,7 +347,7 @@
                     </div>
                 </div>
                  <div class="all-services-link-wrapper text-center" style="margin-top: 40px;">
-                    <a href="solutions/index.html" class="btn btn-outline btn-large">Toutes nos solutions par métier <i class="fas fa-briefcase" aria-hidden="true"></i></a>
+                    <a href="solutions/solution.html" class="btn btn-outline btn-large">Toutes nos solutions par métier <i class="fas fa-briefcase" aria-hidden="true"></i></a>
                 </div>
             </div>
         </section>
@@ -521,7 +538,7 @@
         </div>
     </footer>
 
-    <a href="contact.html?urgence=true" class="floating-help-btn-proxatek" aria-label="Contacter Proxatek pour un support urgent">
+    <a href="support-urgent.html" class="floating-help-btn-proxatek" aria-label="Contacter Proxatek pour un support urgent">
         <i class="fas fa-headset" aria-hidden="true"></i>
     </a>
 

@@ -37,7 +37,7 @@ body {
     font-family: var(--custom-font-family);
     line-height: 1.7; /* Inspiré Hostinger pour plus d'aération */
     color: var(--custom-text-dark-primary);
-    background-color: var(--custom-bg-white); /* CHANGEMENT: Fond du body en blanc pour voir l'effet de la marge */
+    background-color: var(--custom-bg-white);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -358,13 +358,42 @@ p {
     }
 }
 
+/* --- HERO SECTION (OLD - .hero-section-custom-actions - KEPT FOR REFERENCE) --- */
+.hero-section-custom-actions { 
+    background-color: var(--custom-bg-white); 
+    color: var(--custom-text-dark-primary);
+    padding: 80px 0; text-align: center;
+}
+.hero-actions-container-v3 .hero-intro-text-v3 h1 { color: var(--custom-text-dark-primary); margin-bottom: 20px;}
+.hero-actions-container-v3 .hero-intro-text-v3 p {
+    font-size: 1.1rem; max-width: 680px; margin: 0 auto 100px auto; color: var(--custom-text-medium-gray);
+}
+/* .hero-primary-actions-grid-v3 is used by the new hero for the card grid */
+.hero-primary-actions-grid-v3 {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px; text-align: left;
+}
+/* .hero-action-card-v3 is used as a base by the new hero cards */
+.hero-action-card-v3 { 
+    background-color: var(--custom-bg-lavender-mist); 
+    padding: 22px; border-radius: var(--custom-border-radius-cards);
+    transition: var(--custom-transition); color: var(--custom-text-dark-primary);
+    display: flex; /* align-items will be overridden by specific hero card styles */
+    gap: 15px;
+    border: 1px solid transparent; 
+}
+.hero-action-card-v3:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--custom-box-shadow-soft);
+    border-color: var(--custom-border-subtle-lavender);
+    text-decoration: none;
+    background-color: var(--custom-bg-white);
+}
+/* .hero-action-card-icon-v3 and .hero-action-card-content-v3 are NOT directly used by new hero structure */
+/* Their styles are effectively replaced by .btn-icon-wrapper and .btn-text-wrapper specific styles */
+
 
 /* --- HERO MAIN V2 (New Hero Section) --- */
-.hero-main-v2 { /* Ajout pour espacer la section entière du header */
-    margin-top: 30px; /* Ajustez cette valeur selon vos besoins */
-    /* background-color: var(--custom-bg-white); Si vous voulez un fond distinct pour toute la section hero */
-}
-
 .hero-main-v2-background {
     background-image: url('img/hero-main-background.jpg'); /* REMPLACEZ par votre image */
     background-color: var(--custom-primary-dark); 
@@ -373,9 +402,8 @@ p {
     padding: 100px 0; 
     position: relative;
     text-align: center;
-    border-radius: 0 0 var(--custom-border-radius-cards) var(--custom-border-radius-cards); /* Coins arrondis en bas seulement */
+    border-radius: 0 0 20px 20px; 
     overflow: hidden; 
-    /* margin-bottom: 30px;  Pour l'espace entre l'image et les cartes d'action, géré par le wrapper maintenant */
 }
 
 .hero-main-v2-overlay {
@@ -414,72 +442,56 @@ p {
 }
 
 .hero-main-v2-actions-wrapper {
-    padding-top: 30px; /* Espacement entre la partie image et les cartes d'action */
-    padding-bottom: 30px; /* Espacement sous les cartes d'action */
-    background-color: var(--custom-bg-white); /* Assure un fond blanc sous les cartes si le body n'est pas blanc */
+    padding: 50px 0;
+    background-color: var(--custom-bg-white); 
 }
 
-/* Styles pour les cartes (.hero-action-card-v3 est la base) */
-.hero-primary-actions-grid-v3 { /* Utilisé pour le layout des cartes */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-.hero-action-card-v3 { /* Style de base de chaque carte */
-    background-color: var(--custom-bg-white); /* Fond des cartes */
+/* Style modifier for cards in hero-main-v2 */
+.hero-action-card-v2-style {
+    background-color: var(--custom-bg-white);
     border: 1px solid var(--custom-border-light); 
     box-shadow: 0 3px 10px rgba(47, 26, 75, 0.06);
     padding: 20px; /* Padding global de la carte */
-    border-radius: var(--custom-border-radius-cards);
-    transition: var(--custom-transition);
-    text-decoration: none; /* Pour les liens <a> */
-    display: flex; /* Requis pour la structure interne avec barre */
+    /* display: flex; est déjà sur .hero-action-card-v3 */
     align-items: flex-start; /* Alignement vertical initial pour les éléments enfants */
 }
 
-.hero-action-card-v3:hover {
+.hero-action-card-v2-style:hover {
     background-color: var(--custom-bg-lavender-mist); 
     border-color: var(--custom-border-subtle-lavender);
     box-shadow: var(--custom-box-shadow-soft-hover); 
     transform: translateY(-3px);
-    color: var(--custom-text-dark-primary); /* Assurer que le texte reste lisible */
 }
-.hero-action-card-v3:hover h3,
-.hero-action-card-v3:hover p {
-    color: var(--custom-text-dark-primary); /* Assurer que le texte reste lisible */
-}
-
 
 /* --- Styles pour les cartes d'action du HERO V2 avec icône, barre, texte --- */
-.hero-action-card-v3.btn-icon-text-bar { /* Classe spécifique pour la nouvelle structure interne */
-    gap: 0; /* Supprime le gap par défaut si on gère l'espacement en interne */
+.hero-action-card-v2-style.btn-icon-text-bar {
+    gap: 0; /* Supprime le gap de .hero-action-card-v3 si on gère l'espacement en interne */
 }
 
-.hero-action-card-v3.btn-icon-text-bar > .btn-icon-wrapper {
+.hero-action-card-v2-style.btn-icon-text-bar > .btn-icon-wrapper {
     padding-right: 15px; /* Espace entre l'icône/image et la barre */
     flex-shrink: 0;
+    /* Dimensions de l'icône/image */
     width: 40px; 
     height: 40px; 
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.hero-action-card-v3.btn-icon-text-bar > .btn-icon-wrapper .hero-card-custom-icon { /* Cible l'image SVG */
+.hero-action-card-v2-style.btn-icon-text-bar > .btn-icon-wrapper .hero-card-custom-icon {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    display: block;
 }
-/* Fallback FA icon styling if image onerror est utilisé (il ne l'est plus dans votre dernier HTML) */
-.hero-action-card-v3.btn-icon-text-bar > .btn-icon-wrapper i {
+/* Fallback FA icon styling if image fails */
+.hero-action-card-v2-style.btn-icon-text-bar > .btn-icon-wrapper i {
     font-size: 1.6rem; 
     color: var(--custom-accent-magenta);
     line-height: 1;
 }
 
 
-.hero-action-card-v3.btn-icon-text-bar > .btn-separator-element {
+.hero-action-card-v2-style.btn-icon-text-bar > .btn-separator-element {
     width: 1px;
     background-color: var(--custom-border-subtle-lavender); 
     align-self: stretch; 
@@ -489,12 +501,12 @@ p {
     transition: background-color var(--custom-transition);
 }
 
-.hero-action-card-v3.btn-icon-text-bar > .btn-text-wrapper {
+.hero-action-card-v2-style.btn-icon-text-bar > .btn-text-wrapper {
     padding-left: 15px; /* Espace entre la barre et le bloc de texte */
     flex-grow: 1;       
 }
 
-.hero-action-card-v3.btn-icon-text-bar .btn-text-wrapper h3 {
+.hero-action-card-v2-style.btn-icon-text-bar .btn-text-wrapper h3 {
     font-size: 1.15rem; 
     font-weight: 600;
     margin-top: 0; /* S'assurer que h3 est bien aligné en haut */
@@ -502,14 +514,14 @@ p {
     color: var(--custom-text-dark-primary);
 }
 
-.hero-action-card-v3.btn-icon-text-bar .btn-text-wrapper p {
+.hero-action-card-v2-style.btn-icon-text-bar .btn-text-wrapper p {
     font-size: 0.88rem; 
     color: var(--custom-text-medium-gray);
     margin-bottom: 0;
     line-height: 1.5;
 }
 
-.hero-action-card-v3.btn-icon-text-bar:hover > .btn-separator-element {
+.hero-action-card-v2-style.btn-icon-text-bar:hover > .btn-separator-element {
     background-color: var(--custom-accent-magenta); 
 }
 
@@ -1259,7 +1271,7 @@ ul.icon-list.custom-list-style li strong {
     .cta-title-custom { font-size: 1.7rem; }
 
     h3 { font-size: 1.3rem; }
-    .hero-action-card-v3.btn-icon-text-bar .btn-text-wrapper h3 { font-size: 1.1rem; }
+    .hero-action-card-v2-style.btn-icon-text-bar .btn-text-wrapper h3 { font-size: 1.1rem; }
     .prestation-card-custom h3 { font-size: 1.25rem; }
     .audit-step h3 { font-size: 1.05rem; }
     .sector-card-content h3 { font-size: 1.15rem; }
@@ -1283,7 +1295,7 @@ ul.icon-list.custom-list-style li strong {
     #diagnostic-it-inline .subtitle-devis { font-size: 0.95rem; }
     #diagnostic-it-inline .devis-question { font-size: 1.1rem; } 
 
-    .hero-action-card-v3.btn-icon-text-bar .btn-text-wrapper p { font-size: 0.85rem; }
+    .hero-action-card-v2-style.btn-icon-text-bar .btn-text-wrapper p { font-size: 0.85rem; }
 
 
     .header-actions-custom { display: none; } 
@@ -1294,14 +1306,10 @@ ul.icon-list.custom-list-style li strong {
     
     .hero-main-v2-background {
         padding: 80px 0;
-        /* border-radius: 0 0 15px 15px; Reste inchangé */
+        border-radius: 0 0 15px 15px;
     }
     .hero-main-v2-actions-wrapper {
-        padding-top: 25px; /* Réduire l'espace pour rapprocher les cartes */
-        padding-bottom: 25px;
-    }
-    .hero-main-v2 {
-        margin-top: 25px; /* Réduire la marge supérieure */
+        padding: 40px 0;
     }
 
 
@@ -1339,7 +1347,7 @@ ul.icon-list.custom-list-style li strong {
     .cta-title-custom { font-size: 1.5rem; }
 
     h3 { font-size: 1.2rem; line-height: 1.35; } 
-    .hero-action-card-v3.btn-icon-text-bar .btn-text-wrapper h3 { font-size: 1.05rem; }
+    .hero-action-card-v2-style.btn-icon-text-bar .btn-text-wrapper h3 { font-size: 1.05rem; }
     .prestation-card-custom h3 { font-size: 1.15rem; }
     .audit-step h3 { font-size: 1rem; }
     .sector-card-content h3 { font-size: 1.1rem; }
@@ -1361,8 +1369,8 @@ ul.icon-list.custom-list-style li strong {
     .hero-main-v2-content p { font-size: 1rem; } 
     
     .hero-primary-actions-grid-v3 { grid-template-columns: 1fr; gap: 15px; } 
-    .hero-action-card-v3 { padding: 18px; } /* Cela affecte aussi .hero-action-card-v3.btn-icon-text-bar */
-    .hero-action-card-v3.btn-icon-text-bar .btn-text-wrapper p { font-size: 0.82rem; }
+    .hero-action-card-v2-style { padding: 18px; }
+    .hero-action-card-v2-style.btn-icon-text-bar .btn-text-wrapper p { font-size: 0.82rem; }
 
 
     #diagnostic-it-inline .devis-question { font-size: 1rem; } 
@@ -1389,15 +1397,32 @@ ul.icon-list.custom-list-style li strong {
     
     .hero-main-v2-background {
         padding: 60px 0;
-        /* border-radius: 0 0 10px 10px; Reste inchangé */
+        border-radius: 0 0 10px 10px;
     }
     .hero-main-v2-actions-wrapper {
-        padding-top: 20px; /* Réduire encore plus l'espace */
-        padding-bottom: 20px;
+        padding: 30px 0;
     }
-    .hero-main-v2 {
-        margin-top: 20px; /* Réduire encore plus la marge supérieure */
+    /* For mobile, hero cards can stack icon above text or keep side-by-side if space allows */
+    /* Current setup keeps them side-by-side but might be tight. */
+    /* If stacking is preferred on small mobile: */
+    /*
+    .hero-action-card-v2-style.btn-icon-text-bar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
+    .hero-action-card-v2-style.btn-icon-text-bar > .btn-icon-wrapper {
+        padding-right: 0;
+        margin-bottom: 10px;
+    }
+    .hero-action-card-v2-style.btn-icon-text-bar > .btn-separator-element {
+        display: none; 
+    }
+    .hero-action-card-v2-style.btn-icon-text-bar > .btn-text-wrapper {
+        padding-left: 0;
+    }
+    */
+
 
     #diagnostic-it-inline .devis-options-grid {  
         gap: 15px; 
@@ -1454,7 +1479,7 @@ ul.icon-list.custom-list-style li strong {
     .cta-title-custom { font-size: 1.3rem; }
     
     h3 { font-size: 1.1rem; }
-    .hero-action-card-v3.btn-icon-text-bar .btn-text-wrapper h3 { font-size: 1rem; }
+    .hero-action-card-v2-style.btn-icon-text-bar .btn-text-wrapper h3 { font-size: 1rem; }
 
 
     .section-subtitle-custom { font-size: 0.85rem; }
@@ -1466,21 +1491,21 @@ ul.icon-list.custom-list-style li strong {
 
     .hero-main-v2-background { padding: 50px 0; }
 
-    .hero-action-card-v3.btn-icon-text-bar > .btn-icon-wrapper {
+    .hero-action-card-v2-style.btn-icon-text-bar > .btn-icon-wrapper {
         width: 30px;
         height: 30px;
         padding-right: 10px;
     }
-    .hero-action-card-v3.btn-icon-text-bar > .btn-icon-wrapper i { /* Style pour l'icône FA ici */
+    .hero-action-card-v2-style.btn-icon-text-bar > .btn-icon-wrapper i { /* Fallback icon size */
         font-size: 1.2rem;
     }
-    .hero-action-card-v3.btn-icon-text-bar > .btn-text-wrapper {
+    .hero-action-card-v2-style.btn-icon-text-bar > .btn-text-wrapper {
         padding-left: 10px;
     }
-    .hero-action-card-v3.btn-icon-text-bar .btn-text-wrapper h3 {
+    .hero-action-card-v2-style.btn-icon-text-bar .btn-text-wrapper h3 {
         font-size: 0.95rem;
     }
-    .hero-action-card-v3.btn-icon-text-bar .btn-text-wrapper p {
+    .hero-action-card-v2-style.btn-icon-text-bar .btn-text-wrapper p {
         font-size: 0.8rem;
     }
     
