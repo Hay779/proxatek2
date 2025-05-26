@@ -3,25 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support Urgent IT - Intervention Rapide Proxatek</title>
-    <meta name="description" content="En cas de panne informatique urgente, contactez Proxatek. Intervention à distance en moins de 4h et sur site en 1-12h pour rétablir vos services.">
+    <title>Support Urgent - Processus d'Intervention - Proxatek</title>
+    <meta name="description" content="Contactez notre équipe d'astreinte pour un support IT urgent et découvrez notre processus d'intervention rapide. Proxatek est là pour vous aider.">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="icon" href="img/proxatek-icon-bleu.png" type="image/png"> <!-- Assurez-vous que ce chemin est correct -->
+    <link rel="icon" href="img/LogoP.png" type="image/png">
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="support-urgent.css"> <!-- Nouveau CSS -->
-
+    <link rel="stylesheet" href="style.css"> <!-- Lien vers votre CSS principal -->
 </head>
 <body>
 
+    <!-- Header du site (peut être une inclusion si vous utilisez un template engine) -->
     <header class="site-header-custom">
         <div class="container header-custom-container">
             <div class="logo-proxatek-custom">
                 <a href="index.html" title="Accueil Proxatek - Solutions IT pour PME">
                     <picture>
-                        <source media="(max-width:850px)" srcset="img/logoP.png">
+                        <source media="(max-width:850px)" srcset="img/LogoP.png">
                         <img src="img/Logoproxatek.png" alt="Logo Proxatek - Solutions IT pour PME"
                              onerror="this.style.display='none'; this.onerror=null; document.getElementById('logoTextFallbackHeaderSupport').style.display='block';"
                              loading="eager">
@@ -30,203 +29,185 @@
                 </a>
             </div>
             <nav class="main-nav-custom" aria-label="Navigation principale de bureau">
-                 <a href="index.html#pourquoi-proxatek" data-i18n="nav.whyUsShort">Pourquoi Nous ?</a>
-                 <a href="actualites.html" data-i18n="nav.newsShort">Actualités</a>
-                 <a href="contact.html" data-i18n="nav.contactShort">Contact</a>
+                <!-- Liens de navigation principale desktop (si ajoutés) -->
             </nav>
-            <div class="header-actions-custom">
-                <a href="tel:+33412345678" class="phone-link-custom">
-                    <i class="fas fa-phone-alt" aria-hidden="true"></i> 04 12 34 56 78
+            <div class="header-actions-combined">
+                <a href="tel:+33412345678" class="phone-link-header">
+                    <i class="fas fa-phone-alt" aria-hidden="true"></i> 
+                    <span class="phone-text-header">04 12 34 56 78</span>
                 </a>
-                <a href="questionnaire.html" class="btn btn-primary-custom cta-header-desktop" data-i18n="nav.startQuote">Commencer votre devis</a>
-            </div>
-            <div class="header-actions-mobile-custom">
-                <a href="tel:+33412345678" class="phone-link-mobile-custom">
-                    <i class="fas fa-phone-alt" aria-hidden="true"></i>
-                    <span class="phone-text-mobile">04 12 34 56 78</span>
-                </a>
-                <a href="questionnaire.html" class="btn btn-primary-custom btn-small cta-header-mobile" data-i18n="nav.startQuoteMobile">Devis</a>
-                <button class="mobile-menu-toggle-custom" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileNavMenuUniversal">
+                <a href="questionnaire.html" class="btn btn-primary-custom cta-header-main">Commencer votre devis</a>
+                <button class="mobile-menu-toggle-custom" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileNavMenuSupport">
                     <i class="fas fa-bars icon-open" aria-hidden="true"></i>
                     <i class="fas fa-times icon-close" aria-hidden="true" style="display: none;"></i>
                 </button>
             </div>
         </div>
-        <nav class="mobile-nav-custom" id="mobileNavMenuUniversal" aria-label="Menu de navigation mobile">
-            <a href="index.html#prestations-proxatek" class="mobile-nav-main-link" data-i18n="mobileNav.ourServices">Nos Services</a>
-            <hr>
-            <a href="services/infogerance.html" data-i18n="services.infogerance.titleShort">Infogérance</a>
-            <a href="services/cybersecurite.html" data-i18n="services.cybersecurity.titleShort">Cybersécurité</a>
-            <a href="services/cloud.html" data-i18n="services.cloud.titleShort">Solutions Cloud</a>
-            <a href="services/reseau.html" data-i18n="services.network.titleShort">Réseau</a>
-            <a href="services/materiel.html" data-i18n="services.hardware.titleShort">Matériel</a>
-            <a href="services/audit.html" data-i18n="services.audit.titleShort">Audit & Conseil</a>
-            <hr>
-            <a href="solutions/index.html" class="mobile-nav-main-link" data-i18n="mobileNav.solutionsByTrade">Solutions par Métier</a>
-             <hr>
-            <a href="index.html#pourquoi-proxatek" data-i18n="mobileNav.whyUs">Pourquoi Nous ?</a>
-            <a href="actualites.html" data-i18n="mobileNav.news">Actualités</a>
-            <a href="a-propos.html" data-i18n="mobileNav.aboutUs">À Propos</a>
-            <a href="partenariat.html" data-i18n="mobileNav.partnership">Partenariat</a>
-            <a href="contact.html" data-i18n="mobileNav.contact">Contact</a>
-            <hr>
-            <a href="questionnaire.html" class="btn btn-accent-custom mobile-nav-btn" data-i18n="mobileNav.quoteSimulator">Simulateur Devis Complet</a>
-            <a href="support-urgent.html" class="btn btn-secondary-custom mobile-nav-btn active" data-i18n="mobileNav.urgentSupport">Support Urgent</a> <!-- Marqué comme actif -->
+        <nav class="mobile-nav-custom" id="mobileNavMenuSupport" aria-label="Menu de navigation mobile">
+            <a href="index.html#prestations-proxatek">Nos Services</a> <hr>
+            <a href="services/infogerance.html">Infogérance</a>
+            <a href="services/cybersecurite.html">Cybersécurité</a>
+            <a href="services/cloud.html">Solutions Cloud</a>
+            <a href="services/reseau.html">Réseau</a>
+            <a href="services/materiel.html">Matériel</a>
+            <a href="services/audit.html">Audit & Conseil</a> <hr>
+            <a href="index.html#pourquoi-proxatek">Pourquoi Nous ?</a>
+            <a href="actualites.html">Actualités</a>
+            <a href="a-propos.html">À Propos</a>
+            <a href="partenariat.html">Partenariat</a>
+            <a href="contact.html">Contact</a> <hr>
+            <a href="questionnaire.html" class="btn btn-accent-custom mobile-nav-btn">Simulateur Devis Complet</a>
+            <a href="support-urgent.html" class="btn btn-secondary-custom mobile-nav-btn active">Support Urgent</a> 
         </nav>
     </header>
-
+   
     <nav class="services-navigation-bar" aria-label="Navigation des services principaux">
         <div class="container services-nav-container">
             <ul>
-                <li><a href="services/infogerance.html"><i class="fas fa-cogs" aria-hidden="true"></i> <span class="service-nav-text" data-i18n="services.infogerance.titleShort">Infogérance</span></a></li>
-                <li><a href="services/cybersecurite.html"><i class="fas fa-shield-virus" aria-hidden="true"></i> <span class="service-nav-text" data-i18n="services.cybersecurity.titleShort">Cybersécurité</span></a></li>
-                <li><a href="services/cloud.html"><i class="fas fa-cloud" aria-hidden="true"></i> <span class="service-nav-text" data-i18n="services.cloud.titleShort">Solutions Cloud</span></a></li>
-                <li><a href="services/reseau.html"><i class="fas fa-network-wired" aria-hidden="true"></i> <span class="service-nav-text" data-i18n="services.network.titleShort">Réseau</span></a></li>
-                <li><a href="services/materiel.html"><i class="fas fa-laptop-code" aria-hidden="true"></i> <span class="service-nav-text" data-i18n="services.hardware.titleShort">Matériel</span></a></li>
-                <li><a href="services/audit.html"><i class="fas fa-clipboard-check" aria-hidden="true"></i> <span class="service-nav-text" data-i18n="services.audit.titleShort">Audit & Conseil</span></a></li>
-                <li><a href="solutions/index.html"><i class="fas fa-briefcase" aria-hidden="true"></i> <span class="service-nav-text" data-i18n="nav.solutionsByTradeShort">Solutions Métiers</span></a></li>
+                <li><a href="services/infogerance.html"><i class="fas fa-cogs" aria-hidden="true"></i> <span class="service-nav-text">Infogérance</span></a></li>
+                <li><a href="services/cybersecurite.html"><i class="fas fa-shield-virus" aria-hidden="true"></i> <span class="service-nav-text">Cybersécurité</span></a></li>
+                <li><a href="services/cloud.html"><i class="fas fa-cloud" aria-hidden="true"></i> <span class="service-nav-text">Solutions Cloud</span></a></li>
+                <li><a href="services/reseau.html"><i class="fas fa-network-wired" aria-hidden="true"></i> <span class="service-nav-text">Réseau</span></a></li>
+                <li><a href="services/materiel.html"><i class="fas fa-laptop-code" aria-hidden="true"></i> <span class="service-nav-text">Matériel</span></a></li>
+                <li><a href="services/audit.html"><i class="fas fa-clipboard-check" aria-hidden="true"></i> <span class="service-nav-text">Audit & Conseil</span></a></li>
             </ul>
         </div>
     </nav>
 
     <main>
-        <section class="hero-support-urgent">
+        <section class="support-urgent-section section-padding"> 
             <div class="container">
-                <div class="breadcrumb-service">
-                    <a href="index.html">Accueil</a> > <span class="current-service">Support Urgent</span>
-                </div>
-                <h1><i class="fas fa-life-ring"></i> Support Informatique <span class="highlight-text">Urgent</span></h1>
-                <p class="hero-subtitle-support">Une panne critique ? Votre activité est bloquée ? L'équipe d'astreinte Proxatek est là pour intervenir rapidement et rétablir vos services essentiels.</p>
-                <div class="support-contact-actions">
-                    <a href="tel:+33972101007" class="btn btn-danger-custom btn-large"><i class="fas fa-phone-volume"></i> Appelez le 09 72 10 10 07 (Urgence)</a> 
-                    <a href="contact.html?urgence=true&source=support-page" class="btn btn-outline btn-large"><i class="fas fa-envelope"></i> Envoyer un message urgent</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="intervention-process section-padding">
-            <div class="container">
-                <h2 class="section-title-custom">Notre Processus d'Intervention <span class="highlight-text">en Cas d'Urgence</span></h2>
-                <p class="section-subtitle-custom">Nous suivons une méthodologie claire pour une prise en charge efficace de votre demande urgente.</p>
+                <h1><i class="fas fa-life-ring" style="color: var(--site-danger-color); margin-right: 15px;"></i>Support Urgent</h1>
+                <p class="subtitle">Une panne ? Un problème bloquant ? Notre équipe d'astreinte est là pour vous aider rapidement.</p>
                 
-                <div class="process-schema">
-                    <div class="process-step">
-                        <div class="step-icon"><i class="fas fa-phone-alt"></i></div>
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Prise de Contact</h3>
-                            <p>Vous nous contactez par téléphone (numéro d'urgence) ou via notre formulaire de contact urgent.</p>
-                        </div>
+                <p>Pour une assistance immédiate, veuillez nous contacter directement :</p>
+
+                <div class="support-contact-options">
+                    <div class="contact-option">
+                        <h3>Par Téléphone</h3>
+                        <p>Le moyen le plus rapide pour une urgence.</p>
+                        <a href="tel:+33412345678" class="btn btn-primary-custom btn-large"> 
+                            <i class="fas fa-phone-alt"></i> Appeler le 04 12 34 56 78
+                        </a>
                     </div>
-                    <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
-                    <div class="process-step">
-                        <div class="step-icon"><i class="fas fa-diagnoses"></i></div>
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Diagnostic Immédiat</h3>
-                            <p>Un technicien qualifié évalue la nature et la criticité de la panne avec vous.</p>
-                        </div>
-                    </div>
-                    <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
-                    <div class="process-step">
-                        <div class="step-icon"><i class="fas fa-headset"></i></div>
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h3>Intervention à Distance (Priorité)</h3>
-                            <p>Si possible, nous prenons la main à distance sur vos systèmes pour une résolution rapide.</p>
-                            <span class="intervention-duree">Délai moyen : Moins de 4 heures</span>
-                        </div>
-                    </div>
-                    <div class="process-arrow optional-arrow"><i class="fas fa-arrow-down"></i><span class="arrow-label">Si non résolu</span></div>
-                    <div class="process-step">
-                        <div class="step-icon"><i class="fas fa-tools"></i></div>
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h3>Intervention sur Site (Si Nécessaire)</h3>
-                            <p>Si le problème ne peut être résolu à distance, un technicien est dépêché sur place.</p>
-                            <span class="intervention-duree">Délai moyen : 1 à 12 heures*</span>
-                        </div>
-                    </div>
-                     <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
-                    <div class="process-step">
-                        <div class="step-icon"><i class="fas fa-clipboard-check"></i></div>
-                        <div class="step-number">5</div>
-                        <div class="step-content">
-                            <h3>Résolution & Suivi</h3>
-                            <p>Nous nous assurons du rétablissement complet de vos services et effectuons un suivi.</p>
-                        </div>
+
+                    <div class="contact-option">
+                        <h3>Par Email (Moins urgent)</h3>
+                        <p>Pour les demandes moins critiques ou pour fournir des détails.</p>
+                        <a href="mailto:support@votredomaine.fr?subject=Demande de Support Urgent" class="btn btn-outline btn-large"> 
+                            <i class="fas fa-envelope"></i> Envoyer un Email
+                        </a>
                     </div>
                 </div>
-                <p class="text-center notice-delais">*Les délais d'intervention sur site peuvent varier en fonction de votre localisation et de la disponibilité des techniciens. Priorité aux clients sous contrat de maintenance.</p>
             </div>
         </section>
 
-        <section class="types-pannes section-padding section-bg-light">
+        <section class="process-intervention-section section-padding">
             <div class="container">
-                <h2 class="section-title-custom">Types de Pannes Fréquemment <span class="highlight-text">Prises en Charge</span></h2>
-                <div class="pannes-grid">
-                    <div class="panne-item">
-                        <i class="fas fa-server"></i>
-                        <h4>Panne Serveur</h4>
-                        <p>Serveur inaccessible, services critiques arrêtés, problèmes de base de données.</p>
-                    </div>
-                    <div class="panne-item">
-                        <i class="fas fa-wifi-slash"></i> <!-- fas fa-network-wired avec une croix ou fas fa-wifi-slash -->
-                        <h4>Problèmes Réseau</h4>
-                        <p>Coupure internet, impossibilité d'accéder aux partages, lenteurs excessives.</p>
-                    </div>
-                    <div class="panne-item">
-                        <i class="fas fa-shield-virus"></i>
-                        <h4>Cyberattaque / Ransomware</h4>
-                        <p>Suspicion d'infection, fichiers cryptés, demandes de rançon.</p>
-                    </div>
-                    <div class="panne-item">
-                        <i class="fas fa-laptop-code"></i>
-                        <h4>Poste de Travail Bloqué</h4>
-                        <p>Ordinateur qui ne démarre plus, écran bleu, impossibilité d'accéder à ses fichiers.</p>
-                    </div>
-                    <div class="panne-item">
-                        <i class="fas fa-hdd"></i>
-                        <h4>Perte de Données</h4>
-                        <p>Fichiers importants supprimés accidentellement, disque dur défaillant.</p>
-                    </div>
-                    <div class="panne-item">
-                        <i class="fas fa-envelope-open-text"></i>
-                        <h4>Problèmes de Messagerie</h4>
-                        <p>Impossibilité d'envoyer ou de recevoir des emails, serveur de messagerie hors service.</p>
+                <h2 class="section-title-custom">Notre Processus d'Intervention en Cas d'Urgence</h2>
+                <p class="section-subtitle-custom">Nous suivons une méthodologie claire pour une prise en charge efficace et transparente de votre demande urgente.</p>
+
+                <!-- ÉTAPE 1 - PLEINE LARGEUR -->
+                <div class="process-step-card-v2 process-step-fullwidth step-priority first-step-spacing">
+                    <div class="process-step-fullwidth-content">
+                        <div class="process-step-icon-v2"><i class="fas fa-phone-volume"></i></div>
+                        <div class="process-step-text-content">
+                            <h3 class="process-step-title-v2">1. Prise de Contact Immédiate</h3>
+                            <p class="process-step-description-v2">
+                                En cas de problème critique, chaque minute compte. Contactez-nous directement pour une évaluation rapide.
+                            </p>
+                            <div class="urgent-contact-info">
+                                <p><strong>Numéro d'Urgence (24/7 pour clients sous contrat) :</strong></p>
+                                <a href="tel:+33912345678" class="btn btn-danger-custom btn-large"> 
+                                    <i class="fas fa-bolt"></i> 09 12 34 56 78 
+                                </a>
+                                <p class="tarif-note">Tarif intervention d'urgence : à partir de XX€ HT/heure*</p> 
+                            </div>
+                        </div>
+                        <div class="process-step-visual">
+                            <i class="fas fa-headset" style="font-size: 5em; color: var(--site-primary-blue-hover); opacity: 0.7;"></i>
+                            <p style="font-size:0.9em; margin-top:10px; color: var(--site-text-medium);">Assistance téléphonique directe</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-         <section class="conditions-support section-padding">
-            <div class="container">
-                <h2 class="section-title-custom">Conditions de Notre <span class="highlight-text">Support Urgent</span></h2>
-                <div class="conditions-grid">
-                    <div class="condition-item">
-                        <h3><i class="fas fa-file-contract"></i> Pour nos Clients sous Contrat</h3>
-                        <p>Les clients bénéficiant d'un contrat de maintenance Proxatek profitent de conditions privilégiées pour le support urgent, incluant des tarifs préférentiels et une priorité d'intervention selon les termes de leur contrat (GTI/GTR définis).</p>
-                        <a href="services/infogerance.html" class="btn btn-secondary-custom btn-small">Voir nos offres d'infogérance</a>
-                    </div>
-                    <div class="condition-item">
-                        <h3><i class="fas fa-handshake"></i> Pour les Nouveaux Clients</h3>
-                        <p>Vous n'êtes pas encore client Proxatek ? Nous pouvons intervenir en urgence sous conditions. Un devis d'intervention sera établi suite au premier diagnostic téléphonique. Contactez-nous pour évaluer ensemble la situation.</p>
-                        <a href="contact.html?sujet=DemandeSupportUrgentHorsContrat" class="btn btn-primary-custom btn-small">Demander une intervention ponctuelle</a>
+                <!-- ÉTAPE 2 - DIAGNOSTIC RAPIDE - PLEINE LARGEUR, icône à droite -->
+                <div class="process-step-card-v2 process-step-fullwidth diagnostic-etape2-featured">
+                    <div class="process-step-fullwidth-content icon-right-layout"> 
+                        <div class="process-step-featured-text-alt"> 
+                            <h3 class="process-step-title-v2">2. Diagnostic Rapide & Conseil</h3>
+                            <p class="process-step-description-v2">
+                                Un technicien qualifié évalue avec vous la nature et la criticité de la panne. Souvent, quelques conseils ou une manipulation simple suffisent.
+                                Nous déterminons si une intervention à distance est possible (prioritaire) ou si un déplacement sur site est inévitable.
+                            </p>
+                             <p class="step-sub-note-v2" style="color: var(--site-primary-blue); font-weight: 500; text-align: left; margin-top:10px;">
+                               <i class="fas fa-lightbulb"></i> Notre but : Une solution claire et la plus rapide pour vous.
+                            </p>
+                        </div>
+                        <div class="process-step-featured-icon-alt"><i class="fas fa-magnifying-glass-chart"></i></div> 
+                         <div class="process-step-featured-visual-alt">
+                            <i class="fas fa-chalkboard-teacher" style="font-size: 5em; color: var(--site-primary-blue-hover); opacity: 0.7;"></i>
+                            <p style="font-size:0.9em; margin-top:10px; color: var(--site-text-medium);">Analyse & conseils pour une action ciblée</p>
+                        </div>
                     </div>
                 </div>
+
+                <h3 class="next-steps-title">Déroulement des interventions techniques :</h3>
+                <!-- GRILLE POUR LES ÉTAPES 3 & 4 (sur la même ligne) -->
+                <div class="process-steps-grid-v2 two-column-grid"> 
+                    <div class="process-step-card-v2 step-priority">
+                        <div class="process-step-icon-v2"><i class="fas fa-laptop-medical"></i></div>
+                        <h3 class="process-step-title-v2">3. Intervention à Distance</h3>
+                        <p class="process-step-description-v2">Notre priorité : une résolution rapide en prenant la main à distance sur vos systèmes, si possible.</p>
+                        <div class="step-info-box-v2">
+                            <i class="fas fa-clock"></i>
+                            <span>Délai moyen : <strong>Moins de 4 heures</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="process-step-card-v2">
+                        <div class="process-step-icon-v2"><i class="fas fa-truck-medical"></i></div>
+                        <h3 class="process-step-title-v2">4. Intervention sur Site</h3>
+                        <p class="step-sub-note-v2">Si la résolution à distance n'est pas concluante :</p>
+                        <p class="process-step-description-v2">Un technicien est immédiatement planifié et dépêché sur votre site.</p>
+                        <div class="step-info-box-v2">
+                             <i class="fas fa-clock"></i>
+                            <span>Délai moyen : <strong>1 à 12 heures*</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ÉTAPE 5 - Résolution & Suivi (Pleine largeur en dessous) -->
+                <div class="process-step-card-v2 process-step-fullwidth last-step-spacing">
+                    <div class="process-step-fullwidth-content single-item-centered"> 
+                        <div class="process-step-icon-v2" style="margin-right:0; margin-bottom: 15px;"><i class="fas fa-tasks"></i></div>
+                        <div class="process-step-text-content" style="text-align:center;">
+                            <h3 class="process-step-title-v2" style="text-align:center;">5. Résolution & Suivi</h3>
+                            <p class="process-step-description-v2" style="text-align:center;">
+                                Nous confirmons le rétablissement complet de vos services et effectuons un suivi proactif pour prévenir toute récurrence.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                 <p class="process-footnote-v2">
+                    *Les délais d'intervention sur site peuvent varier en fonction de votre localisation et de la disponibilité des techniciens. Les clients sous contrat de maintenance Proxatek bénéficient d'une prise en charge prioritaire.
+                </p>
             </div>
         </section>
-
+         <p style="margin-top: 30px; margin-bottom: 60px; font-size: 0.9rem; color: var(--site-text-medium); text-align: center;" class="container">
+            <strong>Clients sous contrat :</strong> Veuillez utiliser les coordonnées d'astreinte spécifiques qui vous ont été communiquées pour une assistance immédiate et prioritaire.
+        </p>
     </main>
 
     <footer class="site-footer-proxatek">
         <div class="container footer-grid-proxatek">
             <div class="footer-col footer-col-about">
-                 <a href="index.html" title="Accueil Proxatek - Solutions IT pour PME">
-                    <img src="img/proxatek-logo-principal-blanc.png" alt="Proxatek Logo Blanc - Solutions IT pour PME" class="footer-logo-img" onerror="this.style.display='none'; this.onerror=null; document.getElementById('logoFooterTextFallbackSupport').style.display='block';" loading="lazy">
-                    <span id="logoFooterTextFallbackSupport" class="logo-text-fallback" style="display:none; color:var(--custom-text-light-primary); margin-bottom:15px; font-size:22px; font-weight:bold;">PROXATEK</span>
+                <a href="index.html" title="Accueil Proxatek - Solutions IT pour PME">
+                    <img src="img/proxatek-logo-principal-blanc.png" alt="Proxatek Logo Blanc - Solutions IT pour PME" class="footer-logo-img" onerror="this.style.display='none'; this.onerror=null; document.getElementById('logoFooterTextFallbackSupportPage').style.display='block';" loading="lazy">
+                    <span id="logoFooterTextFallbackSupportPage" class="logo-text-fallback" style="display:none; color:var(--custom-text-light-primary); margin-bottom:15px; font-size:22px; font-weight:bold;">PROXATEK</span>
                 </a>
-                <p data-i18n="footer.about.description">Proxatek, votre partenaire informatique de confiance. Nous aidons les PME à exploiter le plein potentiel de la technologie.</p>
+                <p>Proxatek, votre partenaire informatique de confiance. Nous aidons les PME à exploiter le plein potentiel de la technologie.</p>
                 <div class="social-media-links">
                     <a href="#" aria-label="LinkedIn Proxatek" title="LinkedIn Proxatek"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
                     <a href="#" aria-label="Facebook Proxatek" title="Facebook Proxatek"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
@@ -234,52 +215,52 @@
                 </div>
             </div>
             <div class="footer-col">
-                <h4 data-i18n="footer.explore.title">Explorer</h4>
+                <h4>Explorer</h4>
                 <ul>
-                    <li><a href="index.html" data-i18n="footer.explore.home">Accueil</a></li>
-                    <li><a href="services/services.html" data-i18n="footer.explore.services">Nos Prestations</a></li>
-                     <li><a href="solutions/index.html" data-i18n="footer.explore.solutionsByTrade">Solutions par Métier</a></li>
-                    <li><a href="index.html#pourquoi-proxatek" data-i18n="footer.explore.whyUs">Pourquoi Nous ?</a></li>
-                    <li><a href="a-propos.html" data-i18n="footer.explore.aboutUs">Qui sommes-nous ?</a></li>
-                    <li><a href="questionnaire.html" data-i18n="footer.explore.quoteSimulator">Simulateur de Devis</a></li>
-                    <li><a href="actualites.html" data-i18n="footer.explore.newsBlog">Actualités & Blog</a></li>
-                    <li><a href="partenariat.html" data-i18n="footer.explore.partnership">Devenir Partenaire</a></li>
-                    <li><a href="contact.html" data-i18n="footer.explore.contact">Contact</a></li>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.html#prestations-proxatek">Nos Prestations</a></li>
+                    <li><a href="index.html#pourquoi-proxatek">Pourquoi Nous ?</a></li>
+                    <li><a href="a-propos.html">Qui sommes-nous ?</a></li>
+                    <li><a href="questionnaire.html">Simulateur de Devis</a></li>
+                    <li><a href="actualites.html">Actualités & Blog</a></li>
+                    <li><a href="partenariat.html">Devenir Partenaire</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
              <div class="footer-col">
-                <h4 data-i18n="footer.keyServices.title">Services Clés</h4>
+                <h4>Services Clés</h4>
                 <ul>
-                    <li><a href="services/infogerance.html" data-i18n="services.infogerance.title">Infogérance & Maintenance</a></li>
-                    <li><a href="services/cybersecurite.html" data-i18n="services.cybersecurity.title">Cybersécurité & Sauvegarde</a></li>
-                    <li><a href="services/cloud.html" data-i18n="services.cloud.title">Solutions Cloud</a></li>
-                    <li><a href="services/reseau.html" data-i18n="services.network.title">Réseau & Infrastructure</a></li>
-                    <li><a href="services/audit.html" data-i18n="services.audit.title">Audit & Conseil</a></li>
-                    <li><a href="services/materiel.html" data-i18n="services.hardware.title">Matériel Informatique</a></li>
-                    <li><a href="services/supervision.html" data-i18n="services.supervision.title">Supervision Proactive</a></li>
+                    <li><a href="services/infogerance.html">Infogérance & Maintenance</a></li>
+                    <li><a href="services/cybersecurite.html">Cybersécurité & Sauvegarde</a></li>
+                    <li><a href="services/cloud.html">Solutions Cloud</a></li>
+                    <li><a href="services/reseau.html">Réseau & Infrastructure</a></li>
+                    <li><a href="services/audit.html">Audit & Conseil</a></li>
+                    <li><a href="services/materiel.html">Matériel Informatique</a></li>
+                    <li><a href="services/supervision.html">Supervision Proactive</a></li>
                 </ul>
             </div>
             <div class="footer-col footer-col-contact">
-                <h4 data-i18n="footer.contactUs.title">Nous Contacter</h4>
+                <h4>Nous Contacter</h4>
                 <address>
-                    <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <span data-i18n="footer.contact.address">123 Avenue de la Tech<br>75000 Paris, France</span></p>
-                    <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+33412345678" data-i18n="footer.contact.phone">04 12 34 56 78</a></p>
-                    <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:contact@proxatek.fr" data-i18n="footer.contact.email">contact@proxatek.fr</a></p>
+                    <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <span>123 Avenue de la Tech<br>75000 Paris, France</span></p>
+                    <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+33412345678">04 12 34 56 78</a></p>
+                    <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:contact@proxatek.fr">contact@proxatek.fr</a></p>
                 </address>
             </div>
         </div>
         <div class="footer-bottom-proxatek">
-            <p>© <span class="current-year-proxatek"></span> <span data-i18n="footer.copyrightText">Proxatek SAS. Tous droits réservés.</span> | <a href="mentions-legales.html" data-i18n="footer.legalNotices">Mentions Légales</a> | <a href="politique-confidentialite.html" data-i18n="footer.privacyPolicy">Confidentialité</a></p>
+            <p>© <span class="current-year-proxatek"></span> Proxatek SAS. Tous droits réservés. | <a href="mentions-legales.html">Mentions Légales</a> | <a href="politique-confidentialite.html">Confidentialité</a></p>
         </div>
     </footer>
 
-    <!-- Le bouton flottant standard est remplacé par les CTA dans le hero -->
-    <!-- <a href="contact.html?urgence=true" class="floating-help-btn-proxatek">...</a> -->
+    <a href="support-urgent.html" class="floating-help-btn-proxatek" aria-label="Contacter Proxatek pour un support urgent">
+        <i class="fas fa-headset" aria-hidden="true"></i>
+    </a>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const mobileMenuToggle = document.querySelector('.mobile-menu-toggle-custom');
-            const mobileNavMenu = document.getElementById('mobileNavMenuUniversal');
+            const mobileNavMenu = document.getElementById('mobileNavMenuSupport'); 
             const iconOpen = mobileMenuToggle ? mobileMenuToggle.querySelector('.icon-open') : null;
             const iconClose = mobileMenuToggle ? mobileMenuToggle.querySelector('.icon-close') : null;
 
@@ -300,7 +281,7 @@
                 mobileNavMenu.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', () => {
                         if (mobileNavMenu.classList.contains('active')) {
-                            mobileMenuToggle.click();
+                            mobileMenuToggle.click(); 
                         }
                     });
                 });

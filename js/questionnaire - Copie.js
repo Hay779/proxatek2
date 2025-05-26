@@ -46,14 +46,17 @@ function generateQuestionHTML(stepId, stepConfig) {
         </div>
       </div>
     `; 
-  } else { 
-    let choicesHTML = ''; 
+  } else { // Pour TOUTES les questions à choix multiples (y compris l'accueil du questionnaire)
+    let choicesHTML = ''; // <<< S'ASSURER QUE CETTE LIGNE EST BIEN LÀ
     if (stepConfig.choices && stepConfig.choices.length > 0) {
+        // console.log(`[generateQuestionHTML DEBUG] Il y a ${stepConfig.choices.length} choix pour ${stepId}`); 
         stepConfig.choices.forEach((choice, index) => {
             let iconHTML = choice.icon ? `<i>${choice.icon}</i>` : ''; 
+            // Tous les choix utilisent maintenant cette structure de bouton simple
             choicesHTML += `<button class="choice" data-value="${choice.value}" type="button">${iconHTML}${choice.label}</button>`;
         });
     } else {
+        // console.warn(`[generateQuestionHTML DEBUG] Aucune 'choices' définie pour stepId: ${stepId}`); 
         choicesHTML = "<p style='color: red; text-align: center;'>Aucun choix n'a été généré pour cette question (vérifiez config.js).</p>"; 
     }
     
@@ -67,18 +70,15 @@ function generateQuestionHTML(stepId, stepConfig) {
       </div>
     `;
   }
+  
+  // console.log(`[generateQuestionHTML DEBUG] HTML final généré pour ${stepId}:`, html); 
   return html;
 }
 
 
 // Fonction pour afficher une étape du questionnaire
 function showStep(stepId) {
-  // console.log(`[showStep START] Étape demandée: ${stepId}.`);
-  // if (questionnaireHeader) {
-  //     console.log(`Header initial display: ${getComputedStyle(questionnaireHeader).display}`);
-  // } else {
-  //     console.warn("questionnaireHeader non trouvé au début de showStep");
-  // }
+  // console.log(`[showStep START] Étape demandée: ${stepId}. Header display: ${questionnaireHeader ? getComputedStyle(questionnaireHeader).display : 'Header Non trouvé'}`); 
 
   currentStep = stepId;
   const stepConfig = questionnaireConfig[stepId];
@@ -89,27 +89,18 @@ function showStep(stepId) {
     return;
   }
 
-  // ===== GESTION DE LA VISIBILITÉ DU HEADER =====
   if (questionnaireHeader) {
     const isMobileView = window.innerWidth <= 767; 
-    // console.log(`[showStep] isMobileView: ${isMobileView}, stepId: ${stepId}`); 
-
     if (stepId === 'accueil') {
       questionnaireHeader.style.display = 'block'; 
-      // console.log(`[showStep] Header rendu visible pour l'accueil.`); 
     } else {
       if (isMobileView) {
         questionnaireHeader.style.display = 'none'; 
-        // console.log(`[showStep] Header caché pour mobile (étape: ${stepId}).`); 
       } else {
         questionnaireHeader.style.display = 'block'; 
-        // console.log(`[showStep] Header rendu visible pour non-mobile (étape: ${stepId}).`); 
       }
     }
-  } else {
-    // console.warn("[showStep] questionnaireHeader non trouvé dans le DOM lors de la vérification de visibilité.");
   }
-  // ==============================================
 
   const currentProgress = stepConfig.progress || 0;
   updateProgress(currentProgress);
@@ -256,7 +247,6 @@ function showStep(stepId) {
       });
     });
   }
-  // console.log(`[showStep END] Étape ${stepId} affichée. Header final display: ${questionnaireHeader ? getComputedStyle(questionnaireHeader).display : 'Header Non trouvé'}`); 
 }
 
 // Fonction pour gérer la fin du quiz
@@ -273,10 +263,8 @@ function handleEndOfQuiz() {
     const isMobileView = window.innerWidth <= 767;
     if (isMobileView) {
       questionnaireHeader.style.display = 'none';
-      // console.log(`[handleEndOfQuiz] Header caché pour mobile (fin du quiz).`); 
     } else {
       questionnaireHeader.style.display = 'block'; 
-      // console.log(`[handleEndOfQuiz] Header rendu visible pour non-mobile (fin du quiz).`); 
     }
   }
 
@@ -357,18 +345,25 @@ function goBack() {
 
 // Initialiser le questionnaire
 document.addEventListener('DOMContentLoaded', function() {
+  // console.log("Questionnaire DOMContentLoaded: Début de l'initialisation."); 
+
   if (typeof questionnaireConfig === 'undefined') {
     console.error("questionnaireConfig n'est pas défini. Vérifiez que config.js est chargé et correct.");
     if (questionContainer) questionContainer.innerHTML = "<p style='color:red;text-align:center;'>Erreur de configuration du questionnaire.</p>";
     return;
   }
+  // console.log("questionnaireConfig est chargé."); 
 
   const urlParams = new URLSearchParams(window.location.search);
   const preselectedType = urlParams.get('type');
+  // console.log("Paramètre 'type' de l'URL:", preselectedType); 
+
   let initialStep = 'accueil'; 
 
   if (preselectedType) {
     let mappedServiceKey = '';
+    // console.log(`Traitement du type pré-sélectionné: '${preselectedType}'`); 
+
     switch (preselectedType) {
       case 'parc': mappedServiceKey = 'maintenance'; break;
       case 'reseau': mappedServiceKey = 'reseau'; break;
@@ -377,6 +372,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (mappedServiceKey && questionnaireConfig[mappedServiceKey + "-1"]) {
+      // console.log(`Service mappé '${mappedServiceKey}' trouvé. L'étape initiale sera '${mappedServiceKey + "-1"}'`); 
       currentService = mappedServiceKey;
       userResponses.service = mappedServiceKey;
       initialStep = mappedServiceKey + "-1";
@@ -388,6 +384,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (backBtn) {
       backBtn.addEventListener('click', goBack);
   }
+  // console.log("Questionnaire DOMContentLoaded: Fin de l'initialisation."); 
 });
 
 // --- END OF FILE js/questionnaire.js ---

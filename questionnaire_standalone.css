@@ -1,209 +1,639 @@
 /* questionnaire_standalone.css */
 
 /* ==========================================================================
-   VARIABLES
+   VARIABLES (Theme variables for questionnaire page)
    ========================================================================== */
 :root {
-    --custom-purple-dark: #1A0B3D;
-    --custom-purple-primary: #2F1C6A;
-    --custom-magenta-accent: #D9006C;
-    --custom-pink-highlight: #FF33A1;
-    --custom-lavender-bg: #F6F3FF;
-    --custom-light-grey-bg: #F9F8FF;
-    --custom-text-light: #ffffff;
-    --custom-text-primary: #1E0E4B;
-    --custom-text-secondary: #5A5178;
-    --custom-border-color: #E5D9FF;
-    --custom-card-action-bg: #ffffff;
+    --site-dark-blue: #0A1931;
+    --site-dark-blue-hover: #081427;
+    --site-primary-blue: #0073E5;
+    --site-primary-blue-hover: #005CBF;
+    --site-bg-white: #FFFFFF;
+    --site-light-gray-bg: #F7F9FA;
+    --site-medium-gray-bg: #E9ECEF;
+    --site-text-dark: #252F3D;
+    --site-text-medium: #5B6778;
+    --site-text-light: #FFFFFF;
+    --site-text-light-secondary: rgba(255, 255, 255, 0.85);
+    --site-border-color: #DDE3E9;
+    --site-border-color-subtle: #EAEFF5;
+    --site-success-color: #00A859;
+    --site-danger-color: #E8384F;
+    --site-font-family: 'Inter', sans-serif;
+    --site-border-radius-cards: 8px;
+    --site-border-radius-buttons: 4px;
+    --site-box-shadow-soft: 0 4px 12px rgba(37, 47, 61, 0.08);
+    --site-box-shadow-medium: 0 8px 25px rgba(37, 47, 61, 0.12);
+    --site-transition: all 0.25s ease-in-out;
 
-    --font-main: 'Inter', 'Nunito Sans', Arial, sans-serif;
-    --gradient-accent-proxatek: linear-gradient(135deg, var(--custom-magenta-accent) 0%, var(--custom-pink-highlight) 100%);
-    --custom-purple-primary-rgb: 47, 28, 106;
+    /* Spacing variables */
+    --gap-xs: 0.25rem; --gap-sm: 0.5rem; --gap-md: 1rem; --gap-lg: 1.5rem; --gap-xl: 2rem;
 
-    --container-width: 1170px;
-    --card-border-radius: 12px;
-    --shadow-light: 0 4px 15px rgba(47, 28, 106, 0.07);
-    --shadow-medium: 0 8px 25px rgba(47, 28, 106, 0.12);
-    --shadow-strong: 0 10px 30px rgba(47, 28, 106, 0.15);
-
-    --gap-xs: 0.25rem;
-    --gap-sm: 0.5rem;
-    --gap-md: 1rem;
-    --gap-lg: 1.5rem;
-    --gap-xl: 2rem;
+    /* Aliases for easier use within this file, mapping to site theme */
+    --custom-purple-dark: var(--site-dark-blue);
+    --custom-purple-primary: var(--site-primary-blue); 
+    --custom-magenta-accent: var(--site-primary-blue); 
+    --custom-pink-highlight: var(--site-primary-blue-hover); 
+    --custom-lavender-bg: var(--site-light-gray-bg);
+    --custom-light-grey-bg: var(--site-light-gray-bg);
+    --custom-text-light: var(--site-text-light);
+    --custom-text-primary: var(--site-text-dark);
+    --custom-text-secondary: var(--site-text-medium);
+    --custom-border-color: var(--site-border-color);
+    --custom-card-action-bg: var(--site-bg-white);
+    --font-main: var(--site-font-family);
+    --gradient-accent-proxatek: linear-gradient(135deg, var(--site-primary-blue) 0%, var(--site-primary-blue-hover) 100%);
+    --custom-purple-primary-rgb: 0, 115, 229; 
+    --container-width: 1140px; 
+    --card-border-radius: var(--site-border-radius-cards);
+    --shadow-light: var(--site-box-shadow-soft);
+    --shadow-medium: var(--site-box-shadow-medium);
 }
 
-/* Styles de base */
+/* Styles de base minimaux */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body {
-    font-family: var(--font-main);
-    color: var(--custom-text-primary);
-    background-color: var(--custom-lavender-bg);
-    line-height: 1.7;
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+body.questionnaire-page-active { 
+    font-family: var(--font-main); 
+    color: var(--custom-text-primary); 
+    background-color: var(--custom-lavender-bg); 
+    line-height: 1.7; 
+    font-size: 16px; 
+    -webkit-font-smoothing: antialiased; 
+    -moz-osx-font-smoothing: grayscale; 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
 }
-.container {
-    width: 90%;
-    max-width: var(--container-width);
-    margin: 0 auto;
-    padding-left: 20px;
-    padding-right: 20px;
+.container { 
+    width: 90%; 
+    max-width: var(--container-width); 
+    margin: 0 auto; 
+    padding-left: 15px; 
+    padding-right: 15px;
+}
+a { text-decoration: none; color: var(--custom-magenta-accent); transition: var(--site-transition); }
+a:hover { color: var(--custom-pink-highlight); }
+a:focus-visible { 
+    outline: 2px solid var(--site-primary-blue);
+    outline-offset: 2px;
 }
 
-/* Boutons */
-.btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 24px; font-weight: 600; text-align: center; border-radius: var(--card-border-radius); transition: all 0.25s ease; cursor: pointer; border: none; font-size: 0.95rem; line-height: 1.5; text-transform: none;}
+
+/* --- Questionnaire Header --- */
+.header-fullwidth-questionnaire {
+  position: sticky !important; 
+  top: 0 !important;          
+  left: 0;                  
+  right: 0;                 
+  z-index: 1001 !important;   
+  flex-shrink: 0;             
+  background-color: var(--site-light-gray-bg) !important; 
+  border-bottom: 1px solid var(--site-border-color) !important; 
+          
+  height: auto !important;        
+  min-height: 60px !important;    
+  width: 100% !important;         
+  overflow: visible !important;  
+}
+.header-questionnaire {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--gap-md) 0; 
+}
+.logo-questionnaire a {
+  display: inline-block;
+  line-height: 0; 
+}
+.logo-questionnaire img {
+  max-height: 45px; 
+  width: auto;
+  display: block; 
+}
+.logo-text-fallback-questionnaire {
+  display: none;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--custom-purple-dark); 
+}
+.promo-questionnaire {
+  background: #ff0021;
+  color: var(--custom-text-light);
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  font-weight: 100;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+.promo-questionnaire strong {
+    color: var(--custom-card-action-bg); 
+    font-weight: 700;
+}
+
+/* --- Main Content & Navigation --- */
+main.questionnaire-main-content {
+  flex-grow: 1;                
+  display: flex;               
+  flex-direction: column;      
+  width: 100%;
+  background-color: var(--site-bg-white); 
+}
+
+.btn {
+    display: inline-flex; align-items: center; justify-content: center; 
+    padding: 12px 24px; font-weight: 600; text-align: center; 
+    border-radius: var(--site-border-radius-buttons); 
+    transition: var(--site-transition); cursor: pointer; 
+    border: 2px solid transparent; 
+    font-size: 0.95rem; line-height: 1.5; text-transform: none;
+}
 .btn i, .btn svg { margin-left: 8px; font-size:0.9em;}
-.btn-outline { border: 1px solid var(--custom-border-color); color: var(--custom-purple-primary); background:var(--custom-text-light); box-shadow:none; font-family: var(--font-main); font-weight: 400;}
-.btn-outline:hover { background-color:var(--custom-lavender-bg); color:var(--custom-purple-dark); border-color: var(--custom-purple-primary); }
-.btn-small { padding: 8px 18px; font-size: 0.85rem; text-transform: none; box-shadow: none; }
 
-/* Questionnaire Styles */
-body.questionnaire-page-active {
+.btn-outline { 
+    border: 1px solid var(--site-primary-blue); 
+    color: var(--site-primary-blue); 
+    background:var(--site-bg-white); 
+    box-shadow:none; 
+    font-weight: 500; 
+}
+.btn-outline:hover { 
+    background-color:var(--site-primary-blue-hover); 
+    color:var(--site-text-light); 
+    border-color: var(--site-primary-blue-hover);
+}
+.btn-small { 
+    padding: 8px 18px; 
+    font-size: 0.85rem; 
+    box-shadow: none; 
+}
+#backBtn i { 
+    margin-right: 6px; 
+    margin-left: 0; 
+    color: inherit;
+}
+#backBtn:hover i {
+    color: var(--site-text-light);
+}
+
+
+/* --- Progress Bar --- */
+.progress-bar-wrapper-proxatek.container {
+  max-width: 700px;
+  margin-top: var(--gap-lg); 
+  margin-bottom: 5px; /* MODIFIED: Espace de 5px sous la barre de progression */
+  flex-shrink: 0; 
+}
+.steps-proxatek {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    width: 100%;
+    padding: 0 5px;
+}
+.steps-proxatek .step-label {
+    flex: 1;
+    text-align: center;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    color: var(--custom-text-secondary);
+    padding-bottom: 8px;
+    position: relative;
+    font-weight: 500;
+}
+.steps-proxatek .step-label.current {
+    color: var(--custom-purple-primary); 
+    font-weight: 700;
+}
+.steps-proxatek .step-label.current::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 3px;
+    background-color: var(--custom-magenta-accent); 
+    border-radius: 3px;
+}
+.progress-bar-proxatek {
+    position: relative;
+    width: 100%;
+    height: 0.8rem;
+    background-color: var(--custom-border-color);
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+}
+.progress-fill-proxatek {
+    position: absolute;
+    top: 0; left: 0;
+    width: 0%;
+    height: 100%;
+    background: var(--gradient-accent-proxatek);
+    transition: width 0.4s ease-in-out;
+    border-radius: var(--card-border-radius); 
+}
+
+/* --- Question Area --- */
+#question-container.container {
+  flex-grow: 1;                 
+  display: flex;                
+  flex-direction: column;       
+  padding-top: var(--gap-md); /* Garder un peu de padding interne */
+  padding-bottom: var(--gap-lg); 
+}
+
+.questionnaire-page-active .question-section.active {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-  /* padding-bottom: 0; /* Retiré, le footer et le wrapper du bouton gèrent l'espace */
+  flex-grow: 1; 
+  width: 100%;
+  animation: fadeIn 0.3s ease-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.header-fullwidth-questionnaire {
-  position: sticky; top: 0; z-index: 1001; flex-shrink: 0;
-  background-color: var(--custom-text-light);
-  border-bottom: 1px solid var(--custom-border-color);
-}
-.header-questionnaire { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
-.logo-questionnaire a { display: inline-block; line-height: 0; }
-.logo-questionnaire img { max-height: 45px; width: auto; display: block; }
-.logo-text-fallback-questionnaire { display: none; font-weight: 700; font-size: 1.6rem; color: var(--custom-purple-primary); }
-@media (max-width: 850px) { .logo-questionnaire img { max-height: 35px; } }
-.promo-questionnaire { background: var(--custom-purple-primary); color: var(--custom-text-light); padding: 0.6rem 1.2rem; border-radius: 25px; font-weight: 600; text-align: center; font-size: 0.9rem; line-height: 1.3; }
-.promo-questionnaire strong { color: var(--custom-pink-highlight); font-weight: 700; }
-
-main.questionnaire-main-content { flex-grow: 1; display: flex; flex-direction: column; width: 100%; }
-
-.questionnaire-navigation-wrapper.container {
-  padding-top: var(--gap-md, 1rem);
-  padding-bottom: 0;
-  min-height: 10px; /* Réduit car le bouton n'est plus là par défaut */
+/* Style UNIFIÉ pour TOUS les titres de questions (.question) */
+.questionnaire-page-active .question-section .question {
+  text-align: center;
+  font-size: 2.5rem; 
+  font-weight: 100;  
+  color: var(--custom-text-primary); 
+  /* margin-top: var(--gap-lg); /* Marge supérieure gérée par padding de #question-container ou par le titre de l'accueil */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px !important; 
+  line-height: 1.3;
+  max-width: 800px; 
   flex-shrink: 0;
 }
-
-.progress-bar-wrapper-proxatek.container { max-width: 700px; margin-top: var(--gap-md, 1rem); margin-bottom: var(--gap-lg, 1.5rem); flex-shrink: 0; }
-.steps-proxatek { display: flex; justify-content: space-between; margin-bottom: 12px; width: 100%; padding: 0 5px; }
-.steps-proxatek .step-label { flex: 1; text-align: center; font-size: 0.85rem; text-transform: uppercase; letter-spacing: .07em; color: var(--custom-text-secondary); padding-bottom: 8px; position: relative; font-weight: 500; }
-.steps-proxatek .step-label.current { color: var(--custom-purple-primary); font-weight: 700; }
-.steps-proxatek .step-label.current::after { content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); width: 25px; height: 3px; background-color: var(--custom-magenta-accent); border-radius: 3px; }
-.progress-bar-proxatek { position: relative; width: 100%; height: 0.8rem; background-color: var(--custom-border-color); border-radius: var(--card-border-radius); overflow: hidden; }
-.progress-fill-proxatek { position: absolute; top: 0; left: 0; width: 0%; height: 100%; background: var(--gradient-accent-proxatek); transition: width 0.4s ease-in-out; border-radius: var(--card-border-radius); }
-
-#question-container.container { flex-grow: 1; display: flex; flex-direction: column; padding-top: 0; padding-bottom: var(--gap-lg, 2rem); }
-.questionnaire-page-active .question-section.active { display: flex; flex-direction: column; flex-grow: 1; width: 100%; animation: fadeIn 0.3s ease-out; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-.questionnaire-page-active .question-section .question { text-align: center; font-size: clamp(1.5rem, 3.5vw, 1.9rem); color: var(--custom-purple-dark); margin-top: 5vh; margin-left: auto; margin-right: auto; margin-bottom: var(--gap-sm, 0.5rem); font-weight: 700; line-height: 1.3; max-width: 800px; flex-shrink: 0; }
-.questionnaire-page-active .question-section .subtitle { text-align: center; font-size: 1.05rem; color: var(--custom-text-secondary); margin-left: auto; margin-right: auto; margin-bottom: var(--gap-xl, 2rem); max-width: 700px; line-height: 1.6; min-height: 1.6em; flex-shrink: 0; font-family: var(--font-main); font-weight: 400; }
-.questionnaire-page-active .question-section .subtitle:empty { min-height: 0; margin-bottom: var(--gap-md, 1rem); }
-.questionnaire-page-active .choices, .questionnaire-page-active .form-input-group { margin-bottom: var(--gap-sm, 0.5rem); flex-shrink: 0; }
-.questionnaire-page-active .choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; max-width: 900px; margin-left: auto; margin-right: auto; width: 100%; }
-.questionnaire-page-active .choice { display: flex; align-items: center; justify-content: flex-start; padding: 18px 22px; font-family: var(--font-main); font-weight: 400; font-size: 1rem; text-align: left; border-radius: var(--card-border-radius); transition: all 0.25s ease; cursor: pointer; line-height: 1.4; background-color: var(--custom-text-light); color: var(--custom-purple-primary); border: 1px solid var(--custom-border-color); box-shadow: 0 2px 8px rgba(var(--custom-purple-primary-rgb), 0.08); }
-.questionnaire-page-active .choice:hover { background-color: var(--custom-lavender-bg); border-color: var(--custom-purple-primary); color: var(--custom-purple-dark); transform: translateY(-2px); box-shadow: var(--shadow-light); }
-.questionnaire-page-active .choice i { margin-right: 12px; font-size: 1.4rem; color: var(--custom-purple-primary); width: 25px; text-align: center; transition: color 0.25s ease; font-style: normal; }
-.questionnaire-page-active .choice:hover i { color: var(--custom-magenta-accent); }
-.questionnaire-page-active .form-input-group { display: flex; flex-direction: column; align-items: center; max-width: 480px; margin-left: auto; margin-right: auto; width: 100%; }
-.questionnaire-page-active .input-field { width: 100%; padding: 14px 18px; margin-bottom: 15px; border: 1px solid var(--custom-border-color); border-radius: var(--card-border-radius); font-family: var(--font-main); font-size: 1rem; text-align: left; background-color: var(--custom-text-light); color: var(--custom-text-primary); transition: border-color 0.2s ease, box-shadow 0.2s ease; }
-.questionnaire-page-active .input-field::placeholder { color: var(--custom-text-secondary); opacity: 0.7; }
-.questionnaire-page-active .input-field:focus { border-color: var(--custom-purple-primary); outline: none; box-shadow: 0 0 0 3px rgba(var(--custom-purple-primary-rgb), 0.2); }
-.questionnaire-page-active .input-button { display: inline-flex; align-items: center; justify-content: center; width: 100%; padding: 14px 24px; font-family: var(--font-main); font-weight: 400; font-size: 1rem; text-align: center; border-radius: var(--card-border-radius); transition: all 0.25s ease; cursor: pointer; line-height: 1.5; text-transform: none; background-color: var(--custom-text-light); color: var(--custom-purple-primary); border: 1px solid var(--custom-border-color); box-shadow: none; }
-.questionnaire-page-active .input-button:hover { background-color: var(--custom-lavender-bg); color: var(--custom-purple-dark); border-color: var(--custom-purple-dark); }
-.questionnaire-page-active .error-message { color: var(--custom-magenta-accent); text-align: left; font-size: 0.85rem; margin-top: -10px; margin-bottom: 15px; display: none; width: 100%; }
-.questionnaire-page-active .confirmation-box { max-width: 700px; margin: var(--gap-xl, 2rem) auto; padding: var(--gap-lg, 2rem) var(--gap-xl, 2rem); text-align: center; background: var(--custom-card-action-bg); border-radius: var(--card-border-radius); box-shadow: var(--shadow-medium); }
-.questionnaire-page-active .confirmation-box h1 { font-size: clamp(1.8rem, 4vw, 2.2rem); color: var(--custom-purple-dark); margin-bottom: var(--gap-md, 1rem); }
-.questionnaire-page-active .confirmation-box p { font-size: 1.1rem; color: var(--custom-text-secondary); margin-bottom: var(--gap-md, 1rem); line-height: 1.7; }
-.questionnaire-page-active .confirmation-box .highlight { color: var(--custom-magenta-accent); font-weight: 700; }
-.questionnaire-page-active .confirmation-icon i.fa-check-circle { color: var(--custom-magenta-accent); font-size: 3rem; margin-bottom: var(--gap-md, 1rem); }
-.questionnaire-page-active .code-offre { background: var(--gradient-accent-proxatek); color: var(--custom-text-light); padding: 10px 25px; border-radius: 50px; font-size: 1.4rem; font-weight: 700; display: inline-block; margin: var(--gap-md, 1rem) 0 var(--gap-lg, 1.5rem); letter-spacing: 1px; box-shadow: var(--shadow-light); }
-.questionnaire-page-active #smsForm { display: flex; flex-direction: column; align-items: center; margin-top: var(--gap-md, 1rem); gap: var(--gap-md, 1rem); }
-.questionnaire-page-active #smsPhone { max-width: 320px; text-align: center; width: 100%; padding: 14px 18px; margin-bottom: 0; }
-.questionnaire-page-active #smsButton { max-width: 320px; width: 100%; padding: 12px 24px; font-family: var(--font-main); font-weight: 400; font-size: 1rem; background-color: var(--custom-text-light); color: var(--custom-purple-primary); border: 1px solid var(--custom-border-color); box-shadow: none; }
-.questionnaire-page-active #smsButton:hover { background-color: var(--custom-lavender-bg); color: var(--custom-purple-dark); border-color: var(--custom-purple-dark); }
-.questionnaire-page-active #smsButton:disabled { background-color: #f0f0f0; color: #a0a0a0; border-color: #d0d0d0; opacity: 0.7; cursor: not-allowed; box-shadow: none; transform: none; }
-
-/* NOUVEAUX STYLES POUR LE BOUTON RETOUR EN BAS (NON FLOTTANT) */
-.bottom-navigation-wrapper {
-    margin-top: var(--gap-lg, 1.5rem);
-    margin-bottom: var(--gap-md, 1rem);
-    /* Caché par défaut sur desktop, affiché via media query pour mobile/tablette */
-    display: none;
-    clear: both; /* Pour s'assurer qu'il est après tout contenu flottant précédent */
+/* Titre spécifique pour l'étape 'accueil' du questionnaire - pour remonter */
+.questionnaire-page-active .question-section[data-step-id="accueil"] .question {
+    margin-top: calc(var(--gap-lg) - 5px); /* MODIFIÉ: Remonte de 5px */
 }
 
-.bottom-back-button {
-    /* Le style .btn, .btn-outline, .btn-small est appliqué par les classes HTML */
-    /* `display: none;` est appliqué inline par JS au début */
-    /* Le JS gère `display: inline-flex;` ou `display: none;` */
-    float: left; /* Pour le positionner à gauche dans son wrapper */
+/* Style UNIFIÉ pour TOUS les sous-titres de questions (.subtitle) */
+.questionnaire-page-active .question-section .subtitle {
+  text-align: center;
+  font-size: 1.8rem; 
+  color: var(--custom-text-secondary); 
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 45px !important; 
+  font-weight: 100; 
+  max-width: none; 
+  line-height: 1.6;
+  min-height: 1.6em; 
+  flex-shrink: 0;
+  font-family: var(--font-main);
+}
+.questionnaire-page-active .question-section .subtitle:empty {
+    min-height: 0;
+    margin-bottom: var(--gap-md); 
 }
 
-.bottom-back-button i {
-    margin-right: 8px;
-    margin-left: 0;
+
+.questionnaire-page-active .choices,
+.questionnaire-page-active .form-input-group {
+  margin-bottom: var(--gap-sm);
+  flex-shrink: 0;
+}
+/* Styles pour TOUS les boutons de choix dans le questionnaire */
+.questionnaire-page-active .choices {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 15px; 
+  max-width: 900px; 
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  margin-top: var(--gap-md); 
 }
 
-/* Afficher ce wrapper (et donc potentiellement le bouton) uniquement sur tablette et mobile */
-@media (max-width: 768px) { /* Votre breakpoint pour tablette/mobile */
-    .bottom-navigation-wrapper {
-        display: block; /* Rendre le wrapper visible pour que le JS puisse afficher le bouton */
+.questionnaire-page-active .choice { 
+  display: flex !important; 
+  align-items: center !important; 
+  justify-content: flex-start !important; 
+  padding: 18px 22px !important; 
+  font-family: var(--font-main) !important; 
+  font-weight: 500 !important;          
+  font-size: 1rem !important;              
+  text-align: left !important;
+  border-radius: var(--site-border-radius-cards) !important; 
+  transition: var(--site-transition) !important;
+  cursor: pointer !important;
+  line-height: 1.4 !important;
+  background-color: var(--custom-card-action-bg) !important; 
+  color: var(--custom-text-primary) !important;       
+  border: 1px solid var(--custom-border-color) !important; 
+  box-shadow: 0 2px 8px rgba(0, 115, 229, 0.03) !important; 
+  visibility: visible !important; 
+  opacity: 1 !important;
+  min-height: 40px !important; 
+  height: auto !important;        
+}
+
+.questionnaire-page-active .choice:hover {
+  background-color: var(--site-light-gray-bg) !important; 
+  border-color: var(--site-primary-blue) !important; 
+  color: var(--site-primary-blue) !important;         
+  transform: translateY(-2px) !important; 
+  box-shadow: var(--shadow-light) !important; 
+}
+
+.questionnaire-page-active .choice i { 
+  margin-right: 10px !important; 
+  font-size: 1.2rem !important;  
+  color: var(--site-primary-blue) !important; 
+  line-height: 1 !important; 
+  flex-shrink: 0 !important; 
+  font-style: normal !important; 
+  width: auto !important; 
+}
+
+.questionnaire-page-active .choice:hover i {
+  color: var(--site-primary-blue-hover) !important; 
+}
+.questionnaire-page-active .choice::after { 
+    content: none !important; 
+}
+
+
+.questionnaire-page-active .form-input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+.questionnaire-page-active .input-field {
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 15px;
+  border: 1px solid var(--custom-border-color);
+  border-radius: var(--site-border-radius-buttons); 
+  font-family: var(--font-main);
+  font-size: 1rem;
+  text-align: left;
+  background-color: var(--custom-card-action-bg);
+  color: var(--custom-text-primary);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.questionnaire-page-active .input-field::placeholder {
+  color: var(--custom-text-secondary);
+  opacity: 0.7;
+}
+.questionnaire-page-active .input-field:focus {
+  border-color: var(--site-primary-blue);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(var(--custom-purple-primary-rgb), 0.2); 
+}
+
+.questionnaire-page-active .input-button { 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 14px 24px; 
+  font-family: var(--font-main); 
+  font-weight: 500;             
+  font-size: 1rem;              
+  text-align: center;
+  border-radius: var(--site-border-radius-buttons);
+  transition: var(--site-transition);
+  cursor: pointer;
+  line-height: 1.5;
+  text-transform: none;
+  background-color: var(--site-bg-white);     
+  color: var(--site-primary-blue);         
+  border: 1px solid var(--site-primary-blue);  
+  box-shadow: none; 
+}
+.questionnaire-page-active .input-button:hover {
+  background-color: var(--site-light-gray-bg);  
+  color: var(--site-primary-blue-hover);           
+  border-color: var(--site-primary-blue-hover);    
+}
+
+.questionnaire-page-active .error-message {
+  color: var(--site-danger-color); 
+  text-align: left;
+  font-size: 0.85rem;
+  margin-top: -10px; 
+  margin-bottom: 15px; 
+  display: none; 
+  width: 100%;
+}
+.questionnaire-page-active .confirmation-box {
+  max-width: 700px;
+  margin: var(--gap-xl) auto; 
+  padding: var(--gap-lg) var(--gap-xl); 
+  text-align: center;
+  background: var(--custom-card-action-bg);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--shadow-medium);
+}
+.questionnaire-page-active .confirmation-box h1 {
+  font-size: clamp(1.8rem, 4vw, 2.2rem);
+  color: var(--custom-text-primary);
+  margin-bottom: var(--gap-md);
+}
+.questionnaire-page-active .confirmation-box p {
+  font-size: 1.1rem;
+  color: var(--custom-text-secondary);
+  margin-bottom: var(--gap-md);
+  line-height: 1.7;
+}
+.questionnaire-page-active .confirmation-box .highlight {
+  color: var(--custom-magenta-accent); 
+  font-weight: 700;
+}
+.questionnaire-page-active .confirmation-icon i.fa-check-circle { 
+    color: var(--site-success-color);
+    font-size: 3rem; 
+    margin-bottom: var(--gap-md);
+}
+.questionnaire-page-active .code-offre {
+  background: var(--gradient-accent-proxatek);
+  color: var(--custom-text-light);
+  padding: 10px 25px;
+  border-radius: 50px; 
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: inline-block;
+  margin: var(--gap-md) 0 var(--gap-lg);
+  letter-spacing: 1px;
+  box-shadow: var(--shadow-light);
+}
+.questionnaire-page-active #smsForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: var(--gap-md);
+  gap: var(--gap-md); 
+}
+.questionnaire-page-active #smsPhone { 
+  max-width: 320px;
+  text-align: center;
+}
+.questionnaire-page-active #smsButton {
+  max-width: 320px;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 100%;
+  padding: 14px 24px; font-family: var(--font-main); 
+  font-weight: 500; font-size: 1rem; text-align: center;
+  border-radius: var(--site-border-radius-buttons);
+  transition: var(--site-transition); cursor: pointer;
+  line-height: 1.5; text-transform: none;
+  background-color: var(--site-bg-white);     
+  color: var(--site-primary-blue);         
+  border: 1px solid var(--site-primary-blue);  
+  box-shadow: none; 
+}
+.questionnaire-page-active #smsButton:hover {
+  background-color: var(--site-light-gray-bg);  
+  color: var(--site-primary-blue-hover);           
+  border-color: var(--site-primary-blue-hover);    
+}
+
+.questionnaire-page-active #smsButton:disabled,
+.questionnaire-page-active .input-button:disabled { 
+  background-color: var(--site-medium-gray-bg) !important; 
+  color: var(--site-text-medium) !important;           
+  border-color: var(--site-border-color) !important;    
+  opacity: 0.7 !important; 
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* --- Questionnaire Navigation Wrapper (for Back Button) --- */
+.questionnaire-navigation-wrapper.container {
+  padding-top: var(--gap-lg); 
+  padding-bottom: var(--gap-lg); 
+  min-height: auto; 
+  flex-shrink: 0;            
+  display: flex; 
+  justify-content: flex-start; 
+  align-items: center; 
+  width: 100%; 
+}
+
+/* --- Questionnaire Footer --- */
+.questionnaire-footer { 
+    text-align: center; 
+    padding: 20px 0; 
+    border-top: 1px solid var(--site-border-color); 
+    flex-shrink:0; 
+    background-color: var(--site-light-gray-bg); 
+}
+.questionnaire-footer p {
+    margin:0; 
+    color: var(--site-text-medium); 
+    font-size: 0.9rem;
+}
+
+
+/* --- MEDIA QUERIES --- */
+@media (max-width: 991px) { /* Tablet */
+    .logo-questionnaire img { max-height: 35px; }
+
+    /* Styles unifiés pour .question et .subtitle sur tablette */
+    .questionnaire-page-active .question-section .question {
+        font-size: 1.85rem; /* Ajusté pour la tablette */
     }
-    /* Si vous aviez un bouton retour en haut à gauche pour desktop, vous le cacheriez ici,
-       mais nous avons retiré l'ancien bouton du HTML pour éviter la duplication d'ID. */
+    .questionnaire-page-active .question-section .subtitle {
+        font-size: 1.1rem; /* Ajusté pour la tablette */
+        margin-bottom: 35px !important;
+    }
+    .progress-bar-wrapper-proxatek.container {
+        margin-bottom: 40px; 
+        max-width: 500px; 
+    }
+    .steps-proxatek .step-label { 
+        font-size: 0.9rem; 
+        font-weight: 400; 
+    }
+}
+
+@media (max-width: 767px) { /* Mobile */
+    .header-questionnaire {
+        flex-direction: column;
+        gap: var(--gap-sm);
+        padding: var(--gap-md); 
+    }
+    .promo-questionnaire {
+        width: 100%;
+        max-width: 320px; 
+        font-size: 0.85rem;
+    }
+    .questionnaire-navigation-wrapper.container {
+        min-height: auto; 
+        padding-top: var(--gap-lg); 
+    }
+    .questionnaire-page-active .question-section .question { /* Unifié */
+        font-size: 1.65rem; 
+    }
+    .questionnaire-page-active .question-section .subtitle { /* Unifié */
+        font-size: 1rem; 
+        margin-bottom: 30px !important; 
+    }
+    .progress-bar-wrapper-proxatek.container {
+        margin-bottom: 35px; 
+        max-width: 90%; 
+    }
+    .steps-proxatek .step-label { 
+        font-size: 0.8rem; 
+        font-weight: 500; 
+    }
+    .questionnaire-page-active .choices { 
+        grid-template-columns: 1fr; 
+        gap: 15px;
+    }
+    .questionnaire-page-active .choice,
+    .questionnaire-page-active .input-field,
+    .questionnaire-page-active .input-button { 
+        font-size: 0.95rem; 
+    }
+    .questionnaire-page-active .confirmation-box h1 {
+        font-size: 1.6rem;
+    }
+    .questionnaire-page-active .confirmation-box p {
+        font-size: 1rem;
+    }
+    .questionnaire-page-active .code-offre {
+        font-size: 1.2rem;
+        padding: 8px 20px;
+    }
 }
 
 
-/* Responsive spécifique au questionnaire */
-@media (max-width: 768px) {
-  .progress-bar-wrapper-proxatek.container { padding-left: 20px; padding-right: 20px; }
-  .questionnaire-page-active .question-section .question, .devis-question { font-size: 1.6rem; }
-  .questionnaire-page-active .question-section .subtitle, .subtitle-devis.subtitle { font-size: 1rem; }
-
-  .bottom-back-button {
-      padding: 8px 16px;
-      font-size: 0.85rem;
-  }
+@media (max-width: 480px) { 
+    .questionnaire-page-active .question-section .question { /* Unifié */
+        font-size: 1.5rem;
+    }
+    .questionnaire-page-active .question-section .subtitle { /* Unifié */
+        font-size: 0.9rem; 
+        margin-bottom: 25px !important; 
+    }
+    .progress-bar-wrapper-proxatek.container {
+        margin-bottom: 30px; 
+    }
 }
 
-@media (max-width: 600px) {
-  .questionnaire-page-active .header-questionnaire { flex-direction: column; gap: var(--gap-sm, 0.5rem); padding: var(--gap-md, 1rem); }
-  .questionnaire-page-active .promo-questionnaire { width: 100%; max-width: 320px; font-size: 0.85rem; }
-  .questionnaire-page-active .logo-questionnaire img { max-height: 35px; }
-  .questionnaire-page-active .questionnaire-navigation-wrapper.container { min-height: 0; padding-top: var(--gap-sm, 0.5rem); }
-  .questionnaire-page-active .question-section .question, .devis-question { font-size: 1.4rem; margin-top: 3vh; }
-  .questionnaire-page-active .question-section .subtitle, .subtitle-devis.subtitle { font-size: 0.95rem; min-height: auto; margin-bottom: var(--gap-lg); }
-  .questionnaire-page-active .choices, .devis-options-grid { grid-template-columns: 1fr; gap: 15px; }
-  .questionnaire-page-active .choice, .questionnaire-page-active .input-field, .questionnaire-page-active .input-button { font-size: 0.95rem; }
-  .questionnaire-page-active .devis-option-label span:first-child { font-size: 1rem; }
-  .questionnaire-page-active .confirmation-box h1 { font-size: 1.6rem; }
-  .questionnaire-page-active .confirmation-box p { font-size: 1rem; }
-  .questionnaire-page-active .code-offre { font-size: 1.2rem; padding: 8px 20px; }
-  .steps-proxatek .step-label { font-size: 0.75rem; }
-
-  .bottom-back-button {
-      padding: 8px 15px;
-      font-size: 0.8rem;
-      /* Pour le centrer sur très petits écrans si vous préférez : */
-      /* float: none; */
-      /* display: block; */ /* Nécessite de retirer inline-flex du JS pour ce cas */
-      /* margin-left: auto; */
-      /* margin-right: auto; */
-      /* width: fit-content; */ /* Pour qu'il ne prenne pas toute la largeur */
-  }
-  .bottom-navigation-wrapper {
-    /* text-align: center; */ /* Si vous centrez le bouton ci-dessus */
-  }
-}
-
-@media (max-height: 700px) and (max-width: 600px) {
-    #question-container.container { justify-content: flex-start; padding-bottom: var(--gap-md); }
-    .questionnaire-page-active .question-section .question, .devis-question { margin-top: var(--gap-md); }
+@media (max-height: 700px) and (max-width: 600px) { 
+    #question-container.container {
+        justify-content: flex-start; 
+        padding-bottom: var(--gap-md);
+    }
+    .questionnaire-page-active .question-section .question { 
+        margin-top: var(--gap-md); 
+    }
 }

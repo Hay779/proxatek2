@@ -25,13 +25,13 @@
 </head>
 <body>
 
-   <!-- ===== START: MAIN NAVIGATION BLOCK (HEADER + SERVICES NAV) ===== -->
+   <!-- ===== START:    <!-- ===== START: MAIN NAVIGATION BLOCK (HEADER + SERVICES NAV) ===== -->
     <header class="site-header-custom">
         <div class="container header-custom-container">
             <div class="logo-proxatek-custom">
                 <a href="index.html" title="Accueil Proxatek - Solutions IT pour PME">
                     <picture>
-                        <source media="(max-width:850px)" srcset="img/logoP.png"> <!-- Assurez-vous que img/logoP.png existe -->
+                        <source media="(max-width:850px)" srcset="img/logoP.png">
                         <img src="img/Logoproxatek.png" alt="Logo Proxatek - Solutions IT pour PME"
                              onerror="this.style.display='none'; this.onerror=null; document.getElementById('logoTextFallbackHeader').style.display='block';"
                              loading="eager">
@@ -43,21 +43,14 @@
                 <!-- Liens de navigation principale desktop (si ajoutés) -->
             </nav>
     
-            <!-- Actions pour Desktop uniquement -->
-            <div class="header-actions-custom">
-                <a href="tel:+33412345678" class="phone-link-custom">
-                    <i class="fas fa-phone-alt" aria-hidden="true"></i> 04 12 34 56 78
+            <!-- Actions Header (Desktop et Mobile combinés/gérés par CSS) -->
+            <div class="header-actions-combined">
+                <a href="tel:+33412345678" class="phone-link-header"> <!-- Nouvelle classe pour le téléphone -->
+                    <i class="fas fa-phone-alt" aria-hidden="true"></i> 
+                    <span class="phone-text-header">04 12 34 56 78</span>
                 </a>
-                <a href="questionnaire.html" class="btn btn-primary-custom cta-header-desktop" data-i18n="nav.startQuote">Commencer votre devis</a>
-            </div>
-    
-            <!-- Actions pour Mobile/Tablette -->
-            <div class="header-actions-mobile-custom">
-                <a href="tel:+33412345678" class="phone-link-mobile-custom">
-                    <i class="fas fa-phone-alt" aria-hidden="true"></i>
-                    <span class="phone-text-mobile">04 12 34 56 78</span>
-                </a>
-                <a href="questionnaire.html" class="btn btn-primary-custom btn-small cta-header-mobile" data-i18n="nav.startQuoteMobile">Devis</a>
+                <a href="questionnaire.html" class="btn btn-primary-custom cta-header-main" data-i18n="nav.startQuote">Commencer votre devis</a> <!-- Un seul bouton devis -->
+                
                 <button class="mobile-menu-toggle-custom" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileNavMenuUniversal">
                     <i class="fas fa-bars icon-open" aria-hidden="true"></i>
                     <i class="fas fa-times icon-close" aria-hidden="true" style="display: none;"></i>
@@ -67,6 +60,7 @@
     
         <!-- Menu Mobile -->
         <nav class="mobile-nav-custom" id="mobileNavMenuUniversal" aria-label="Menu de navigation mobile">
+            <!-- ... contenu du menu mobile inchangé ... -->
             <a href="#prestations-proxatek" class="mobile-nav-main-link" data-i18n="mobileNav.ourServices">Nos Services</a>
             <hr>
             <a href="services/infogerance.html" data-i18n="services.infogerance.titleShort">Infogérance</a>
@@ -86,7 +80,7 @@
             <a href="support-urgent.html" class="btn btn-secondary-custom mobile-nav-btn" data-i18n="mobileNav.urgentSupport">Support Urgent</a>
         </nav>
     </header>
-
+   
     <nav class="services-navigation-bar" aria-label="Navigation des services principaux">
         <div class="container services-nav-container">
             <ul>
@@ -102,34 +96,53 @@
 <!-- ===== END: MAIN NAVIGATION BLOCK ===== -->
 
     <main>
-        <section class="hero-section-custom-actions">
-            <div class="container hero-actions-container-v3">
-                <div class="hero-intro-text-v3">
+        <section class="hero-main-v2">
+            <div class="hero-main-v2-background">
+                <div class="hero-main-v2-overlay"></div>
+                <div class="container hero-main-v2-content">
+		   <div class="hero-text-container">
                     <h1 data-i18n="hero.title">Votre Informatique, Notre Expertise.</h1>
                     <p data-i18n="hero.subtitle">Des solutions IT complètes pour TPE/PME, du devis personnalisé au support urgent. Nous sommes là pour vous accompagner.</p>
-                </div>
-                <div class="hero-primary-actions-grid-v3">
-                    <a href="questionnaire.html" class="hero-action-card-v3">
-                        <div class="hero-action-card-icon-v3"><i class="fas fa-file-signature" aria-hidden="true"></i></div>
-                        <div class="hero-action-card-content-v3">
-                            <h3 data-i18n="hero.actions.quoteSimulator.title">Simulateur de Devis</h3>
-                            <p data-i18n="hero.actions.quoteSimulator.description">Évaluez vos besoins et obtenez une estimation sur mesure.</p>
-                        </div>
-                    </a>
-                   <a href="support-urgent.html" class="hero-action-card-v3">
-                        <div class="hero-action-card-icon-v3"><i class="fas fa-life-ring" aria-hidden="true"></i></div>
-                        <div class="hero-action-card-content-v3">
-                            <h3 data-i18n="hero.actions.urgentSupport.title">Support Urgent</h3>
-                            <p data-i18n="hero.actions.urgentSupport.description">Une panne ? Notre équipe d'astreinte est là pour vous aider.</p>
-                        </div>
-                    </a>
-                    <a href="contact.html" class="hero-action-card-v3">
-                        <div class="hero-action-card-icon-v3"><i class="fas fa-comments" aria-hidden="true"></i></div>
-                        <div class="hero-action-card-content-v3">
-                            <h3 data-i18n="hero.actions.getInTouch.title">Prendre Contact</h3>
-                            <p data-i18n="hero.actions.getInTouch.description">Discutons de votre projet et de vos ambitions avec nos experts.</p>
-                        </div>
-                    </a>
+                 </div> 
+		</div>
+            </div>
+            <div class="hero-main-v2-actions-wrapper">
+                <div class="container">
+                    <div class="hero-primary-actions-grid-v3">
+                        <a href="questionnaire.html" class="hero-action-card-v3 hero-action-card-v2-style btn-icon-text-bar">
+                            <span class="btn-icon-wrapper">
+                                <img src="img/icon-simulateur-devis.svg" alt="Icône Simulateur de Devis" class="hero-card-custom-icon"
+                                     onerror="this.style.display='none'; this.parentElement.innerHTML = '<i class=\'fas fa-file-signature\' aria-hidden=\'true\'></i>';">
+                            </span>
+                            <span class="btn-separator-element"></span>
+                            <span class="btn-text-wrapper">
+                                <h3 data-i18n="hero.actions.quoteSimulator.title">Simulateur de Devis</h3>
+                                <p data-i18n="hero.actions.quoteSimulator.description">Évaluez vos besoins et obtenez une estimation sur mesure.</p>
+                            </span>
+                        </a>
+                       <a href="support-urgent.html" class="hero-action-card-v3 hero-action-card-v2-style btn-icon-text-bar">
+                            <span class="btn-icon-wrapper">
+                                <img src="img/icon-support-urgent.svg" alt="Icône Support Urgent" class="hero-card-custom-icon"
+                                     onerror="this.style.display='none'; this.parentElement.innerHTML = '<i class=\'fas fa-life-ring\' aria-hidden=\'true\'></i>';">
+                            </span>
+                            <span class="btn-separator-element"></span>
+                            <span class="btn-text-wrapper">
+                                <h3 data-i18n="hero.actions.urgentSupport.title">Support Urgent</h3>
+                                <p data-i18n="hero.actions.urgentSupport.description">Une panne ? Notre équipe d'astreinte est là pour vous aider.</p>
+                            </span>
+                        </a>
+                        <a href="contact.html" class="hero-action-card-v3 hero-action-card-v2-style btn-icon-text-bar">
+                            <span class="btn-icon-wrapper">
+                                 <img src="img/icon-prendre-contact.svg" alt="Icône Prendre Contact" class="hero-card-custom-icon"
+                                      onerror="this.style.display='none'; this.parentElement.innerHTML = '<i class=\'fas fa-comments\' aria-hidden=\'true\'></i>';">
+                            </span>
+                            <span class="btn-separator-element"></span>
+                            <span class="btn-text-wrapper">
+                                <h3 data-i18n="hero.actions.getInTouch.title">Prendre Contact</h3>
+                                <p data-i18n="hero.actions.getInTouch.description">Discutons de votre projet et de vos ambitions avec nos experts.</p>
+                            </span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -368,7 +381,7 @@
                         <a href="a-propos.html" class="btn btn-primary-custom" data-i18n="whyProxatek.discoverButton">Découvrir notre équipe et nos valeurs</a>
                     </div>
                     <div class="feature-image-content">
-                        <img src="img/proxatek-valeurs.jpg" alt="Équipe Proxatek collaborant sur un projet IT pour PME" onerror="this.alt='Image placeholder valeurs Proxatek'; this.src='https://via.placeholder.com/500x400/F9F8FF/2F1A4B?text=Nos+Valeurs'" loading="lazy">
+                        <img src="img/proxatek-valeurs.png" alt="Équipe Proxatek collaborant sur un projet IT pour PME" onerror="this.alt='Image placeholder valeurs Proxatek'; this.src='https://via.placeholder.com/500x400/F9F8FF/2F1A4B?text=Nos+Valeurs'" loading="lazy">
                     </div>
                 </div>
             </div>
